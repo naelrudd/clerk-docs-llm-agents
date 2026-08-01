@@ -1,0 +1,26 @@
+# The Backend EnterpriseConnection object
+
+The Backend `EnterpriseConnection` object holds information about an enterprise connection (SAML or OAuth) for an instance or organization.
+
+## Properties
+
+| Property                                                                         | Type                                                                                                                                                                 | Description                                                                                         |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| <a id="active"></a> `active`                                                     | `boolean`                                                                                                                                                            | Whether the connection is active or not.                                                            |
+| <a id="allowsubdomains"></a> `allowSubdomains`                                   | `boolean`                                                                                                                                                            | Whether users with an email address subdomain are allowed to use this connection or not.            |
+| <a id="createdat"></a> `createdAt`                                               | `number`                                                                                                                                                             | The date when the connection was first created.                                                     |
+| <a id="disableadditionalidentifications"></a> `disableAdditionalIdentifications` | `boolean`                                                                                                                                                            | Whether additional identifications are disabled for this connection.                                |
+| <a id="domains"></a> `domains`                                                   | `string[]`                                                                                                                                                | The domain of the enterprise. Sign-in flows using an email with this domain may use the connection. |
+| <a id="id"></a> `id`                                                             | `string`                                                                                                                                                             | The unique identifier for the connection.                                                           |
+| <a id="name"></a> `name`                                                         | `string`                                                                                                                                                             | The name to use as a label for the connection.                                                      |
+| <a id="oauthconfig"></a> `oauthConfig`                                           | <code>null | <a href="https://clerk.com/docs/reference/backend/types/backend-enterprise-connection-oauth-config.md">EnterpriseConnectionOauthConfig</a></code>       | OAuth (OIDC) configuration when the enterprise connection uses OAuth.                               |
+| <a id="organizationid"></a> `organizationId`                                     | `null | string`                                                                                                                                           | The Organization ID if the connection is scoped to an organization.                                 |
+| <a id="samlconnection"></a> `samlConnection`                                     | <code>null | <a href="https://clerk.com/docs/reference/backend/types/backend-enterprise-connection-saml-connection.md">EnterpriseConnectionSamlConnection</a></code> | SAML connection details when the enterprise connection uses SAML.                                   |
+| <a id="syncuserattributes"></a> `syncUserAttributes`                             | `boolean`                                                                                                                                                            | Whether the connection syncs user attributes between the IdP and Clerk or not.                      |
+| <a id="updatedat"></a> `updatedAt`                                               | `number`                                                                                                                                                             | The date when the connection was last updated.                                                      |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

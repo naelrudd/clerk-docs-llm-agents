@@ -1,0 +1,147 @@
+# Fastify Quickstart
+
+**Example Repository**
+
+- [Fastify Quickstart Repo](https://github.com/clerk/clerk-fastify-quickstart)
+
+**Before you start**
+
+- [Set up a Clerk application](https://clerk.com/docs/getting-started/quickstart/setup-clerk.md?sdk=fastify)
+- [Add Fastify as your backend](https://fastify.dev/docs/latest/Guides/Getting-Started)
+
+Learn how to integrate Clerk into your Fastify backend for secure user authentication and management. This guide uses TypeScript and allows you to choose your frontend framework.
+
+> [Fastify is only compatible with Next.js versions 13.4 and below](https://github.com/fastify/fastify-nextjs). If you're using a newer version of Next.js, consider using a different backend framework that supports the latest Next.js features.
+>
+> This guide uses ECMAScript Modules (ESM). To use ESM in your project, you must include `"type": "module"` in your `package.json`.
+
+1. ## Install `@clerk/fastify`
+
+   The [Clerk Fastify SDK](https://clerk.com/docs/fastify/reference/fastify/overview.md) provides a range of backend utilities to simplify user authentication and management in your application.
+
+   Run the following command to install the SDK:
+
+   ```npm
+   npm install @clerk/fastify
+   ```
+2. ## Set your Clerk API keys
+
+   Add the following keys to your `.env` file. These keys can always be retrieved from the [**API keys**](https://dashboard.clerk.com/~/api-keys) page in the Clerk Dashboard.
+
+   1. In the Clerk Dashboard, navigate to the [**API keys**](https://dashboard.clerk.com/~/api-keys) page.
+   2. In the **Quick Copy** section, copy your Clerk Publishable Key and Secret Key.
+   3. Paste your keys into your `.env` file.
+
+   The final result should resemble the following:
+
+   filename: .env
+
+   ```env
+   CLERK_PUBLISHABLE_KEY={{pub_key}}
+   CLERK_SECRET_KEY={{secret}}
+   ```
+3. ## Configure `clerkPlugin()` for all routes
+
+   The [clerkPlugin()](https://clerk.com/docs/fastify/reference/fastify/clerk-plugin.md) function is a Fastify plugin provided by Clerk to integrate authentication into your Fastify application. To ensure that Clerk's authentication and user management features are applied across your Fastify application, configure the `clerkPlugin()` to handle all routes or limit it to specific ones.
+
+   The following example registers the plugin for all routes. To register the plugin for specific routes, see the [reference docs](https://clerk.com/docs/fastify/reference/fastify/overview.md).
+
+   > Load environment variables before importing any Clerk modules. Clerk reads environment variables (such as API keys) during initialization, so they must be available at import time.
+   >
+   > In Node.js, run your app with the `--env-file=.env` flag so environment variables are available during module initialization.
+   >
+   > For more information, refer to the [Fastify docs](https://fastify.dev/docs/latest/Guides/Getting-Started/#loading-order-of-your-plugins).
+
+   filename: index.ts
+
+   ```ts
+   import Fastify from 'fastify'
+   import { clerkPlugin } from '@clerk/fastify'
+
+   const fastify = Fastify({ logger: true })
+
+   fastify.register(clerkPlugin)
+
+   const start = async () => {
+     try {
+       await fastify.listen({ port: 8080 })
+     } catch (error) {
+       fastify.log.error(error)
+       process.exit(1)
+     }
+   }
+
+   start()
+   ```
+4. ## Protect your routes using `getAuth()`
+
+   The [getAuth()](https://clerk.com/docs/fastify/reference/fastify/get-auth.md) helper retrieves the current user's authentication state from the `request` object. It returns the [`Auth` object](https://clerk.com/docs/reference/backend/types/auth-object.md?sdk=fastify){{ target: '_blank' }}.
+
+   The following example uses `getAuth()` to protect a route and load the user's data. If the user is authenticated, their `userId` is passed to [`clerkClient.users.getUser()`](https://clerk.com/docs/reference/backend/user/get-user.md?sdk=fastify){{ target: '_blank' }} to get the current user's [User](https://clerk.com/docs/reference/objects/user.md){{ target: '_blank' }} object. If not authenticated, the request is rejected with a `401` status code.
+
+   ```ts
+   import Fastify from 'fastify'
+   import { clerkClient, clerkPlugin, getAuth } from '@clerk/fastify'
+
+   const fastify = Fastify({ logger: true })
+
+   fastify.register(clerkPlugin)
+
+   // Use `getAuth()` to protect this route
+   fastify.get('/protected', async (request, reply) => {
+     try {
+       // Use `getAuth()` to access `isAuthenticated` and the user's ID
+       const { isAuthenticated, userId } = getAuth(request)
+
+       // If user isn't authenticated, return a 401 error
+       if (!isAuthenticated) {
+         return reply.code(401).send({ error: 'User not authenticated' })
+       }
+
+       // Use `clerkClient` to access the `getUser()` method to get the user's User object
+       const user = await clerkClient.users.getUser(userId)
+
+       return reply.send({
+         message: 'User retrieved successfully',
+         user,
+       })
+     } catch (error) {
+       fastify.log.error(error)
+       return reply.code(500).send({ error: 'Failed to retrieve user' })
+     }
+   })
+
+   const start = async () => {
+     try {
+       await fastify.listen({ port: 8080 })
+     } catch (error) {
+       fastify.log.error(error)
+       process.exit(1)
+     }
+   }
+
+   start()
+   ```
+
+## Next steps
+
+Explore the most relevant next steps for your backend SDK using the following guides.
+
+- [Protect routes using clerkPlugin()](https://clerk.com/docs/reference/fastify/clerk-plugin.md?sdk=fastify): Learn how to protect specific routes from unauthenticated users.
+- [Protect routes based on authorization status](https://clerk.com/docs/reference/fastify/get-auth.md?sdk=fastify): Learn how to protect a route based on both authentication and authorization status.
+- [Deploy to production](https://clerk.com/docs/guides/development/deployment/production.md?sdk=fastify): Learn how to deploy your Clerk app to production.
+- [Clerk Fastify SDK reference](https://clerk.com/docs/reference/fastify/overview.md?sdk=fastify): Learn about the Clerk Fastify SDK and how to integrate it into your app.
+
+## More to explore
+
+Explore additional Clerk features that help you build, manage, and grow your application.
+
+- [**Organizations**](https://clerk.com/docs/guides/organizations/overview.md?sdk=fastify) - Organizations are shared accounts that let teams collaborate, manage members and roles, and control access to shared resources.
+- [**Billing**](https://clerk.com/docs/guides/billing/overview.md?sdk=fastify) - Billing enables you to manage subscriptions, free trials, payments, plans, and billing-related webhook events for B2C and B2B applications.
+- [**Waitlist**](https://clerk.com/docs/guides/secure/restricting-access.md?sdk=fastify#waitlist) - Waitlist lets you collect signups and control access to new products or features before launch through a simple, integrated workflow.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

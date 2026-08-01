@@ -1,0 +1,206 @@
+# useOrganizationList()
+
+The `useOrganizationList()` hook provides access to the current user's Organization memberships, invitations, and suggestions. It also includes methods for creating new Organizations and managing the Active Organization.
+
+## Parameters
+
+`useOrganizationList()` accepts a single object with the following properties:
+
+| Property                                        | Type                                                                                                                                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id="userinvitations"></a> `userInvitations?` | `true | { initialPage?: number; pageSize?: number; } & { status?: "expired" | "pending" | "accepted" | "revoked"; } & { infinite?: boolean; keepPreviousData?: boolean; }`      | If set to `true`, all default properties will be used.<br /> Otherwise, accepts an object with the following optional properties: <ul> <li>`status`: A string that filters the invitations by the provided status.</li> <li>Any of the properties described in <a href="https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#shared-properties">Shared properties</a>.</li> </ul> |
+| <a id="usermemberships"></a> `userMemberships?` | `true | { initialPage?: number; pageSize?: number; } & object & { infinite?: boolean; keepPreviousData?: boolean; }`                                                            | If set to `true`, all default properties will be used.<br /> Otherwise, accepts an object with the following optional properties: <ul> <li>Any of the properties described in <a href="https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#shared-properties">Shared properties</a>.</li> </ul>                                                                                             |
+| <a id="usersuggestions"></a> `userSuggestions?` | `true | { initialPage?: number; pageSize?: number; } & { status?: "pending" | "accepted" | ("pending" | "accepted")[]; } & { infinite?: boolean; keepPreviousData?: boolean; }` | If set to `true`, all default properties will be used.<br /> Otherwise, accepts an object with the following optional properties: <ul> <li>`status`: A string that filters the suggestions by the provided status.</li> <li>Any of the properties described in <a href="https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#shared-properties">Shared properties</a>.</li> </ul> |
+
+> By default, the `userMemberships`, `userInvitations`, and `userSuggestions` attributes are not populated. To fetch and paginate the data, you must pass `true` or an object with the desired properties.
+
+### Shared properties
+
+Optional properties that are shared across the `userMemberships`, `userInvitations`, and `userSuggestions` properties.
+
+| Property                                | Type     | Description                                                                                                                                                       |
+| --------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="initialpage"></a> `initialPage?` | `number` | A number that specifies which page to fetch. For example, if `initialPage` is set to 10, it will skip the first 9 pages and fetch the 10th page. Defaults to `1`. |
+| <a id="pagesize"></a> `pageSize?`       | `number` | A number that specifies the maximum number of results to return per page. Defaults to `10`.                                                                       |
+
+| Name                | Type      | Description                                                                                                                                                               |
+| ------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `infinite?`         | `boolean` | If `true`, newly fetched data will be appended to the existing list rather than replacing it. Useful for implementing infinite scroll functionality. Defaults to `false`. |
+| `keepPreviousData?` | `boolean` | If `true`, the previous data will be kept in the cache until new data is fetched. Defaults to `false`.                                                                    |
+
+## Returns
+
+| Property                                             | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                               |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="createorganization"></a> `createOrganization` | <code>undefined | (CreateOrganizationParams: <a href="https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#create-organization-params">CreateOrganizationParams</a>) => Promise<<a href="https://clerk.com/docs/expo/reference/objects/organization.md">OrganizationResource</a>></code>                                                                                                                                                                                            | A function that returns a `Promise` which resolves to the newly created `Organization`.                                                                                                                                                                                                                                                                   |
+| <a id="isloaded"></a> `isLoaded`                     | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Indicates whether Clerk has loaded the current authentication state and there is an authenticated user. Initially `false`, becomes `true` once Clerk loads with a user, and can revert to `false` while auth state is updating (e.g., when switching organizations via [setActive()](https://clerk.com/docs/expo/reference/objects/clerk.md#set-active)). |
+| <a id="setactive"></a> `setActive`                   | <code>undefined | (setActiveParams: <a href="https://clerk.com/docs/expo/reference/types/set-active-params.md">SetActiveParams</a>) => Promise<void></code>                                                                                                                                                                                                                                                                                                                                         | A function that sets the active session and/or Organization.                                                                                                                                                                                                                                                                                              |
+| <a id="userinvitations"></a> `userInvitations`       | <code>PaginatedResourcesWithDefault<<a href="https://clerk.com/docs/expo/reference/types/user-organization-invitation.md">UserOrganizationInvitationResource</a>> | <a href="https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#paginated-resources">PaginatedResources</a><<a href="https://clerk.com/docs/expo/reference/types/user-organization-invitation.md">UserOrganizationInvitationResource</a>, T["userInvitations"] extends { infinite: true; } ? true : false></code> | Returns `PaginatedResources` which includes a list of the user's Organization invitations.                                                                                                                                                                                                                                                                |
+| <a id="usermemberships"></a> `userMemberships`       | <code>PaginatedResourcesWithDefault<<a href="https://clerk.com/docs/expo/reference/types/organization-membership.md">OrganizationMembershipResource</a>> | <a href="https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#paginated-resources">PaginatedResources</a><<a href="https://clerk.com/docs/expo/reference/types/organization-membership.md">OrganizationMembershipResource</a>, T["userMemberships"] extends { infinite: true; } ? true : false></code>                   | Returns `PaginatedResources` which includes a list of the user's Organization memberships.                                                                                                                                                                                                                                                                |
+| <a id="usersuggestions"></a> `userSuggestions`       | <code>PaginatedResourcesWithDefault<<a href="https://clerk.com/docs/expo/reference/types/organization-suggestion.md">OrganizationSuggestionResource</a>> | <a href="https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#paginated-resources">PaginatedResources</a><<a href="https://clerk.com/docs/expo/reference/types/organization-suggestion.md">OrganizationSuggestionResource</a>, T["userSuggestions"] extends { infinite: true; } ? true : false></code>                   | Returns `PaginatedResources` which includes a list of suggestions for Organizations that the user can join.                                                                                                                                                                                                                                               |
+
+### `CreateOrganizationParams`
+
+| Property                  | Type     | Description                   |
+| ------------------------- | -------- | ----------------------------- |
+| <a id="name"></a> `name`  | `string` | The name of the Organization. |
+| <a id="slug"></a> `slug?` | `string` | The slug of the Organization. |
+
+### `PaginatedResources`
+
+| Property                                       | Type                                                                                                                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                               |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="count"></a> `count`                     | `number`                                                                                                                                                                                                                                                                                                                                              | The total count of data that exist remotely.                                                                                                                                                                              |
+| <a id="data"></a> `data`                       | `T[]`                                                                                                                                                                                                                                                                                                                                      | An array that contains the fetched data. For example, for the `memberships` attribute, data will be an array of [OrganizationMembership](https://clerk.com/docs/expo/reference/types/organization-membership.md) objects. |
+| <a id="error"></a> `error`                     | <code>null | <a href="https://clerk.com/docs/expo/reference/types/clerk-api-response-error.md">ClerkAPIResponseError</a></code>                                                                                                                                                                                                                       | Clerk's API response error object.                                                                                                                                                                                        |
+| <a id="fetchnext"></a> `fetchNext`             | `() => void`                                                                                                                                                                                                                                                                                                                               | A function that triggers the next page to be loaded. This is the same as `fetchPage(page => Math.min(pageCount, page + 1))`.                                                                                              |
+| <a id="fetchpage"></a> `fetchPage`             | `ValueOrSetter`<`number`>                                                                                                                                                                                                                                                                                                                            | A function that triggers a specific page to be loaded.                                                                                                                                                                    |
+| <a id="fetchprevious"></a> `fetchPrevious`     | `() => void`                                                                                                                                                                                                                                                                                                                               | A function that triggers the previous page to be loaded. This is the same as `fetchPage(page => Math.max(0, page - 1))`.                                                                                                  |
+| <a id="hasnextpage"></a> `hasNextPage`         | `boolean`                                                                                                                                                                                                                                                                                                                                             | Indicates whether there are available pages to be fetched.                                                                                                                                                                |
+| <a id="haspreviouspage"></a> `hasPreviousPage` | `boolean`                                                                                                                                                                                                                                                                                                                                             | Indicates whether there are available pages to be fetched.                                                                                                                                                                |
+| <a id="iserror"></a> `isError`                 | `boolean`                                                                                                                                                                                                                                                                                                                                             | Indicates whether the request failed.                                                                                                                                                                                     |
+| <a id="isfetching"></a> `isFetching`           | `boolean`                                                                                                                                                                                                                                                                                                                                             | Indicates whether there is an ongoing request or a revalidation.                                                                                                                                                          |
+| <a id="isloading"></a> `isLoading`             | `boolean`                                                                                                                                                                                                                                                                                                                                             | Indicates whether there is an ongoing request and there is no fetched data.                                                                                                                                               |
+| <a id="page"></a> `page`                       | `number`                                                                                                                                                                                                                                                                                                                                              | The current page.                                                                                                                                                                                                         |
+| <a id="pagecount"></a> `pageCount`             | `number`                                                                                                                                                                                                                                                                                                                                              | The total amount of pages. It is calculated based on `count`, `initialPage`, and `pageSize`.                                                                                                                              |
+| <a id="revalidate"></a> `revalidate`           | <code>() => Promise<void></code>                                                                                                                                                                                                                                                                                                                      | A function that triggers a revalidation of the current page.                                                                                                                                                              |
+| <a id="setdata"></a> `setData`                 | `Infinite` _extends_ `true` ? `CacheSetter`<<code>(undefined | <a href="https://clerk.com/docs/expo/reference/types/clerk-paginated-response.md">ClerkPaginatedResponse</a><T>)[]</code>> : `CacheSetter`<<code>undefined | <a href="https://clerk.com/docs/expo/reference/types/clerk-paginated-response.md">ClerkPaginatedResponse</a><T></code>> | A function that allows you to set the data manually.                                                                                                                                                                      |
+
+To see the different Organization features integrated into one application, take a look at our [Organizations demo repository](https://github.com/clerk/organizations-demo).
+
+## Examples
+
+### Expanding and paginating attributes
+
+To keep network usage to a minimum, developers are required to opt-in by specifying which resource they need to fetch and paginate through. So by default, the `userMemberships`, `userInvitations`, and `userSuggestions` attributes are not populated. You must pass `true` or an object with the desired [properties](https://clerk.com/docs/expo/reference/hooks/use-organization-list.md#shared-properties) to fetch and paginate the data.
+
+```jsx
+// userMemberships.data will never be populated
+const { userMemberships } = useOrganizationList()
+
+// Use default values to fetch userMemberships, such as initialPage = 1 and pageSize = 10
+const { userMemberships } = useOrganizationList({
+  userMemberships: true,
+})
+
+// Pass your own values to fetch userMemberships
+const { userMemberships } = useOrganizationList({
+  userMemberships: {
+    pageSize: 20,
+    initialPage: 2, // skips the first page
+  },
+})
+
+// Aggregate pages in order to render an infinite list
+const { userMemberships } = useOrganizationList({
+  userMemberships: {
+    infinite: true,
+  },
+})
+```
+
+### Infinite pagination
+
+The following example demonstrates how to use the `infinite` property to fetch and append new data to the existing list. The `userMemberships` attribute will be populated with the first page of the user's Organization memberships. When the "Load more" button is clicked, the `fetchNext` helper function will be called to append the next page of memberships to the list.
+
+filename: src/components/JoinedOrganizations.tsx
+```tsx
+import { useOrganizationList } from '@clerk/expo'
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native'
+
+export function JoinedOrganizations() {
+  const { isLoaded, setActive, userMemberships } = useOrganizationList({
+    userMemberships: {
+      infinite: true,
+    },
+  })
+
+  // Handle loading state
+  if (!isLoaded) return <View>Loading...</View>
+
+  return (
+    <View>
+      <ScrollView>
+        {userMemberships.data?.map((mem) => (
+          <View key={mem.id}>
+            <Text>{mem.organization.name}</Text>
+            <TouchableOpacity onPress={() => setActive({ organization: mem.organization.id })}>
+              <Text>Select</Text>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </ScrollView>
+
+      <TouchableOpacity
+        disabled={!userMemberships.hasNextPage}
+        onPress={() => userMemberships.fetchNext()}
+      >
+        <Text>Load more</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
+```
+
+### Simple pagination
+
+The following example demonstrates how to use the `fetchPrevious` and `fetchNext` helper functions to paginate through the data. The `userInvitations` attribute will be populated with the first page of invitations. When the "Previous page" or "Next page" button is clicked, the `fetchPrevious` or `fetchNext` helper function will be called to fetch the previous or next page of invitations.
+
+Notice the difference between this example's pagination and the infinite pagination example above.
+
+filename: src/components/UserInvitationsTable.tsx
+```tsx
+import { useOrganizationList } from '@clerk/expo'
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native'
+
+export function UserInvitationsTable() {
+  const { isLoaded, userInvitations } = useOrganizationList({
+    userInvitations: {
+      keepPreviousData: true,
+    },
+  })
+
+  // Handle loading state
+  if (!isLoaded || userInvitations.isLoading) return <View>Loading...</View>
+
+  return (
+    <View>
+      <ScrollView>
+        <View>
+          <Text>Email</Text>
+          <Text>Org name</Text>
+        </View>
+
+        {userInvitations.data?.map((inv) => (
+          <View key={inv.id}>
+            <Text>{inv.emailAddress}</Text>
+            <Text>{inv.publicOrganizationData.name}</Text>
+          </View>
+        ))}
+      </ScrollView>
+
+      <TouchableOpacity
+        disabled={!userInvitations.hasPreviousPage}
+        onPress={userInvitations.fetchPrevious}
+      >
+        <Text>Prev</Text>
+      </TouchableOpacity>
+      <TouchableOpacity disabled={!userInvitations.hasNextPage} onPress={userInvitations.fetchNext}>
+        <Text>Next</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
+```
+
+## Next steps
+
+- [Build a custom Organization switcher](https://clerk.com/docs/guides/development/custom-flows/organizations/organization-switcher.md?sdk=expo): Learn how to build a custom flow for switching between Organizations.
+- [Create Organizations](https://clerk.com/docs/guides/development/custom-flows/organizations/create-organizations.md?sdk=expo): Learn how to build a custom flow for creating Organizations.
+- [Manage a user's Organization invitations](https://clerk.com/docs/guides/development/custom-flows/organizations/manage-user-org-invitations.md?sdk=expo): Learn how to build a custom flow for managing a user's Organization invitations.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

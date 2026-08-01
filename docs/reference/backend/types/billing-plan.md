@@ -1,0 +1,32 @@
+# Backend BillingPlan object
+
+> Billing regularly introduces new features and UI changes to Clerk's components. If you'd like to remain on a specific version of Clerk's components or SDK, you can follow the steps in the [pinning](https://clerk.com/docs/pinning.md) documentation.
+
+The `BillingPlan` object is similar to the [BillingPlanResource](https://clerk.com/docs/reference/types/billing-plan-resource.md) object as it holds information about a Plan, as well as methods for managing it. However, the `BillingPlan` object is different in that it is used in the [Backend API](https://clerk.com/docs/reference/backend-api/tag/billing/GET/billing/plans){{ target: '_blank' }} and is not directly accessible from the Frontend API.
+
+## Properties
+
+| Property                                         | Type                                                                                                                | Description                                                                                                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id="annualfee"></a> `annualFee`               | <code>null | <a href="https://clerk.com/docs/reference/types/billing-money-amount.md">BillingMoneyAmount</a></code> | The annual fee of the Plan.                                                                                                                      |
+| <a id="annualmonthlyfee"></a> `annualMonthlyFee` | <code>null | <a href="https://clerk.com/docs/reference/types/billing-money-amount.md">BillingMoneyAmount</a></code> | The annual fee of the Plan on a monthly basis.                                                                                                   |
+| <a id="avatarurl"></a> `avatarUrl`               | `null | string`                                                                                          | The URL of the Plan's avatar image.                                                                                                              |
+| <a id="description"></a> `description`           | `null | string`                                                                                          | The description of the Plan.                                                                                                                     |
+| <a id="features"></a> `features`                 | <code><a href="feature">Feature</a>[]</code>                                                                        | The [Features](https://clerk.com/docs/reference/backend/types/feature.md) the Plan offers.                                                       |
+| <a id="fee"></a> `fee`                           | <code>null | <a href="https://clerk.com/docs/reference/types/billing-money-amount.md">BillingMoneyAmount</a></code> | The monthly fee of the Plan.                                                                                                                     |
+| <a id="forpayertype"></a> `forPayerType`         | `"user" | "org"`                                                                                         | The type of payer for the Plan.                                                                                                                  |
+| <a id="freetrialdays"></a> `freeTrialDays`       | `null | number`                                                                                          | The number of free trial days for this plan.                                                                                                     |
+| <a id="freetrialenabled"></a> `freeTrialEnabled` | `boolean`                                                                                                           | Whether free trial is enabled for this plan.                                                                                                     |
+| <a id="hasbasefee"></a> `hasBaseFee`             | `boolean`                                                                                                           | Whether the Plan has a base fee.                                                                                                                 |
+| <a id="id"></a> `id`                             | `string`                                                                                                            | The unique identifier for the Plan.                                                                                                              |
+| <a id="isdefault"></a> `isDefault`               | `boolean`                                                                                                           | Whether the Plan is the default Plan.                                                                                                            |
+| <a id="isrecurring"></a> `isRecurring`           | `boolean`                                                                                                           | Whether the Plan is recurring.                                                                                                                   |
+| <a id="name"></a> `name`                         | `string`                                                                                                            | The name of the Plan.                                                                                                                            |
+| <a id="publiclyvisible"></a> `publiclyVisible`   | `boolean`                                                                                                           | Whether the Plan is displayed in the [<PricingTable />](https://clerk.com/docs/nextjs/reference/components/billing/pricing-table.md) component. |
+| <a id="slug"></a> `slug`                         | `string`                                                                                                            | The URL-friendly identifier of the Plan.                                                                                                         |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

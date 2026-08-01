@@ -1,0 +1,21 @@
+# OAuthConsentInfo
+
+An interface representing OAuth consent information, including application details and requested scopes.
+
+## Properties
+
+| Property                                                       | Type                                                                                                                              | Description                                                                                                                                                                                                                        |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="clientid"></a> `clientId`                               | `string`                                                                                                                          | The OAuth `client_id` identifying the application.                                                                                                                                                                                 |
+| <a id="oauthapplicationlogourl"></a> `oauthApplicationLogoUrl` | `string`                                                                                                                          | The URL of the OAuth application's logo image.                                                                                                                                                                                     |
+| <a id="oauthapplicationname"></a> `oauthApplicationName`       | `string`                                                                                                                          | The display name of the OAuth application requesting access.                                                                                                                                                                       |
+| <a id="oauthapplicationurl"></a> `oauthApplicationUrl`         | `string`                                                                                                                          | The homepage URL of the OAuth application.                                                                                                                                                                                         |
+| <a id="redirectdomain"></a> `redirectDomain`                   | `null | string`                                                                                                        | The PSL-resolved registrable domain of the redirect URI for display on the consent screen. Null when no redirect URI was provided, when it is not registered for the application, or when it points to an IP address or localhost. |
+| <a id="scopes"></a> `scopes`                                   | <code><a href="https://clerk.com/docs/tanstack-react-start/reference/types/oauth-consent-scope.md">OAuthConsentScope</a>[]</code> | A list of scopes the application is requesting, with descriptions and consent requirements.                                                                                                                                        |
+| <a id="state"></a> `state`                                     | `string`                                                                                                                          | The `state` parameter from the original authorize request.                                                                                                                                                                         |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

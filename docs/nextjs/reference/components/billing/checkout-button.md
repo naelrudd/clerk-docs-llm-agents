@@ -1,0 +1,106 @@
+# <CheckoutButton /> component
+
+![The <CheckoutButton /> component renders a button that opens the checkout drawer.](https://clerk.com/docs/raw/_public/images/ui-components/checkout-button.svg)
+
+The `<CheckoutButton />` component renders a button that opens the checkout drawer when selected, allowing users to subscribe to a Plan for either their Personal Account or an Organization. It must be wrapped inside a [<Show when="signed-in">](https://clerk.com/docs/nextjs/reference/components/control/show.md) component to ensure the user is authenticated.
+
+> Billing regularly introduces new features and UI changes to Clerk's components. If you'd like to remain on a specific version of Clerk's components or SDK, you can follow the steps in the [pinning](https://clerk.com/docs/pinning.md?sdk=nextjs) documentation.
+
+## Usage
+
+`<CheckoutButton />` must be wrapped inside a [<Show when="signed-in">](https://clerk.com/docs/nextjs/reference/components/control/show.md) component to ensure the user is authenticated.
+
+```tsx
+<>
+  // ❌ This will throw an error
+  <CheckoutButton planId="cplan_xxx" />
+  // ✅ Correct usage
+  <Show when="signed-in">
+    <CheckoutButton planId="cplan_xxx" />
+  </Show>
+</>
+```
+
+`<CheckoutButton />` will throw an error if the `for` prop is set to `'organization'` and no Active Organization is set.
+
+```tsx
+<>
+  // ❌ This will throw an error if no Organization is active
+  <CheckoutButton planId="cplan_xxx" for="organization" />
+  // ✅ Correct usage
+  {auth.orgId ? <CheckoutButton planId="cplan_xxx" for="organization" /> : null}
+</>
+```
+
+`<CheckoutButton />` preserves any click handlers attached to custom button elements, while maintaining the checkout drawer functionality.
+
+```tsx
+<CheckoutButton planId="cplan_xxx">
+  <button onClick={() => console.log('Starting checkout')} className="custom-button">
+    Start Subscription
+  </button>
+</CheckoutButton>
+```
+
+### Examples
+
+filename: app/pricing/page.tsx
+```tsx
+'use client'
+
+import { Show } from '@clerk/nextjs'
+import { CheckoutButton } from '@clerk/nextjs/experimental'
+
+export default function PricingPage() {
+  return (
+    <Show when="signed-in">
+      {/* Basic usage */}
+      <CheckoutButton planId="cplan_xxx" planPeriod="month" />
+
+      {/* Customizes the appearance of the checkout drawer */}
+      <CheckoutButton
+        planId="plan_123"
+        planPeriod="annual"
+        checkoutProps={{
+          appearance: {
+            /* custom theme */
+          },
+        }}
+      />
+
+      {/* Custom button */}
+      <CheckoutButton
+        planId="cplan_xxx"
+        planPeriod="annual"
+        onSubscriptionComplete={() => {
+          console.log('Subscription completed!')
+        }}
+        newSubscriptionRedirectUrl="/dashboard"
+      >
+        <button className="custom-button">
+          <Icon name="credit-card" />
+          Subscribe Now - $9.99/month
+        </button>
+      </CheckoutButton>
+    </Show>
+  )
+}
+```
+
+## Properties
+
+| Name                                                                                                                              | Type                     | Description                                                                                      |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------ |
+| planId                                                                                                                            | string                   | The ID of the Plan to subscribe to.                                                              |
+| planPeriod?                                                                                                                       | 'month' | 'annual'      | The billing period for the Subscription.                                                         |
+| for?                                                                                                                              | 'user' | 'organization' | Determines whether the Subscription is for the current user or Organization. Defaults to 'user'. |
+| children?                                                                                                                         | React.ReactNode          | A custom button element. If not provided, defaults to a button with the text "Checkout".         |
+| onSubscriptionComplete?                                                                                                           | () => void               | A callback function that is called when a Subscription is successfully completed.                |
+| newSubscriptionRedirectUrl?                                                                                                       | string                   | The URL to redirect to after a successful Subscription.                                          |
+| appearance: an object used to style your components. For example: <CheckoutButton checkoutProps={{ appearance: { ... } }} />. |                          |                                                                                                  |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

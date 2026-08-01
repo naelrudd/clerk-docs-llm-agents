@@ -1,0 +1,42 @@
+# Build a custom flow for handling user impersonation
+
+> This guide is for users who want to build a custom flow. To use a _prebuilt_ UI, use the [Account Portal pages](https://clerk.com/docs/guides/account-portal/overview.md?sdk=android) or [prebuilt views](https://clerk.com/docs/android/reference/views/overview.md).
+
+[Clerk's user impersonation feature](https://clerk.com/docs/guides/users/impersonation.md?sdk=android) allows you to sign in to your application as one of your users, enabling you to directly reproduce and remedy any issues they're experiencing. It's a helpful feature for customer support and debugging.
+
+This guide will walk you through how to build a custom flow that handles user impersonation.
+
+> You can perform up to **5 user impersonations per month for free**. To increase this limit, refer to the [pricing page](https://clerk.com/pricing){{ target: '_blank' }}.
+
+```kotlin
+import com.clerk.api.Clerk
+import com.clerk.api.auth.signInWithTicket
+import com.clerk.api.network.serialization.onFailure
+import com.clerk.api.network.serialization.onSuccess
+import com.clerk.api.signin.SignIn
+
+suspend fun impersonateUser(actorToken: String) {
+  Clerk.auth
+    .signInWithTicket(actorToken)
+    .onSuccess { signIn ->
+      if (signIn.status == SignIn.Status.COMPLETE && signIn.createdSessionId != null) {
+        Clerk.auth
+          .setActive(sessionId = signIn.createdSessionId)
+          .onFailure {
+            // See https://clerk.com/docs/guides/development/custom-flows/error-handling
+            // for more info on error handling
+          }
+      }
+    }
+    .onFailure {
+      // See https://clerk.com/docs/guides/development/custom-flows/error-handling
+      // for more info on error handling
+    }
+}
+```
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

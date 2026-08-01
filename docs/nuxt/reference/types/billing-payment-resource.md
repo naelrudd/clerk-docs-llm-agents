@@ -1,0 +1,26 @@
+# BillingPaymentResource
+
+> Billing regularly introduces new features and UI changes to Clerk's components. If you'd like to remain on a specific version of Clerk's components or SDK, you can follow the steps in the [pinning](https://clerk.com/docs/pinning.md?sdk=nuxt) documentation.
+
+The `BillingPaymentResource` type represents a payment attempt for a user or Organization.
+
+## Properties
+
+| Property                                         | Type                                                                                                                                          | Description                                                                                                                       |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="amount"></a> `amount`                     | [BillingMoneyAmount](https://clerk.com/docs/nuxt/reference/types/billing-money-amount.md)                                                     | The amount of the payment.                                                                                                        |
+| <a id="chargetype"></a> `chargeType`             | `"checkout" | "recurring"`                                                                                                         | The type of charge this payment represents. Can be `'checkout'` for one-time payments or `'recurring'` for subscription payments. |
+| <a id="failedat"></a> `failedAt`                 | `null | Date`                                                                                                                      | The date and time when the payment failed.                                                                                        |
+| <a id="id"></a> `id`                             | `string`                                                                                                                                      | The unique identifier for the payment.                                                                                            |
+| <a id="paidat"></a> `paidAt`                     | `null | Date`                                                                                                                      | The date and time when the payment was successfully completed.                                                                    |
+| <a id="paymentmethod"></a> `paymentMethod`       | <code>null | <a href="https://clerk.com/docs/nuxt/reference/types/billing-payment-method-resource.md">BillingPaymentMethodResource</a></code> | The payment method being used for the payment, such as credit card or bank account.                                               |
+| <a id="status"></a> `status`                     | `"pending" | "paid" | "failed"`                                                                                                    | The current status of the payment.                                                                                                |
+| <a id="subscriptionitem"></a> `subscriptionItem` | [BillingSubscriptionItemResource](https://clerk.com/docs/nuxt/reference/types/billing-subscription-item-resource.md)                          | The subscription item being paid for.                                                                                             |
+| <a id="totals"></a> `totals?`                    | <code>null | <a href="billing-payment-totals.mdx">BillingPaymentTotals</a></code>                                                             | Per-payment breakdown with optional base fee and per-unit (e.g., seats) subtotals. Absent on older responses.                     |
+| <a id="updatedat"></a> `updatedAt`               | `Date`                                                                                                                                        | The date and time when the payment was last updated.                                                                              |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

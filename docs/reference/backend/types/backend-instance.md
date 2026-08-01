@@ -1,0 +1,15 @@
+# The Backend Instance object
+
+## Properties
+
+| Property                                       | Type                         | Description                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ---------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="allowedorigins"></a> `allowedOrigins`   | `null | string[]` | For browser-like stacks such as browser extensions, Electron, or Capacitor.js, the instance allowed origins need to be updated with the request origin value. For Chrome extensions popup, background, or service worker pages the origin is `chrome-extension://extension_uiid`. For Electron apps the default origin is `http://localhost:3000`. For Capacitor.js, the origin is `capacitor://localhost`. |
+| <a id="environmenttype"></a> `environmentType` | `string`                     | The type of instance environment, either `'production'` or `'development'`.                                                                                                                                                                                                                                                                                                                                 |
+| <a id="id"></a> `id`                           | `string`                     | The unique identifier for the instance.                                                                                                                                                                                                                                                                                                                                                                     |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

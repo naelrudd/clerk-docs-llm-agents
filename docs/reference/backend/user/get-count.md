@@ -1,0 +1,58 @@
+# getCount()
+
+Gets the total number of users in your instance.
+
+```typescript
+function getCount(params: UserCountParams): Promise<number>
+```
+
+## `UserCountParams`
+
+| Property                                  | Type                  | Description                                                                                                                                                                                                                                                       |
+| ----------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="emailaddress"></a> `emailAddress?` | `string[]` | Counts users with emails that match the given query, via case-insensitive partial match. For example, `emailAddress=hello` will match a user with the email `HELLO@example.com`. Accepts up to 100 email addresses.                                               |
+| <a id="externalid"></a> `externalId?`     | `string[]` | Counts users with the specified external IDs. Accepts up to 100 external IDs.                                                                                                                                                                                     |
+| <a id="phonenumber"></a> `phoneNumber?`   | `string[]` | Counts users with phone numbers that match the given query, via case-insensitive partial match. For example, `phoneNumber=555` will match a user with the phone number `+1555xxxxxxx`. Accepts up to 100 phone numbers.                                           |
+| <a id="query"></a> `query?`               | `string`              | Counts users matching the given query across email addresses, phone numbers, usernames, Web3 wallet addresses, user IDs, first names, and last names. Partial matches supported. For example, `query=hello` will match a user with the email `HELLO@example.com`. |
+| <a id="userid"></a> `userId?`             | `string[]` | Counts users with the specified user IDs. Accepts up to 100 user IDs.                                                                                                                                                                                             |
+| <a id="username"></a> `username?`         | `string[]` | Counts users with usernames that match the given query, via case-insensitive partial match. For example, `username=CoolUser` will match a user with the username `SomeCoolUser`. Accepts up to 100 usernames.                                                     |
+| <a id="web3wallet"></a> `web3Wallet?`     | `string[]` | Counts users with Web3 wallet addresses that match the given query, via case-insensitive partial match. For example, `web3Wallet=0x1234567890` will match a user with the Web3 wallet address `0x1234567890`. Accepts up to 100 Web3 wallet addresses.            |
+
+## Usage
+
+> Using `clerkClient` varies based on the SDK you're using. Refer to the [overview](https://clerk.com/docs/reference/backend/overview.md) for usage details, including guidance on [how to access the `userId` and other properties](https://clerk.com/docs/reference/backend/overview.md#example-get-the-user-id-and-other-properties).
+
+### Basic
+
+```tsx
+const response = await clerkClient.users.getCount()
+```
+
+### Filter by query
+
+The following example gets the total number of users matching the query `test`.
+
+```tsx
+const response = await clerkClient.users.getCount({ query: 'test' })
+```
+
+### Filter by last sign-in date
+
+Gets the total number of users who signed in within a specific time range.
+
+```tsx
+const response = await clerkClient.users.getCount({
+  lastSignInAtAfter: 1700690400000,
+  lastSignInAtBefore: 1700690400010,
+})
+```
+
+## Backend API (BAPI) endpoint
+
+This method in the SDK is a wrapper around the BAPI endpoint `GET/users/count`. See the [BAPI reference](https://clerk.com/docs/reference/backend-api/tag/users/GET/users/count){{ target: '_blank' }} for more information.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

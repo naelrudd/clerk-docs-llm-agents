@@ -1,0 +1,60 @@
+# $clerkStore
+
+The `$clerkStore` store provides a convenient way to access the [Clerk](https://clerk.com/docs/reference/objects/clerk.md){{ target: '_blank' }} object. This provides access to some methods that are not available in other stores.
+
+> This is intended to be used for advanced use cases, like building a completely custom OAuth flow or as an escape hatch for getting access to the `Clerk` object.
+
+## How to use the `$clerkStore` store
+
+The following example demonstrates how to use the [$clerkStore](https://clerk.com/docs/reference/astro/client-side-helpers/clerk-store.md) to access the [Clerk](https://clerk.com/docs/reference/objects/clerk.md) object.
+
+**React**
+
+filename: components/sign-in.tsx
+```tsx
+import { useStore } from '@nanostores/react'
+import { $clerkStore } from '@clerk/astro/client'
+
+export default function SignIn() {
+  const clerk = useStore($clerkStore)
+
+  return <button onClick={() => clerk.openSignIn()}>Sign in</button>
+}
+```
+
+**Vue**
+
+filename: components/sign-in.vue
+```vue
+<script setup>
+import { useStore } from '@nanostores/vue'
+import { $clerkStore } from '@clerk/astro/client'
+
+const clerk = useStore($clerkStore)
+
+const openSignIn = () => clerk.value.openSignIn()
+</script>
+
+<template>
+  <button @click="openSignIn">Sign in</button>
+</template>
+```
+
+**Svelte**
+
+filename: components/sign-in.svelte
+```svelte
+<script>
+  // The $ prefix is reserved in Svelte for its own reactivity system.
+  // Alias the imports to avoid conflicts.
+  import { $clerkStore as clerk } from '@clerk/astro/client'
+</script>
+
+<button on:click={() => $clerk.openSignIn()}>Sign in</button>
+```
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

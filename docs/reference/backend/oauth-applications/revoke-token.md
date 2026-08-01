@@ -1,0 +1,37 @@
+# revokeToken()
+
+> JWT access tokens cannot be revoked. Only opaque OAuth access tokens and refresh tokens can be revoked.
+
+Revokes both the OAuth access token and refresh token for the associated grant for the given [`OAuthApplication`](https://clerk.com/docs/reference/backend/types/backend-oauth-application.md). The request may specify either token.
+
+```typescript
+function revokeToken(params: RevokeOAuthApplicationTokenParams): Promise<void>
+```
+
+## `RevokeOAuthApplicationTokenParams`
+
+| Property                                             | Type     | Description                                                    |
+| ---------------------------------------------------- | -------- | -------------------------------------------------------------- |
+| <a id="oauthapplicationid"></a> `oauthApplicationId` | `string` | The ID of the OAuth application for which to revoke the token. |
+| <a id="token"></a> `token`                           | `string` | The opaque OAuth access token or refresh token to revoke.      |
+
+## Usage
+
+> Using `clerkClient` varies based on the SDK you're using. Refer to the [overview](https://clerk.com/docs/reference/backend/overview.md) for usage details, including guidance on [how to access the `userId` and other properties](https://clerk.com/docs/reference/backend/overview.md#example-get-the-user-id-and-other-properties).
+
+```tsx
+const oauthApplicationId = 'oauthapp_123'
+const token = 'oat_123'
+
+await clerkClient.oauthApplications.revokeToken({ oauthApplicationId, token })
+```
+
+## Backend API (BAPI) endpoint
+
+This method in the SDK is a wrapper around the BAPI endpoint `POST/oauth_applications/{oauth_application_id}/revoke_token`. See the [BAPI reference](https://clerk.com/docs/reference/backend-api/tag/oauth-applications/POST/oauth_applications/%7Boauth_application_id%7D/revoke_token){{ target: '_blank' }} for more information.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

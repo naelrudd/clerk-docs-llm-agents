@@ -1,0 +1,18 @@
+# BillingInitializedPaymentMethodResource
+
+The `BillingInitializedPaymentMethodResource` type represents a payment method that has been initialized for checkout session.
+
+## Properties
+
+| Property                                                 | Type                  | Description                                                                                                                                                                 |
+| -------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="externalclientsecret"></a> `externalClientSecret` | `string`              | A client secret from an external payment provider (such as Stripe) used to complete the payment on the client-side.                                                         |
+| <a id="externalgatewayid"></a> `externalGatewayId`       | `string`              | The unique identifier for the external payment gateway used for this checkout session.                                                                                      |
+| <a id="id"></a> `id?`                                    | `string`              | The unique identifier of the resource.                                                                                                                                      |
+| <a id="paymentmethodorder"></a> `paymentMethodOrder`     | `string[]` | The order the payment methods will be displayed in when [<PaymentElement/>](https://clerk.com/docs/nextjs/reference/hooks/use-payment-element.md#payment-element) renders. |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

@@ -1,0 +1,18 @@
+# The Backend AgentTask object
+
+The Backend `AgentTask` object represents an Agent Task resource. Agent Tasks are used for testing purposes and allow creating sessions for users without requiring full authentication flows.
+
+## Properties
+
+| Property                               | Type     | Description                                                                                                                                                                                                                                                        |
+| -------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id="agentid"></a> `agentId`         | `string` | The identifier for the agent, unique per `agent_name` within an instance.                                                                                                                                                                                          |
+| <a id="agenttaskid"></a> `agentTaskId` | `string` | The unique identifier for this Agent Task.                                                                                                                                                                                                                         |
+| <a id="taskid"></a> ~~`taskId`~~       | `string` | **Deprecated.** Use `agentTaskId` instead.                                                                                                                                                                                                                         |
+| <a id="url"></a> `url`                 | `string` | The Frontend API URL that, when visited, creates a session for the user. Only returned by [`create()`](https://clerk.com/docs/reference/backend/agent-tasks/create.md); omitted from [`revoke()`](https://clerk.com/docs/reference/backend/agent-tasks/revoke.md). |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

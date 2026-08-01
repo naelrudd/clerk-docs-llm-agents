@@ -1,0 +1,21 @@
+# The Backend EnterpriseConnectionOauthConfig object
+
+OAuth configuration included on a Backend API [EnterpriseConnection](https://clerk.com/docs/reference/backend/types/backend-enterprise-connection.md) response.
+
+## Properties
+
+| Property                                   | Type     | Description                                              |
+| ------------------------------------------ | -------- | -------------------------------------------------------- |
+| <a id="clientid"></a> `clientId`           | `string` | The OAuth client ID.                                     |
+| <a id="createdat"></a> `createdAt`         | `number` | The date when the configuration was first created.       |
+| <a id="discoveryurl"></a> `discoveryUrl`   | `string` | The OpenID Connect discovery URL.                        |
+| <a id="id"></a> `id`                       | `string` | The unique identifier for the OAuth configuration.       |
+| <a id="logopublicurl"></a> `logoPublicUrl` | `string` | The public URL of the OAuth provider logo, if available. |
+| <a id="name"></a> `name`                   | `string` | The name to use as a label for the configuration.        |
+| <a id="updatedat"></a> `updatedAt`         | `number` | The date when the configuration was last updated.        |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
