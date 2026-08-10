@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2344
+Pages: 2360
 
 | Path | First heading |
 |---|---|
@@ -113,6 +113,7 @@ Pages: 2344
 | [docs/astro/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/astro/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/astro/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/astro/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/astro/reference/types/billing-subscription-resource.md](https://clerk.com/docs/astro/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/astro/reference/types/billing-totals.md](https://clerk.com/docs/astro/reference/types/billing-totals.md) | BillingTotals |
 | [docs/astro/reference/types/clerk-api-error.md](https://clerk.com/docs/astro/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/astro/reference/types/clerk-api-response-error.md](https://clerk.com/docs/astro/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/astro/reference/types/clerk-error.md](https://clerk.com/docs/astro/reference/types/clerk-error.md) | ClerkError |
@@ -267,6 +268,7 @@ Pages: 2344
 | [docs/chrome-extension/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/chrome-extension/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/chrome-extension/reference/types/billing-subscription-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/chrome-extension/reference/types/billing-totals.md](https://clerk.com/docs/chrome-extension/reference/types/billing-totals.md) | BillingTotals |
 | [docs/chrome-extension/reference/types/clerk-api-error.md](https://clerk.com/docs/chrome-extension/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/chrome-extension/reference/types/clerk-api-response-error.md](https://clerk.com/docs/chrome-extension/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/chrome-extension/reference/types/clerk-error.md](https://clerk.com/docs/chrome-extension/reference/types/clerk-error.md) | ClerkError |
@@ -421,6 +423,7 @@ Pages: 2344
 | [docs/expo/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/expo/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/expo/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/expo/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/expo/reference/types/billing-subscription-resource.md](https://clerk.com/docs/expo/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/expo/reference/types/billing-totals.md](https://clerk.com/docs/expo/reference/types/billing-totals.md) | BillingTotals |
 | [docs/expo/reference/types/clerk-api-error.md](https://clerk.com/docs/expo/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/expo/reference/types/clerk-api-response-error.md](https://clerk.com/docs/expo/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/expo/reference/types/clerk-error.md](https://clerk.com/docs/expo/reference/types/clerk-error.md) | ClerkError |
@@ -580,6 +583,7 @@ Pages: 2344
 | [docs/guides/configure/auth-strategies/enterprise-connections/saml/google.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/saml/google.md) | Add Google Workspace as a SAML connection |
 | [docs/guides/configure/auth-strategies/enterprise-connections/saml/okta.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/saml/okta.md) | Add Okta Workforce as a SAML connection |
 | [docs/guides/configure/auth-strategies/enterprise-connections/self-serve-sso.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/self-serve-sso.md) | Self-serve SSO |
+| [docs/guides/configure/auth-strategies/oauth/client-id-metadata-documents.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/client-id-metadata-documents.md) | Manage OAuth clients with Client ID Metadata Documents (Beta) |
 | [docs/guides/configure/auth-strategies/oauth/how-clerk-implements-oauth.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/how-clerk-implements-oauth.md) | How Clerk implements OAuth |
 | [docs/guides/configure/auth-strategies/oauth/overview.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/overview.md) | OAuth and OIDC overview |
 | [docs/guides/configure/auth-strategies/oauth/scoped-access.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/scoped-access.md) | Use OAuth for scoped access |
@@ -656,6 +660,7 @@ Pages: 2344
 | [docs/guides/development/custom-flows/api-keys/manage-api-keys.md](https://clerk.com/docs/guides/development/custom-flows/api-keys/manage-api-keys.md) | Build a custom flow for managing API keys |
 | [docs/guides/development/custom-flows/authentication/application-invitations.md](https://clerk.com/docs/guides/development/custom-flows/authentication/application-invitations.md) | Sign-up with application invitations |
 | [docs/guides/development/custom-flows/authentication/client-trust.md](https://clerk.com/docs/guides/development/custom-flows/authentication/client-trust.md) | Build a custom sign-in flow with client trust |
+| [docs/guides/development/custom-flows/authentication/device-trust.md](https://clerk.com/docs/guides/development/custom-flows/authentication/device-trust.md) | Build a custom sign-in flow with Device Trust |
 | [docs/guides/development/custom-flows/authentication/email-password.md](https://clerk.com/docs/guides/development/custom-flows/authentication/email-password.md) | Build a custom email/password authentication flow |
 | [docs/guides/development/custom-flows/authentication/email-sms-otp.md](https://clerk.com/docs/guides/development/custom-flows/authentication/email-sms-otp.md) | Build a custom sign-in flow with email or phone code |
 | [docs/guides/development/custom-flows/authentication/enterprise-connections.md](https://clerk.com/docs/guides/development/custom-flows/authentication/enterprise-connections.md) | Build a custom flow for authenticating with enterprise connections |
@@ -824,6 +829,7 @@ Pages: 2344
 | [docs/guides/secure/best-practices/xss-leak-protection.md](https://clerk.com/docs/guides/secure/best-practices/xss-leak-protection.md) | XSS leak protection |
 | [docs/guides/secure/bot-protection.md](https://clerk.com/docs/guides/secure/bot-protection.md) | Bot protection |
 | [docs/guides/secure/client-trust.md](https://clerk.com/docs/guides/secure/client-trust.md) | Client Trust |
+| [docs/guides/secure/device-trust.md](https://clerk.com/docs/guides/secure/device-trust.md) | Device Trust |
 | [docs/guides/secure/features.md](https://clerk.com/docs/guides/secure/features.md) | Features |
 | [docs/guides/secure/legal-compliance.md](https://clerk.com/docs/guides/secure/legal-compliance.md) | Legal compliance |
 | [docs/guides/secure/overview.md](https://clerk.com/docs/guides/secure/overview.md) | Securing your app |
@@ -946,6 +952,7 @@ Pages: 2344
 | [docs/js-frontend/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/js-frontend/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/js-frontend/reference/types/billing-subscription-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/js-frontend/reference/types/billing-totals.md](https://clerk.com/docs/js-frontend/reference/types/billing-totals.md) | BillingTotals |
 | [docs/js-frontend/reference/types/clerk-api-error.md](https://clerk.com/docs/js-frontend/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/js-frontend/reference/types/clerk-api-response-error.md](https://clerk.com/docs/js-frontend/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/js-frontend/reference/types/clerk-error.md](https://clerk.com/docs/js-frontend/reference/types/clerk-error.md) | ClerkError |
@@ -1141,6 +1148,7 @@ Pages: 2344
 | [docs/nextjs/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/nextjs/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/nextjs/reference/types/billing-subscription-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/nextjs/reference/types/billing-totals.md](https://clerk.com/docs/nextjs/reference/types/billing-totals.md) | BillingTotals |
 | [docs/nextjs/reference/types/clerk-api-error.md](https://clerk.com/docs/nextjs/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/nextjs/reference/types/clerk-api-response-error.md](https://clerk.com/docs/nextjs/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/nextjs/reference/types/clerk-error.md](https://clerk.com/docs/nextjs/reference/types/clerk-error.md) | ClerkError |
@@ -1301,6 +1309,7 @@ Pages: 2344
 | [docs/nuxt/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/nuxt/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/nuxt/reference/types/billing-subscription-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/nuxt/reference/types/billing-totals.md](https://clerk.com/docs/nuxt/reference/types/billing-totals.md) | BillingTotals |
 | [docs/nuxt/reference/types/clerk-api-error.md](https://clerk.com/docs/nuxt/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/nuxt/reference/types/clerk-api-response-error.md](https://clerk.com/docs/nuxt/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/nuxt/reference/types/clerk-error.md](https://clerk.com/docs/nuxt/reference/types/clerk-error.md) | ClerkError |
@@ -1493,6 +1502,7 @@ Pages: 2344
 | [docs/react/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/react/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/react/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/react/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/react/reference/types/billing-subscription-resource.md](https://clerk.com/docs/react/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/react/reference/types/billing-totals.md](https://clerk.com/docs/react/reference/types/billing-totals.md) | BillingTotals |
 | [docs/react/reference/types/clerk-api-error.md](https://clerk.com/docs/react/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/react/reference/types/clerk-api-response-error.md](https://clerk.com/docs/react/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/react/reference/types/clerk-error.md](https://clerk.com/docs/react/reference/types/clerk-error.md) | ClerkError |
@@ -1671,6 +1681,7 @@ Pages: 2344
 | [docs/react-router/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/react-router/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/react-router/reference/types/billing-subscription-resource.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/react-router/reference/types/billing-totals.md](https://clerk.com/docs/react-router/reference/types/billing-totals.md) | BillingTotals |
 | [docs/react-router/reference/types/clerk-api-error.md](https://clerk.com/docs/react-router/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/react-router/reference/types/clerk-api-response-error.md](https://clerk.com/docs/react-router/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/react-router/reference/types/clerk-error.md](https://clerk.com/docs/react-router/reference/types/clerk-error.md) | ClerkError |
@@ -1864,7 +1875,9 @@ Pages: 2344
 | [docs/reference/backend/types/backend-email-address.md](https://clerk.com/docs/reference/backend/types/backend-email-address.md) | The Backend EmailAddress object |
 | [docs/reference/backend/types/backend-enterprise-account-connection.md](https://clerk.com/docs/reference/backend/types/backend-enterprise-account-connection.md) | The Backend EnterpriseAccountConnection object |
 | [docs/reference/backend/types/backend-enterprise-account.md](https://clerk.com/docs/reference/backend/types/backend-enterprise-account.md) | The Backend EnterpriseAccount object |
+| [docs/reference/backend/types/backend-enterprise-connection-custom-attribute.md](https://clerk.com/docs/reference/backend/types/backend-enterprise-connection-custom-attribute.md) | The Backend EnterpriseConnectionCustomAttribute object |
 | [docs/reference/backend/types/backend-enterprise-connection-oauth-config.md](https://clerk.com/docs/reference/backend/types/backend-enterprise-connection-oauth-config.md) | The Backend EnterpriseConnectionOauthConfig object |
+| [docs/reference/backend/types/backend-enterprise-connection-saml-connection-login-hint.md](https://clerk.com/docs/reference/backend/types/backend-enterprise-connection-saml-connection-login-hint.md) | The Backend EnterpriseConnectionSamlConnectionLoginHint object |
 | [docs/reference/backend/types/backend-enterprise-connection-saml-connection.md](https://clerk.com/docs/reference/backend/types/backend-enterprise-connection-saml-connection.md) | The Backend EnterpriseConnectionSamlConnection object |
 | [docs/reference/backend/types/backend-enterprise-connection.md](https://clerk.com/docs/reference/backend/types/backend-enterprise-connection.md) | The Backend EnterpriseConnection object |
 | [docs/reference/backend/types/backend-external-account.md](https://clerk.com/docs/reference/backend/types/backend-external-account.md) | The Backend ExternalAccount object |
@@ -1894,6 +1907,7 @@ Pages: 2344
 | [docs/reference/backend/types/backend-waitlist-entry.md](https://clerk.com/docs/reference/backend/types/backend-waitlist-entry.md) | The Backend WaitlistEntry object |
 | [docs/reference/backend/types/backend-web3-wallet.md](https://clerk.com/docs/reference/backend/types/backend-web3-wallet.md) | The Backend Web3Wallet object |
 | [docs/reference/backend/types/billing-plan.md](https://clerk.com/docs/reference/backend/types/billing-plan.md) | Backend BillingPlan object |
+| [docs/reference/backend/types/billing-subscription-item-status.md](https://clerk.com/docs/reference/backend/types/billing-subscription-item-status.md) | The Backend BillingSubscriptionItemStatus object |
 | [docs/reference/backend/types/billing-subscription-item.md](https://clerk.com/docs/reference/backend/types/billing-subscription-item.md) | Backend BillingSubscriptionItem object |
 | [docs/reference/backend/types/billing-subscription.md](https://clerk.com/docs/reference/backend/types/billing-subscription.md) | Backend BillingSubscription object |
 | [docs/reference/backend/types/deleted-object.md](https://clerk.com/docs/reference/backend/types/deleted-object.md) | Backend DeletedObject object |
@@ -2133,6 +2147,7 @@ Pages: 2344
 | [docs/tanstack-react-start/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/tanstack-react-start/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/tanstack-react-start/reference/types/billing-subscription-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/tanstack-react-start/reference/types/billing-totals.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-totals.md) | BillingTotals |
 | [docs/tanstack-react-start/reference/types/clerk-api-error.md](https://clerk.com/docs/tanstack-react-start/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/tanstack-react-start/reference/types/clerk-api-response-error.md](https://clerk.com/docs/tanstack-react-start/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/tanstack-react-start/reference/types/clerk-error.md](https://clerk.com/docs/tanstack-react-start/reference/types/clerk-error.md) | ClerkError |
@@ -2289,6 +2304,7 @@ Pages: 2344
 | [docs/vue/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/vue/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/vue/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/vue/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
 | [docs/vue/reference/types/billing-subscription-resource.md](https://clerk.com/docs/vue/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
+| [docs/vue/reference/types/billing-totals.md](https://clerk.com/docs/vue/reference/types/billing-totals.md) | BillingTotals |
 | [docs/vue/reference/types/clerk-api-error.md](https://clerk.com/docs/vue/reference/types/clerk-api-error.md) | ClerkAPIError |
 | [docs/vue/reference/types/clerk-api-response-error.md](https://clerk.com/docs/vue/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
 | [docs/vue/reference/types/clerk-error.md](https://clerk.com/docs/vue/reference/types/clerk-error.md) | ClerkError |
