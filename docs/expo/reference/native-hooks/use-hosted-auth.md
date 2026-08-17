@@ -1,0 +1,80 @@
+# useHostedAuth()
+
+The `useHostedAuth()` hook opens Clerk's [Account Portal](https://clerk.com/docs/guides/account-portal/overview.md?sdk=expo) in a browser authentication session and activates the session created there. Use it to add hosted sign-in and sign-up to a native Expo app.
+
+## Installation
+
+This hook requires the following peer dependencies:
+
+filename: terminal
+```bash
+npx expo install expo-auth-session expo-crypto expo-web-browser
+```
+
+Then, import the hook from the `@clerk/expo/hosted-auth` subpath:
+
+```tsx
+import { useHostedAuth } from '@clerk/expo/hosted-auth'
+```
+
+## Returns
+
+The `useHostedAuth()` hook returns the `startHostedAuth()` method.
+
+### `startHostedAuth()`
+
+`startHostedAuth()` has the following function signature:
+
+```ts
+function startHostedAuth(params?: StartHostedAuthParams): Promise<StartHostedAuthReturnType>
+```
+
+#### Parameters
+
+`startHostedAuth()` accepts the following parameters (`StartHostedAuthParams`):
+
+| Name                | Type                                                                                  | Description                                                                                                                                                                                                                                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| mode?               | 'sign-in' | 'sign-up'                                                                | The Account Portal page to open first. Defaults to 'sign-in'.                                                                                                                                                                                                                                |
+| redirectUrl?        | string                                                                                | The native callback URL. By default, Clerk creates a callback from the configured iOS bundle identifier or Android package name. Custom values must use a non-HTTP URL scheme and, in production, match a callback registered for the app on the Clerk Dashboard's Native applications page. |
+| authSessionOptions? | Pick<WebBrowser.AuthSessionOpenOptions, 'showInRecents' | 'preferEphemeralSession'> | Options passed to expo-web-browser when Clerk opens the authentication session.                                                                                                                                                                                                              |
+
+#### Returns
+
+`startHostedAuth()` returns the following values after the browser session closes:
+
+| Name              | Type                                           | Description                                                                            |
+| ----------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------- |
+| createdSessionId  | string | null                                 | The ID of the session that Clerk activated, or null if authentication didn't complete. |
+| authSessionResult | WebBrowser.WebBrowserAuthSessionResult | null | The result from expo-web-browser, or null if Clerk wasn't loaded when the method ran.  |
+
+## Example
+
+The following example opens Account Portal:
+
+```tsx
+import { useHostedAuth } from '@clerk/expo/hosted-auth'
+import { Button } from 'react-native'
+
+export function SignInButton() {
+  const { startHostedAuth } = useHostedAuth()
+
+  const handleSignIn = async () => {
+    try {
+      await startHostedAuth()
+    } catch (error) {
+      // Handle the error in your app.
+    }
+  }
+
+  return <Button title="Sign in" onPress={handleSignIn} />
+}
+```
+
+For setup instructions, sign-up mode, platform callbacks, and tradeoffs, see the [hosted authentication guide](https://clerk.com/docs/expo/guides/account-portal/hosted-auth.md).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2360
+Pages: 2550
 
 | Path | First heading |
 |---|---|
@@ -21,6 +21,7 @@ Pages: 2360
 | [docs/android/reference/native-mobile/overview.md](https://clerk.com/docs/android/reference/native-mobile/overview.md) | Welcome |
 | [docs/android/reference/native-mobile/shared-session-sync.md](https://clerk.com/docs/android/reference/native-mobile/shared-session-sync.md) | Share sessions across apps |
 | [docs/android/reference/native-mobile/user.md](https://clerk.com/docs/android/reference/native-mobile/user.md) | User management |
+| [docs/android/reference/passkeys.md](https://clerk.com/docs/android/reference/passkeys.md) | Configure passkeys for Android |
 | [docs/android/reference/views/authentication/auth-view.md](https://clerk.com/docs/android/reference/views/authentication/auth-view.md) | AuthView |
 | [docs/android/reference/views/organization/organization-list-view.md](https://clerk.com/docs/android/reference/views/organization/organization-list-view.md) | OrganizationListView |
 | [docs/android/reference/views/organization/organization-profile-view.md](https://clerk.com/docs/android/reference/views/organization/organization-profile-view.md) | OrganizationProfileView |
@@ -56,6 +57,15 @@ Pages: 2360
 | [docs/astro/guides/organizations/control-access/check-access.md](https://clerk.com/docs/astro/guides/organizations/control-access/check-access.md) | Check Roles and Permissions with Authorization Checks |
 | [docs/astro/guides/organizations/getting-started.md](https://clerk.com/docs/astro/guides/organizations/getting-started.md) | Get started with Organizations |
 | [docs/astro/guides/users/reading.md](https://clerk.com/docs/astro/guides/users/reading.md) | Read user data |
+| [docs/astro/reference/clerk-middleware.md](https://clerk.com/docs/astro/reference/clerk-middleware.md) | clerkMiddleware() | Astro |
+| [docs/astro/reference/client-side-helpers/auth-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/auth-store.md) | $authStore |
+| [docs/astro/reference/client-side-helpers/clerk-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/clerk-store.md) | $clerkStore |
+| [docs/astro/reference/client-side-helpers/organization-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/organization-store.md) | $organizationStore |
+| [docs/astro/reference/client-side-helpers/session-list-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/session-list-store.md) | $sessionListStore |
+| [docs/astro/reference/client-side-helpers/session-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/session-store.md) | $sessionStore |
+| [docs/astro/reference/client-side-helpers/sign-in-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/sign-in-store.md) | $signInStore |
+| [docs/astro/reference/client-side-helpers/sign-up-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/sign-up-store.md) | $signUpStore |
+| [docs/astro/reference/client-side-helpers/user-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/user-store.md) | $userStore |
 | [docs/astro/reference/components/api-keys.md](https://clerk.com/docs/astro/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/astro/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/astro/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/astro/reference/components/authentication/oauth-consent.md](https://clerk.com/docs/astro/reference/components/authentication/oauth-consent.md) | <OAuthConsent /> component |
@@ -80,6 +90,8 @@ Pages: 2360
 | [docs/astro/reference/components/user/user-profile.md](https://clerk.com/docs/astro/reference/components/user/user-profile.md) | <UserProfile /> component |
 | [docs/astro/reference/hooks/overview.md](https://clerk.com/docs/astro/reference/hooks/overview.md) | Hooks Reference |
 | [docs/astro/reference/hooks/use-auth.md](https://clerk.com/docs/astro/reference/hooks/use-auth.md) | useAuth() |
+| [docs/astro/reference/integration.md](https://clerk.com/docs/astro/reference/integration.md) | Integration |
+| [docs/astro/reference/locals.md](https://clerk.com/docs/astro/reference/locals.md) | Locals |
 | [docs/astro/reference/objects/api-keys.md](https://clerk.com/docs/astro/reference/objects/api-keys.md) | APIKeys object |
 | [docs/astro/reference/objects/billing.md](https://clerk.com/docs/astro/reference/objects/billing.md) | Billing object |
 | [docs/astro/reference/objects/clerk.md](https://clerk.com/docs/astro/reference/objects/clerk.md) | Clerk class |
@@ -90,28 +102,41 @@ Pages: 2360
 | [docs/astro/reference/objects/sign-in-future.md](https://clerk.com/docs/astro/reference/objects/sign-in-future.md) | SignInFuture object |
 | [docs/astro/reference/objects/sign-up-future.md](https://clerk.com/docs/astro/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/astro/reference/objects/user.md](https://clerk.com/docs/astro/reference/objects/user.md) | User object |
+| [docs/astro/reference/overview.md](https://clerk.com/docs/astro/reference/overview.md) | Clerk Astro SDK |
+| [docs/astro/reference/react.md](https://clerk.com/docs/astro/reference/react.md) | Use Clerk with Astro and React |
 | [docs/astro/reference/types/api-key-resource.md](https://clerk.com/docs/astro/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/astro/reference/types/backup-code-resource.md](https://clerk.com/docs/astro/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/astro/reference/types/billing-applied-discount.md](https://clerk.com/docs/astro/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/astro/reference/types/billing-checkout-resource.md](https://clerk.com/docs/astro/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/astro/reference/types/billing-checkout-totals.md](https://clerk.com/docs/astro/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/astro/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/astro/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/astro/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/astro/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/astro/reference/types/billing-credits.md](https://clerk.com/docs/astro/reference/types/billing-credits.md) | BillingCredits |
+| [docs/astro/reference/types/billing-discount-redemption.md](https://clerk.com/docs/astro/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/astro/reference/types/billing-discounts.md](https://clerk.com/docs/astro/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/astro/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/astro/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/astro/reference/types/billing-money-amount.md](https://clerk.com/docs/astro/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/astro/reference/types/billing-payer-credit.md](https://clerk.com/docs/astro/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/astro/reference/types/billing-payer-resource.md](https://clerk.com/docs/astro/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/astro/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/astro/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/astro/reference/types/billing-payment-resource.md](https://clerk.com/docs/astro/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/astro/reference/types/billing-payment-totals.md](https://clerk.com/docs/astro/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/astro/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/astro/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/astro/reference/types/billing-per-unit-total.md](https://clerk.com/docs/astro/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/astro/reference/types/billing-period-totals.md](https://clerk.com/docs/astro/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/astro/reference/types/billing-plan-price.md](https://clerk.com/docs/astro/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/astro/reference/types/billing-plan-resource.md](https://clerk.com/docs/astro/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/astro/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/astro/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/astro/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/astro/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/astro/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/astro/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/astro/reference/types/billing-proration-discount.md](https://clerk.com/docs/astro/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/astro/reference/types/billing-statement-group.md](https://clerk.com/docs/astro/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/astro/reference/types/billing-statement-resource.md](https://clerk.com/docs/astro/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/astro/reference/types/billing-statement-totals.md](https://clerk.com/docs/astro/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/astro/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/astro/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/astro/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/astro/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/astro/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/astro/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/astro/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/astro/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/astro/reference/types/billing-subscription-resource.md](https://clerk.com/docs/astro/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/astro/reference/types/billing-totals.md](https://clerk.com/docs/astro/reference/types/billing-totals.md) | BillingTotals |
 | [docs/astro/reference/types/clerk-api-error.md](https://clerk.com/docs/astro/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -172,6 +197,7 @@ Pages: 2360
 | [docs/astro/reference/types/verification-resource.md](https://clerk.com/docs/astro/reference/types/verification-resource.md) | VerificationResource |
 | [docs/astro/reference/types/waitlist.md](https://clerk.com/docs/astro/reference/types/waitlist.md) | Waitlist |
 | [docs/astro/reference/types/web3-wallet.md](https://clerk.com/docs/astro/reference/types/web3-wallet.md) | Web3Wallet |
+| [docs/astro/reference/update-clerk-options.md](https://clerk.com/docs/astro/reference/update-clerk-options.md) | updateClerkOptions() |
 | [docs/chrome-extension/getting-started/quickstart.md](https://clerk.com/docs/chrome-extension/getting-started/quickstart.md) | Chrome Extension Quickstart (Plasmo) |
 | [docs/chrome-extension/guides/configure/auth-strategies/social-connections/overview.md](https://clerk.com/docs/chrome-extension/guides/configure/auth-strategies/social-connections/overview.md) | Social connections (OAuth) |
 | [docs/chrome-extension/guides/customizing-clerk/adding-items/organization-profile.md](https://clerk.com/docs/chrome-extension/guides/customizing-clerk/adding-items/organization-profile.md) | Add custom pages and links to the <OrganizationProfile /> component |
@@ -218,6 +244,7 @@ Pages: 2360
 | [docs/chrome-extension/reference/components/user/user-avatar.md](https://clerk.com/docs/chrome-extension/reference/components/user/user-avatar.md) | <UserAvatar /> component |
 | [docs/chrome-extension/reference/components/user/user-button.md](https://clerk.com/docs/chrome-extension/reference/components/user/user-button.md) | <UserButton /> component |
 | [docs/chrome-extension/reference/components/user/user-profile.md](https://clerk.com/docs/chrome-extension/reference/components/user/user-profile.md) | <UserProfile /> component |
+| [docs/chrome-extension/reference/create-clerk-client.md](https://clerk.com/docs/chrome-extension/reference/create-clerk-client.md) | createClerkClient() |
 | [docs/chrome-extension/reference/hooks/legacy/use-sign-in.md](https://clerk.com/docs/chrome-extension/reference/hooks/legacy/use-sign-in.md) | useSignIn() |
 | [docs/chrome-extension/reference/hooks/legacy/use-sign-up.md](https://clerk.com/docs/chrome-extension/reference/hooks/legacy/use-sign-up.md) | useSignUp() |
 | [docs/chrome-extension/reference/hooks/overview.md](https://clerk.com/docs/chrome-extension/reference/hooks/overview.md) | Hooks Reference |
@@ -245,28 +272,40 @@ Pages: 2360
 | [docs/chrome-extension/reference/objects/sign-up-future.md](https://clerk.com/docs/chrome-extension/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/chrome-extension/reference/objects/sign-up.md](https://clerk.com/docs/chrome-extension/reference/objects/sign-up.md) | SignUp object (Legacy) |
 | [docs/chrome-extension/reference/objects/user.md](https://clerk.com/docs/chrome-extension/reference/objects/user.md) | User object |
+| [docs/chrome-extension/reference/overview.md](https://clerk.com/docs/chrome-extension/reference/overview.md) | Clerk Chrome Extension SDK |
 | [docs/chrome-extension/reference/types/api-key-resource.md](https://clerk.com/docs/chrome-extension/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/chrome-extension/reference/types/backup-code-resource.md](https://clerk.com/docs/chrome-extension/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/chrome-extension/reference/types/billing-applied-discount.md](https://clerk.com/docs/chrome-extension/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/chrome-extension/reference/types/billing-checkout-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/chrome-extension/reference/types/billing-checkout-totals.md](https://clerk.com/docs/chrome-extension/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/chrome-extension/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/chrome-extension/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/chrome-extension/reference/types/billing-credits.md](https://clerk.com/docs/chrome-extension/reference/types/billing-credits.md) | BillingCredits |
+| [docs/chrome-extension/reference/types/billing-discount-redemption.md](https://clerk.com/docs/chrome-extension/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/chrome-extension/reference/types/billing-discounts.md](https://clerk.com/docs/chrome-extension/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/chrome-extension/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/chrome-extension/reference/types/billing-money-amount.md](https://clerk.com/docs/chrome-extension/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/chrome-extension/reference/types/billing-payer-credit.md](https://clerk.com/docs/chrome-extension/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/chrome-extension/reference/types/billing-payer-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/chrome-extension/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/chrome-extension/reference/types/billing-payment-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/chrome-extension/reference/types/billing-payment-totals.md](https://clerk.com/docs/chrome-extension/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/chrome-extension/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/chrome-extension/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/chrome-extension/reference/types/billing-per-unit-total.md](https://clerk.com/docs/chrome-extension/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/chrome-extension/reference/types/billing-period-totals.md](https://clerk.com/docs/chrome-extension/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/chrome-extension/reference/types/billing-plan-price.md](https://clerk.com/docs/chrome-extension/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/chrome-extension/reference/types/billing-plan-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/chrome-extension/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/chrome-extension/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/chrome-extension/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/chrome-extension/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/chrome-extension/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/chrome-extension/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/chrome-extension/reference/types/billing-proration-discount.md](https://clerk.com/docs/chrome-extension/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/chrome-extension/reference/types/billing-statement-group.md](https://clerk.com/docs/chrome-extension/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/chrome-extension/reference/types/billing-statement-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/chrome-extension/reference/types/billing-statement-totals.md](https://clerk.com/docs/chrome-extension/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/chrome-extension/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/chrome-extension/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/chrome-extension/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/chrome-extension/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/chrome-extension/reference/types/billing-subscription-resource.md](https://clerk.com/docs/chrome-extension/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/chrome-extension/reference/types/billing-totals.md](https://clerk.com/docs/chrome-extension/reference/types/billing-totals.md) | BillingTotals |
 | [docs/chrome-extension/reference/types/clerk-api-error.md](https://clerk.com/docs/chrome-extension/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -388,6 +427,17 @@ Pages: 2360
 | [docs/expo/reference/hooks/use-sign-up.md](https://clerk.com/docs/expo/reference/hooks/use-sign-up.md) | useSignUp() |
 | [docs/expo/reference/hooks/use-user.md](https://clerk.com/docs/expo/reference/hooks/use-user.md) | useUser() |
 | [docs/expo/reference/hooks/use-waitlist.md](https://clerk.com/docs/expo/reference/hooks/use-waitlist.md) | useWaitlist() |
+| [docs/expo/reference/native-components/auth-view.md](https://clerk.com/docs/expo/reference/native-components/auth-view.md) | <AuthView /> component |
+| [docs/expo/reference/native-components/overview.md](https://clerk.com/docs/expo/reference/native-components/overview.md) | Expo Native Components (Beta) |
+| [docs/expo/reference/native-components/theming.md](https://clerk.com/docs/expo/reference/native-components/theming.md) | Theming Expo native components (Beta) |
+| [docs/expo/reference/native-components/user-button.md](https://clerk.com/docs/expo/reference/native-components/user-button.md) | <UserButton /> |
+| [docs/expo/reference/native-components/user-profile-view.md](https://clerk.com/docs/expo/reference/native-components/user-profile-view.md) | <UserProfileView /> component |
+| [docs/expo/reference/native-hooks/use-hosted-auth.md](https://clerk.com/docs/expo/reference/native-hooks/use-hosted-auth.md) | useHostedAuth() |
+| [docs/expo/reference/native-hooks/use-local-credentials.md](https://clerk.com/docs/expo/reference/native-hooks/use-local-credentials.md) | useLocalCredentials() |
+| [docs/expo/reference/native-hooks/use-oauth.md](https://clerk.com/docs/expo/reference/native-hooks/use-oauth.md) | useOAuth() (Deprecated) |
+| [docs/expo/reference/native-hooks/use-sign-in-with-apple.md](https://clerk.com/docs/expo/reference/native-hooks/use-sign-in-with-apple.md) | useSignInWithApple() |
+| [docs/expo/reference/native-hooks/use-sign-in-with-google.md](https://clerk.com/docs/expo/reference/native-hooks/use-sign-in-with-google.md) | useSignInWithGoogle() |
+| [docs/expo/reference/native-hooks/use-sso.md](https://clerk.com/docs/expo/reference/native-hooks/use-sso.md) | useSSO() |
 | [docs/expo/reference/objects/api-keys.md](https://clerk.com/docs/expo/reference/objects/api-keys.md) | APIKeys object |
 | [docs/expo/reference/objects/billing.md](https://clerk.com/docs/expo/reference/objects/billing.md) | Billing object |
 | [docs/expo/reference/objects/clerk.md](https://clerk.com/docs/expo/reference/objects/clerk.md) | Clerk class |
@@ -400,28 +450,41 @@ Pages: 2360
 | [docs/expo/reference/objects/sign-up-future.md](https://clerk.com/docs/expo/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/expo/reference/objects/sign-up.md](https://clerk.com/docs/expo/reference/objects/sign-up.md) | SignUp object (Legacy) |
 | [docs/expo/reference/objects/user.md](https://clerk.com/docs/expo/reference/objects/user.md) | User object |
+| [docs/expo/reference/overview.md](https://clerk.com/docs/expo/reference/overview.md) | Clerk Expo SDK |
+| [docs/expo/reference/passkeys.md](https://clerk.com/docs/expo/reference/passkeys.md) | Configure passkeys for Expo |
 | [docs/expo/reference/types/api-key-resource.md](https://clerk.com/docs/expo/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/expo/reference/types/backup-code-resource.md](https://clerk.com/docs/expo/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/expo/reference/types/billing-applied-discount.md](https://clerk.com/docs/expo/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/expo/reference/types/billing-checkout-resource.md](https://clerk.com/docs/expo/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/expo/reference/types/billing-checkout-totals.md](https://clerk.com/docs/expo/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/expo/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/expo/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/expo/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/expo/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/expo/reference/types/billing-credits.md](https://clerk.com/docs/expo/reference/types/billing-credits.md) | BillingCredits |
+| [docs/expo/reference/types/billing-discount-redemption.md](https://clerk.com/docs/expo/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/expo/reference/types/billing-discounts.md](https://clerk.com/docs/expo/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/expo/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/expo/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/expo/reference/types/billing-money-amount.md](https://clerk.com/docs/expo/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/expo/reference/types/billing-payer-credit.md](https://clerk.com/docs/expo/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/expo/reference/types/billing-payer-resource.md](https://clerk.com/docs/expo/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/expo/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/expo/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/expo/reference/types/billing-payment-resource.md](https://clerk.com/docs/expo/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/expo/reference/types/billing-payment-totals.md](https://clerk.com/docs/expo/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/expo/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/expo/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/expo/reference/types/billing-per-unit-total.md](https://clerk.com/docs/expo/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/expo/reference/types/billing-period-totals.md](https://clerk.com/docs/expo/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/expo/reference/types/billing-plan-price.md](https://clerk.com/docs/expo/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/expo/reference/types/billing-plan-resource.md](https://clerk.com/docs/expo/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/expo/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/expo/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/expo/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/expo/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/expo/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/expo/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/expo/reference/types/billing-proration-discount.md](https://clerk.com/docs/expo/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/expo/reference/types/billing-statement-group.md](https://clerk.com/docs/expo/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/expo/reference/types/billing-statement-resource.md](https://clerk.com/docs/expo/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/expo/reference/types/billing-statement-totals.md](https://clerk.com/docs/expo/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/expo/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/expo/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/expo/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/expo/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/expo/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/expo/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/expo/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/expo/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/expo/reference/types/billing-subscription-resource.md](https://clerk.com/docs/expo/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/expo/reference/types/billing-totals.md](https://clerk.com/docs/expo/reference/types/billing-totals.md) | BillingTotals |
 | [docs/expo/reference/types/clerk-api-error.md](https://clerk.com/docs/expo/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -504,7 +567,11 @@ Pages: 2360
 | [docs/expressjs/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/expressjs/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/expressjs/guides/development/verifying-api-keys.md](https://clerk.com/docs/expressjs/guides/development/verifying-api-keys.md) | Verify API keys in your Express application with Clerk |
 | [docs/expressjs/guides/development/webhooks/billing.md](https://clerk.com/docs/expressjs/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/expressjs/reference/clerk-middleware.md](https://clerk.com/docs/expressjs/reference/clerk-middleware.md) | clerkMiddleware() |
 | [docs/expressjs/reference/components/overview.md](https://clerk.com/docs/expressjs/reference/components/overview.md) | Component Reference |
+| [docs/expressjs/reference/get-auth.md](https://clerk.com/docs/expressjs/reference/get-auth.md) | getAuth() |
+| [docs/expressjs/reference/overview.md](https://clerk.com/docs/expressjs/reference/overview.md) | Clerk Express SDK |
+| [docs/expressjs/reference/require-auth.md](https://clerk.com/docs/expressjs/reference/require-auth.md) | requireAuth() (Deprecated) |
 | [docs/fastify/getting-started/quickstart.md](https://clerk.com/docs/fastify/getting-started/quickstart.md) | Fastify Quickstart |
 | [docs/fastify/guides/billing/for-b2b.md](https://clerk.com/docs/fastify/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/fastify/guides/billing/for-b2c.md](https://clerk.com/docs/fastify/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
@@ -526,7 +593,10 @@ Pages: 2360
 | [docs/fastify/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/fastify/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/fastify/guides/development/verifying-api-keys.md](https://clerk.com/docs/fastify/guides/development/verifying-api-keys.md) | Verify API keys in your Fastify application with Clerk |
 | [docs/fastify/guides/development/webhooks/billing.md](https://clerk.com/docs/fastify/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/fastify/reference/clerk-plugin.md](https://clerk.com/docs/fastify/reference/clerk-plugin.md) | clerkPlugin() |
 | [docs/fastify/reference/components/overview.md](https://clerk.com/docs/fastify/reference/components/overview.md) | Component Reference |
+| [docs/fastify/reference/get-auth.md](https://clerk.com/docs/fastify/reference/get-auth.md) | getAuth() |
+| [docs/fastify/reference/overview.md](https://clerk.com/docs/fastify/reference/overview.md) | Clerk Fastify SDK |
 | [docs/getting-started/core-concepts.md](https://clerk.com/docs/getting-started/core-concepts.md) | Core concepts |
 | [docs/getting-started/quickstart/chrome-extension-js.md](https://clerk.com/docs/getting-started/quickstart/chrome-extension-js.md) | Chrome Extension Quickstart (JavaScript) |
 | [docs/getting-started/quickstart/overview.md](https://clerk.com/docs/getting-started/quickstart/overview.md) | Quickstarts |
@@ -550,6 +620,7 @@ Pages: 2360
 | [docs/go/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/go/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/go/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/go/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/go/reference/components/overview.md](https://clerk.com/docs/go/reference/components/overview.md) | Component Reference |
+| [docs/go/reference/overview.md](https://clerk.com/docs/go/reference/overview.md) | Clerk Go SDK |
 | [docs/guides/account-portal/direct-links.md](https://clerk.com/docs/guides/account-portal/direct-links.md) | Linking to Account Portal pages |
 | [docs/guides/account-portal/disable-account-portal.md](https://clerk.com/docs/guides/account-portal/disable-account-portal.md) | Disabling the Account Portal |
 | [docs/guides/account-portal/getting-started.md](https://clerk.com/docs/guides/account-portal/getting-started.md) | Getting started with the Account Portal |
@@ -566,6 +637,7 @@ Pages: 2360
 | [docs/guides/billing/account-credits.md](https://clerk.com/docs/guides/billing/account-credits.md) | Account credits |
 | [docs/guides/billing/custom-plans.md](https://clerk.com/docs/guides/billing/custom-plans.md) | Custom Plans and prices |
 | [docs/guides/billing/default-plans.md](https://clerk.com/docs/guides/billing/default-plans.md) | Default Plans |
+| [docs/guides/billing/discounts.md](https://clerk.com/docs/guides/billing/discounts.md) | Discounts and promo codes |
 | [docs/guides/billing/free-trials.md](https://clerk.com/docs/guides/billing/free-trials.md) | Free trials |
 | [docs/guides/billing/overview.md](https://clerk.com/docs/guides/billing/overview.md) | Clerk Billing |
 | [docs/guides/billing/seat-based-plans.md](https://clerk.com/docs/guides/billing/seat-based-plans.md) | Seat-based Plans |
@@ -866,6 +938,7 @@ Pages: 2360
 | [docs/ios/reference/native-mobile/overview.md](https://clerk.com/docs/ios/reference/native-mobile/overview.md) | Welcome |
 | [docs/ios/reference/native-mobile/shared-session-sync.md](https://clerk.com/docs/ios/reference/native-mobile/shared-session-sync.md) | Share sessions across apps |
 | [docs/ios/reference/native-mobile/user.md](https://clerk.com/docs/ios/reference/native-mobile/user.md) | User management |
+| [docs/ios/reference/swiftui-previews.md](https://clerk.com/docs/ios/reference/swiftui-previews.md) | SwiftUI previews |
 | [docs/ios/reference/views/authentication/auth-view.md](https://clerk.com/docs/ios/reference/views/authentication/auth-view.md) | AuthView |
 | [docs/ios/reference/views/organization/organization-list-view.md](https://clerk.com/docs/ios/reference/views/organization/organization-list-view.md) | OrganizationListView |
 | [docs/ios/reference/views/organization/organization-profile-view.md](https://clerk.com/docs/ios/reference/views/organization/organization-profile-view.md) | OrganizationProfileView |
@@ -873,6 +946,7 @@ Pages: 2360
 | [docs/ios/reference/views/overview.md](https://clerk.com/docs/ios/reference/views/overview.md) | View Reference |
 | [docs/ios/reference/views/user/user-button.md](https://clerk.com/docs/ios/reference/views/user/user-button.md) | UserButton |
 | [docs/ios/reference/views/user/user-profile-view.md](https://clerk.com/docs/ios/reference/views/user/user-profile-view.md) | UserProfileView |
+| [docs/ios/reference/watch-connectivity.md](https://clerk.com/docs/ios/reference/watch-connectivity.md) | Watch Connectivity |
 | [docs/js-frontend/getting-started/quickstart.md](https://clerk.com/docs/js-frontend/getting-started/quickstart.md) | JavaScript Quickstart |
 | [docs/js-frontend/guides/billing/for-b2b.md](https://clerk.com/docs/js-frontend/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/js-frontend/guides/billing/for-b2c.md](https://clerk.com/docs/js-frontend/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
@@ -929,28 +1003,40 @@ Pages: 2360
 | [docs/js-frontend/reference/objects/sign-up-future.md](https://clerk.com/docs/js-frontend/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/js-frontend/reference/objects/sign-up.md](https://clerk.com/docs/js-frontend/reference/objects/sign-up.md) | SignUp object (Legacy) |
 | [docs/js-frontend/reference/objects/user.md](https://clerk.com/docs/js-frontend/reference/objects/user.md) | User object |
+| [docs/js-frontend/reference/overview.md](https://clerk.com/docs/js-frontend/reference/overview.md) | Clerk JavaScript SDK |
 | [docs/js-frontend/reference/types/api-key-resource.md](https://clerk.com/docs/js-frontend/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/js-frontend/reference/types/backup-code-resource.md](https://clerk.com/docs/js-frontend/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/js-frontend/reference/types/billing-applied-discount.md](https://clerk.com/docs/js-frontend/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/js-frontend/reference/types/billing-checkout-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/js-frontend/reference/types/billing-checkout-totals.md](https://clerk.com/docs/js-frontend/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/js-frontend/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/js-frontend/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/js-frontend/reference/types/billing-credits.md](https://clerk.com/docs/js-frontend/reference/types/billing-credits.md) | BillingCredits |
+| [docs/js-frontend/reference/types/billing-discount-redemption.md](https://clerk.com/docs/js-frontend/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/js-frontend/reference/types/billing-discounts.md](https://clerk.com/docs/js-frontend/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/js-frontend/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/js-frontend/reference/types/billing-money-amount.md](https://clerk.com/docs/js-frontend/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/js-frontend/reference/types/billing-payer-credit.md](https://clerk.com/docs/js-frontend/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/js-frontend/reference/types/billing-payer-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/js-frontend/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/js-frontend/reference/types/billing-payment-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/js-frontend/reference/types/billing-payment-totals.md](https://clerk.com/docs/js-frontend/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/js-frontend/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/js-frontend/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/js-frontend/reference/types/billing-per-unit-total.md](https://clerk.com/docs/js-frontend/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/js-frontend/reference/types/billing-period-totals.md](https://clerk.com/docs/js-frontend/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/js-frontend/reference/types/billing-plan-price.md](https://clerk.com/docs/js-frontend/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/js-frontend/reference/types/billing-plan-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/js-frontend/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/js-frontend/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/js-frontend/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/js-frontend/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/js-frontend/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/js-frontend/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/js-frontend/reference/types/billing-proration-discount.md](https://clerk.com/docs/js-frontend/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/js-frontend/reference/types/billing-statement-group.md](https://clerk.com/docs/js-frontend/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/js-frontend/reference/types/billing-statement-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/js-frontend/reference/types/billing-statement-totals.md](https://clerk.com/docs/js-frontend/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/js-frontend/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/js-frontend/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/js-frontend/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/js-frontend/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/js-frontend/reference/types/billing-subscription-resource.md](https://clerk.com/docs/js-frontend/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/js-frontend/reference/types/billing-totals.md](https://clerk.com/docs/js-frontend/reference/types/billing-totals.md) | BillingTotals |
 | [docs/js-frontend/reference/types/clerk-api-error.md](https://clerk.com/docs/js-frontend/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -1050,6 +1136,11 @@ Pages: 2360
 | [docs/nextjs/guides/secure/protect-content.md](https://clerk.com/docs/nextjs/guides/secure/protect-content.md) | Protect content from unauthenticated users |
 | [docs/nextjs/guides/secure/waitlist.md](https://clerk.com/docs/nextjs/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/nextjs/guides/users/reading.md](https://clerk.com/docs/nextjs/guides/users/reading.md) | Read user data |
+| [docs/nextjs/reference/app-router/auth.md](https://clerk.com/docs/nextjs/reference/app-router/auth.md) | auth() |
+| [docs/nextjs/reference/app-router/current-user.md](https://clerk.com/docs/nextjs/reference/app-router/current-user.md) | currentUser() |
+| [docs/nextjs/reference/app-router/route-handlers.md](https://clerk.com/docs/nextjs/reference/app-router/route-handlers.md) | Route Handlers |
+| [docs/nextjs/reference/app-router/server-actions.md](https://clerk.com/docs/nextjs/reference/app-router/server-actions.md) | Server Actions |
+| [docs/nextjs/reference/clerk-middleware.md](https://clerk.com/docs/nextjs/reference/clerk-middleware.md) | clerkMiddleware() |
 | [docs/nextjs/reference/components/api-keys.md](https://clerk.com/docs/nextjs/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/nextjs/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/nextjs/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/nextjs/reference/components/authentication/oauth-consent.md](https://clerk.com/docs/nextjs/reference/components/authentication/oauth-consent.md) | <OAuthConsent /> component |
@@ -1089,6 +1180,11 @@ Pages: 2360
 | [docs/nextjs/reference/components/user/user-button.md](https://clerk.com/docs/nextjs/reference/components/user/user-button.md) | <UserButton /> component |
 | [docs/nextjs/reference/components/user/user-profile.md](https://clerk.com/docs/nextjs/reference/components/user/user-profile.md) | <UserProfile /> component |
 | [docs/nextjs/reference/components/utilities/portal-provider.md](https://clerk.com/docs/nextjs/reference/components/utilities/portal-provider.md) | <UNSAFE\_PortalProvider> component |
+| [docs/nextjs/reference/errors/auth-was-called.md](https://clerk.com/docs/nextjs/reference/errors/auth-was-called.md) | Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware() |
+| [docs/nextjs/reference/errors/protect-is-not-available-in-clerk-nextjs.md](https://clerk.com/docs/nextjs/reference/errors/protect-is-not-available-in-clerk-nextjs.md) | Clerk: <Protect> is not available in @clerk/nextjs Core 3 |
+| [docs/nextjs/reference/errors/signedin-is-not-available-in-clerk-nextjs.md](https://clerk.com/docs/nextjs/reference/errors/signedin-is-not-available-in-clerk-nextjs.md) | Clerk: <SignedIn> is not available in @clerk/nextjs Core 3 |
+| [docs/nextjs/reference/errors/signedout-is-not-available-in-clerk-nextjs.md](https://clerk.com/docs/nextjs/reference/errors/signedout-is-not-available-in-clerk-nextjs.md) | Clerk: <SignedOut> is not available in @clerk/nextjs Core 3 |
+| [docs/nextjs/reference/eslint-plugin.md](https://clerk.com/docs/nextjs/reference/eslint-plugin.md) | @clerk/eslint-plugin |
 | [docs/nextjs/reference/hooks/legacy/use-sign-in.md](https://clerk.com/docs/nextjs/reference/hooks/legacy/use-sign-in.md) | useSignIn() |
 | [docs/nextjs/reference/hooks/legacy/use-sign-up.md](https://clerk.com/docs/nextjs/reference/hooks/legacy/use-sign-up.md) | useSignUp() |
 | [docs/nextjs/reference/hooks/overview.md](https://clerk.com/docs/nextjs/reference/hooks/overview.md) | Hooks Reference |
@@ -1125,28 +1221,42 @@ Pages: 2360
 | [docs/nextjs/reference/objects/sign-up-future.md](https://clerk.com/docs/nextjs/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/nextjs/reference/objects/sign-up.md](https://clerk.com/docs/nextjs/reference/objects/sign-up.md) | SignUp object (Legacy) |
 | [docs/nextjs/reference/objects/user.md](https://clerk.com/docs/nextjs/reference/objects/user.md) | User object |
+| [docs/nextjs/reference/overview.md](https://clerk.com/docs/nextjs/reference/overview.md) | Clerk Next.js SDK |
+| [docs/nextjs/reference/pages-router/build-clerk-props.md](https://clerk.com/docs/nextjs/reference/pages-router/build-clerk-props.md) | buildClerkProps |
+| [docs/nextjs/reference/pages-router/get-auth.md](https://clerk.com/docs/nextjs/reference/pages-router/get-auth.md) | getAuth() |
 | [docs/nextjs/reference/types/api-key-resource.md](https://clerk.com/docs/nextjs/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/nextjs/reference/types/backup-code-resource.md](https://clerk.com/docs/nextjs/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/nextjs/reference/types/billing-applied-discount.md](https://clerk.com/docs/nextjs/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/nextjs/reference/types/billing-checkout-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/nextjs/reference/types/billing-checkout-totals.md](https://clerk.com/docs/nextjs/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/nextjs/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/nextjs/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/nextjs/reference/types/billing-credits.md](https://clerk.com/docs/nextjs/reference/types/billing-credits.md) | BillingCredits |
+| [docs/nextjs/reference/types/billing-discount-redemption.md](https://clerk.com/docs/nextjs/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/nextjs/reference/types/billing-discounts.md](https://clerk.com/docs/nextjs/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/nextjs/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/nextjs/reference/types/billing-money-amount.md](https://clerk.com/docs/nextjs/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/nextjs/reference/types/billing-payer-credit.md](https://clerk.com/docs/nextjs/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/nextjs/reference/types/billing-payer-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/nextjs/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/nextjs/reference/types/billing-payment-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/nextjs/reference/types/billing-payment-totals.md](https://clerk.com/docs/nextjs/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/nextjs/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/nextjs/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/nextjs/reference/types/billing-per-unit-total.md](https://clerk.com/docs/nextjs/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/nextjs/reference/types/billing-period-totals.md](https://clerk.com/docs/nextjs/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/nextjs/reference/types/billing-plan-price.md](https://clerk.com/docs/nextjs/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/nextjs/reference/types/billing-plan-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/nextjs/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/nextjs/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/nextjs/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/nextjs/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/nextjs/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/nextjs/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/nextjs/reference/types/billing-proration-discount.md](https://clerk.com/docs/nextjs/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/nextjs/reference/types/billing-statement-group.md](https://clerk.com/docs/nextjs/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/nextjs/reference/types/billing-statement-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/nextjs/reference/types/billing-statement-totals.md](https://clerk.com/docs/nextjs/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/nextjs/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/nextjs/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/nextjs/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/nextjs/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/nextjs/reference/types/billing-subscription-resource.md](https://clerk.com/docs/nextjs/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/nextjs/reference/types/billing-totals.md](https://clerk.com/docs/nextjs/reference/types/billing-totals.md) | BillingTotals |
 | [docs/nextjs/reference/types/clerk-api-error.md](https://clerk.com/docs/nextjs/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -1207,6 +1317,7 @@ Pages: 2360
 | [docs/nextjs/reference/types/verification-resource.md](https://clerk.com/docs/nextjs/reference/types/verification-resource.md) | VerificationResource |
 | [docs/nextjs/reference/types/waitlist.md](https://clerk.com/docs/nextjs/reference/types/waitlist.md) | Waitlist |
 | [docs/nextjs/reference/types/web3-wallet.md](https://clerk.com/docs/nextjs/reference/types/web3-wallet.md) | Web3Wallet |
+| [docs/nextjs/reference/usage-with-older-versions.md](https://clerk.com/docs/nextjs/reference/usage-with-older-versions.md) | Use Clerk with Next.js 12 and older |
 | [docs/nuxt/getting-started/quickstart.md](https://clerk.com/docs/nuxt/getting-started/quickstart.md) | Nuxt Quickstart |
 | [docs/nuxt/guides/billing/for-b2b.md](https://clerk.com/docs/nuxt/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/nuxt/guides/billing/for-b2c.md](https://clerk.com/docs/nuxt/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
@@ -1239,6 +1350,7 @@ Pages: 2360
 | [docs/nuxt/guides/secure/protect-content.md](https://clerk.com/docs/nuxt/guides/secure/protect-content.md) | Protect content from unauthenticated users |
 | [docs/nuxt/guides/secure/waitlist.md](https://clerk.com/docs/nuxt/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/nuxt/guides/users/reading.md](https://clerk.com/docs/nuxt/guides/users/reading.md) | Read user data |
+| [docs/nuxt/reference/clerk-middleware.md](https://clerk.com/docs/nuxt/reference/clerk-middleware.md) | clerkMiddleware() | Nuxt |
 | [docs/nuxt/reference/components/api-keys.md](https://clerk.com/docs/nuxt/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/nuxt/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/nuxt/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/nuxt/reference/components/authentication/oauth-consent.md](https://clerk.com/docs/nuxt/reference/components/authentication/oauth-consent.md) | <OAuthConsent /> component |
@@ -1276,6 +1388,7 @@ Pages: 2360
 | [docs/nuxt/reference/composables/use-sign-in.md](https://clerk.com/docs/nuxt/reference/composables/use-sign-in.md) | useSignIn() | Vue |
 | [docs/nuxt/reference/composables/use-sign-up.md](https://clerk.com/docs/nuxt/reference/composables/use-sign-up.md) | useSignUp() | Vue |
 | [docs/nuxt/reference/composables/use-user.md](https://clerk.com/docs/nuxt/reference/composables/use-user.md) | useUser() | Vue |
+| [docs/nuxt/reference/integration.md](https://clerk.com/docs/nuxt/reference/integration.md) | @clerk/nuxt module |
 | [docs/nuxt/reference/objects/api-keys.md](https://clerk.com/docs/nuxt/reference/objects/api-keys.md) | APIKeys object |
 | [docs/nuxt/reference/objects/billing.md](https://clerk.com/docs/nuxt/reference/objects/billing.md) | Billing object |
 | [docs/nuxt/reference/objects/clerk.md](https://clerk.com/docs/nuxt/reference/objects/clerk.md) | Clerk class |
@@ -1286,28 +1399,40 @@ Pages: 2360
 | [docs/nuxt/reference/objects/sign-in-future.md](https://clerk.com/docs/nuxt/reference/objects/sign-in-future.md) | SignInFuture object |
 | [docs/nuxt/reference/objects/sign-up-future.md](https://clerk.com/docs/nuxt/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/nuxt/reference/objects/user.md](https://clerk.com/docs/nuxt/reference/objects/user.md) | User object |
+| [docs/nuxt/reference/overview.md](https://clerk.com/docs/nuxt/reference/overview.md) | Clerk Nuxt SDK |
 | [docs/nuxt/reference/types/api-key-resource.md](https://clerk.com/docs/nuxt/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/nuxt/reference/types/backup-code-resource.md](https://clerk.com/docs/nuxt/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/nuxt/reference/types/billing-applied-discount.md](https://clerk.com/docs/nuxt/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/nuxt/reference/types/billing-checkout-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/nuxt/reference/types/billing-checkout-totals.md](https://clerk.com/docs/nuxt/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/nuxt/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/nuxt/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/nuxt/reference/types/billing-credits.md](https://clerk.com/docs/nuxt/reference/types/billing-credits.md) | BillingCredits |
+| [docs/nuxt/reference/types/billing-discount-redemption.md](https://clerk.com/docs/nuxt/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/nuxt/reference/types/billing-discounts.md](https://clerk.com/docs/nuxt/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/nuxt/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/nuxt/reference/types/billing-money-amount.md](https://clerk.com/docs/nuxt/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/nuxt/reference/types/billing-payer-credit.md](https://clerk.com/docs/nuxt/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/nuxt/reference/types/billing-payer-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/nuxt/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/nuxt/reference/types/billing-payment-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/nuxt/reference/types/billing-payment-totals.md](https://clerk.com/docs/nuxt/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/nuxt/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/nuxt/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/nuxt/reference/types/billing-per-unit-total.md](https://clerk.com/docs/nuxt/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/nuxt/reference/types/billing-period-totals.md](https://clerk.com/docs/nuxt/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/nuxt/reference/types/billing-plan-price.md](https://clerk.com/docs/nuxt/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/nuxt/reference/types/billing-plan-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/nuxt/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/nuxt/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/nuxt/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/nuxt/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/nuxt/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/nuxt/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/nuxt/reference/types/billing-proration-discount.md](https://clerk.com/docs/nuxt/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/nuxt/reference/types/billing-statement-group.md](https://clerk.com/docs/nuxt/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/nuxt/reference/types/billing-statement-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/nuxt/reference/types/billing-statement-totals.md](https://clerk.com/docs/nuxt/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/nuxt/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/nuxt/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/nuxt/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/nuxt/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/nuxt/reference/types/billing-subscription-resource.md](https://clerk.com/docs/nuxt/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/nuxt/reference/types/billing-totals.md](https://clerk.com/docs/nuxt/reference/types/billing-totals.md) | BillingTotals |
 | [docs/nuxt/reference/types/clerk-api-error.md](https://clerk.com/docs/nuxt/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -1479,28 +1604,40 @@ Pages: 2360
 | [docs/react/reference/objects/sign-up-future.md](https://clerk.com/docs/react/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/react/reference/objects/sign-up.md](https://clerk.com/docs/react/reference/objects/sign-up.md) | SignUp object (Legacy) |
 | [docs/react/reference/objects/user.md](https://clerk.com/docs/react/reference/objects/user.md) | User object |
+| [docs/react/reference/overview.md](https://clerk.com/docs/react/reference/overview.md) | Clerk React SDK |
 | [docs/react/reference/types/api-key-resource.md](https://clerk.com/docs/react/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/react/reference/types/backup-code-resource.md](https://clerk.com/docs/react/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/react/reference/types/billing-applied-discount.md](https://clerk.com/docs/react/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/react/reference/types/billing-checkout-resource.md](https://clerk.com/docs/react/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/react/reference/types/billing-checkout-totals.md](https://clerk.com/docs/react/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/react/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/react/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/react/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/react/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/react/reference/types/billing-credits.md](https://clerk.com/docs/react/reference/types/billing-credits.md) | BillingCredits |
+| [docs/react/reference/types/billing-discount-redemption.md](https://clerk.com/docs/react/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/react/reference/types/billing-discounts.md](https://clerk.com/docs/react/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/react/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/react/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/react/reference/types/billing-money-amount.md](https://clerk.com/docs/react/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/react/reference/types/billing-payer-credit.md](https://clerk.com/docs/react/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/react/reference/types/billing-payer-resource.md](https://clerk.com/docs/react/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/react/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/react/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/react/reference/types/billing-payment-resource.md](https://clerk.com/docs/react/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/react/reference/types/billing-payment-totals.md](https://clerk.com/docs/react/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/react/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/react/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/react/reference/types/billing-per-unit-total.md](https://clerk.com/docs/react/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/react/reference/types/billing-period-totals.md](https://clerk.com/docs/react/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/react/reference/types/billing-plan-price.md](https://clerk.com/docs/react/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/react/reference/types/billing-plan-resource.md](https://clerk.com/docs/react/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/react/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/react/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/react/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/react/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/react/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/react/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/react/reference/types/billing-proration-discount.md](https://clerk.com/docs/react/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/react/reference/types/billing-statement-group.md](https://clerk.com/docs/react/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/react/reference/types/billing-statement-resource.md](https://clerk.com/docs/react/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/react/reference/types/billing-statement-totals.md](https://clerk.com/docs/react/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/react/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/react/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/react/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/react/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/react/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/react/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/react/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/react/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/react/reference/types/billing-subscription-resource.md](https://clerk.com/docs/react/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/react/reference/types/billing-totals.md](https://clerk.com/docs/react/reference/types/billing-totals.md) | BillingTotals |
 | [docs/react/reference/types/clerk-api-error.md](https://clerk.com/docs/react/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -1594,6 +1731,7 @@ Pages: 2360
 | [docs/react-router/guides/organizations/getting-started.md](https://clerk.com/docs/react-router/guides/organizations/getting-started.md) | Get started with Organizations |
 | [docs/react-router/guides/secure/waitlist.md](https://clerk.com/docs/react-router/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/react-router/guides/users/reading.md](https://clerk.com/docs/react-router/guides/users/reading.md) | Read user data |
+| [docs/react-router/reference/clerk-middleware.md](https://clerk.com/docs/react-router/reference/clerk-middleware.md) | clerkMiddleware() | React Router |
 | [docs/react-router/reference/components/api-keys.md](https://clerk.com/docs/react-router/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/react-router/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/react-router/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/react-router/reference/components/authentication/oauth-consent.md](https://clerk.com/docs/react-router/reference/components/authentication/oauth-consent.md) | <OAuthConsent /> component |
@@ -1630,6 +1768,7 @@ Pages: 2360
 | [docs/react-router/reference/components/user/user-button.md](https://clerk.com/docs/react-router/reference/components/user/user-button.md) | <UserButton /> component |
 | [docs/react-router/reference/components/user/user-profile.md](https://clerk.com/docs/react-router/reference/components/user/user-profile.md) | <UserProfile /> component |
 | [docs/react-router/reference/components/utilities/portal-provider.md](https://clerk.com/docs/react-router/reference/components/utilities/portal-provider.md) | <UNSAFE\_PortalProvider> component |
+| [docs/react-router/reference/get-auth.md](https://clerk.com/docs/react-router/reference/get-auth.md) | getAuth() |
 | [docs/react-router/reference/hooks/legacy/use-sign-in.md](https://clerk.com/docs/react-router/reference/hooks/legacy/use-sign-in.md) | useSignIn() |
 | [docs/react-router/reference/hooks/legacy/use-sign-up.md](https://clerk.com/docs/react-router/reference/hooks/legacy/use-sign-up.md) | useSignUp() |
 | [docs/react-router/reference/hooks/overview.md](https://clerk.com/docs/react-router/reference/hooks/overview.md) | Hooks Reference |
@@ -1658,28 +1797,41 @@ Pages: 2360
 | [docs/react-router/reference/objects/sign-up-future.md](https://clerk.com/docs/react-router/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/react-router/reference/objects/sign-up.md](https://clerk.com/docs/react-router/reference/objects/sign-up.md) | SignUp object (Legacy) |
 | [docs/react-router/reference/objects/user.md](https://clerk.com/docs/react-router/reference/objects/user.md) | User object |
+| [docs/react-router/reference/overview.md](https://clerk.com/docs/react-router/reference/overview.md) | Clerk React Router SDK |
+| [docs/react-router/reference/root-auth-loader.md](https://clerk.com/docs/react-router/reference/root-auth-loader.md) | rootAuthLoader() |
 | [docs/react-router/reference/types/api-key-resource.md](https://clerk.com/docs/react-router/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/react-router/reference/types/backup-code-resource.md](https://clerk.com/docs/react-router/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/react-router/reference/types/billing-applied-discount.md](https://clerk.com/docs/react-router/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/react-router/reference/types/billing-checkout-resource.md](https://clerk.com/docs/react-router/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/react-router/reference/types/billing-checkout-totals.md](https://clerk.com/docs/react-router/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/react-router/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/react-router/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/react-router/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/react-router/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/react-router/reference/types/billing-credits.md](https://clerk.com/docs/react-router/reference/types/billing-credits.md) | BillingCredits |
+| [docs/react-router/reference/types/billing-discount-redemption.md](https://clerk.com/docs/react-router/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/react-router/reference/types/billing-discounts.md](https://clerk.com/docs/react-router/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/react-router/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/react-router/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/react-router/reference/types/billing-money-amount.md](https://clerk.com/docs/react-router/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/react-router/reference/types/billing-payer-credit.md](https://clerk.com/docs/react-router/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/react-router/reference/types/billing-payer-resource.md](https://clerk.com/docs/react-router/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/react-router/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/react-router/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/react-router/reference/types/billing-payment-resource.md](https://clerk.com/docs/react-router/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/react-router/reference/types/billing-payment-totals.md](https://clerk.com/docs/react-router/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/react-router/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/react-router/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/react-router/reference/types/billing-per-unit-total.md](https://clerk.com/docs/react-router/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/react-router/reference/types/billing-period-totals.md](https://clerk.com/docs/react-router/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/react-router/reference/types/billing-plan-price.md](https://clerk.com/docs/react-router/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/react-router/reference/types/billing-plan-resource.md](https://clerk.com/docs/react-router/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/react-router/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/react-router/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/react-router/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/react-router/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/react-router/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/react-router/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/react-router/reference/types/billing-proration-discount.md](https://clerk.com/docs/react-router/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/react-router/reference/types/billing-statement-group.md](https://clerk.com/docs/react-router/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/react-router/reference/types/billing-statement-resource.md](https://clerk.com/docs/react-router/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/react-router/reference/types/billing-statement-totals.md](https://clerk.com/docs/react-router/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/react-router/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/react-router/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/react-router/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/react-router/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/react-router/reference/types/billing-subscription-resource.md](https://clerk.com/docs/react-router/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/react-router/reference/types/billing-totals.md](https://clerk.com/docs/react-router/reference/types/billing-totals.md) | BillingTotals |
 | [docs/react-router/reference/types/clerk-api-error.md](https://clerk.com/docs/react-router/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -1931,6 +2083,7 @@ Pages: 2360
 | [docs/reference/backend/user/get-user-oauth-access-token.md](https://clerk.com/docs/reference/backend/user/get-user-oauth-access-token.md) | getUserOauthAccessToken() |
 | [docs/reference/backend/user/get-user.md](https://clerk.com/docs/reference/backend/user/get-user.md) | getUser() |
 | [docs/reference/backend/user/lock-user.md](https://clerk.com/docs/reference/backend/user/lock-user.md) | lockUser() |
+| [docs/reference/backend/user/remove-password.md](https://clerk.com/docs/reference/backend/user/remove-password.md) | removePassword() |
 | [docs/reference/backend/user/replace-user-metadata.md](https://clerk.com/docs/reference/backend/user/replace-user-metadata.md) | replaceUserMetadata() |
 | [docs/reference/backend/user/set-password-compromised.md](https://clerk.com/docs/reference/backend/user/set-password-compromised.md) | setPasswordCompromised() |
 | [docs/reference/backend/user/unban-user.md](https://clerk.com/docs/reference/backend/user/unban-user.md) | unbanUser() |
@@ -2028,6 +2181,12 @@ Pages: 2360
 | [docs/ruby/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/ruby/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/ruby/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/ruby/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/ruby/reference/components/overview.md](https://clerk.com/docs/ruby/reference/components/overview.md) | Component Reference |
+| [docs/ruby/reference/overview.md](https://clerk.com/docs/ruby/reference/overview.md) | Clerk Ruby SDK |
+| [docs/ruby/reference/rack.md](https://clerk.com/docs/ruby/reference/rack.md) | Ruby with Rack |
+| [docs/ruby/reference/rails.md](https://clerk.com/docs/ruby/reference/rails.md) | Ruby on Rails integration |
+| [docs/ruby/reference/sinatra.md](https://clerk.com/docs/ruby/reference/sinatra.md) | Sinatra integration |
+| [docs/ruby/reference/v4-upgrade-guide.md](https://clerk.com/docs/ruby/reference/v4-upgrade-guide.md) | Upgrade to clerk-sdk-ruby v4 |
+| [docs/ruby/reference/v5-upgrade-guide.md](https://clerk.com/docs/ruby/reference/v5-upgrade-guide.md) | Upgrade to clerk-sdk-ruby v5 |
 | [docs/tanstack-react-start/getting-started/quickstart.md](https://clerk.com/docs/tanstack-react-start/getting-started/quickstart.md) | TanStack React Start Quickstart |
 | [docs/tanstack-react-start/guides/billing/for-b2b.md](https://clerk.com/docs/tanstack-react-start/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/tanstack-react-start/guides/billing/for-b2c.md](https://clerk.com/docs/tanstack-react-start/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
@@ -2060,6 +2219,8 @@ Pages: 2360
 | [docs/tanstack-react-start/guides/organizations/getting-started.md](https://clerk.com/docs/tanstack-react-start/guides/organizations/getting-started.md) | Get started with Organizations |
 | [docs/tanstack-react-start/guides/secure/waitlist.md](https://clerk.com/docs/tanstack-react-start/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/tanstack-react-start/guides/users/reading.md](https://clerk.com/docs/tanstack-react-start/guides/users/reading.md) | Read user data |
+| [docs/tanstack-react-start/reference/auth.md](https://clerk.com/docs/tanstack-react-start/reference/auth.md) | auth() |
+| [docs/tanstack-react-start/reference/clerk-middleware.md](https://clerk.com/docs/tanstack-react-start/reference/clerk-middleware.md) | clerkMiddleware() |
 | [docs/tanstack-react-start/reference/components/api-keys.md](https://clerk.com/docs/tanstack-react-start/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/tanstack-react-start/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/tanstack-react-start/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/tanstack-react-start/reference/components/authentication/oauth-consent.md](https://clerk.com/docs/tanstack-react-start/reference/components/authentication/oauth-consent.md) | <OAuthConsent /> component |
@@ -2069,7 +2230,10 @@ Pages: 2360
 | [docs/tanstack-react-start/reference/components/authentication/task-reset-password.md](https://clerk.com/docs/tanstack-react-start/reference/components/authentication/task-reset-password.md) | <TaskResetPassword /> component |
 | [docs/tanstack-react-start/reference/components/authentication/task-setup-mfa.md](https://clerk.com/docs/tanstack-react-start/reference/components/authentication/task-setup-mfa.md) | <TaskSetupMFA /> component |
 | [docs/tanstack-react-start/reference/components/authentication/waitlist.md](https://clerk.com/docs/tanstack-react-start/reference/components/authentication/waitlist.md) | <Waitlist /> component |
+| [docs/tanstack-react-start/reference/components/billing/checkout-button.md](https://clerk.com/docs/tanstack-react-start/reference/components/billing/checkout-button.md) | <CheckoutButton /> component |
+| [docs/tanstack-react-start/reference/components/billing/plan-details-button.md](https://clerk.com/docs/tanstack-react-start/reference/components/billing/plan-details-button.md) | <PlanDetailsButton /> component |
 | [docs/tanstack-react-start/reference/components/billing/pricing-table.md](https://clerk.com/docs/tanstack-react-start/reference/components/billing/pricing-table.md) | <PricingTable /> |
+| [docs/tanstack-react-start/reference/components/billing/subscription-details-button.md](https://clerk.com/docs/tanstack-react-start/reference/components/billing/subscription-details-button.md) | <SubscriptionDetailsButton /> component |
 | [docs/tanstack-react-start/reference/components/clerk-provider.md](https://clerk.com/docs/tanstack-react-start/reference/components/clerk-provider.md) | <ClerkProvider> |
 | [docs/tanstack-react-start/reference/components/control/authenticate-with-redirect-callback.md](https://clerk.com/docs/tanstack-react-start/reference/components/control/authenticate-with-redirect-callback.md) | <AuthenticateWithRedirectCallback /> |
 | [docs/tanstack-react-start/reference/components/control/clerk-degraded.md](https://clerk.com/docs/tanstack-react-start/reference/components/control/clerk-degraded.md) | <ClerkDegraded> |
@@ -2124,28 +2288,40 @@ Pages: 2360
 | [docs/tanstack-react-start/reference/objects/sign-up-future.md](https://clerk.com/docs/tanstack-react-start/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/tanstack-react-start/reference/objects/sign-up.md](https://clerk.com/docs/tanstack-react-start/reference/objects/sign-up.md) | SignUp object (Legacy) |
 | [docs/tanstack-react-start/reference/objects/user.md](https://clerk.com/docs/tanstack-react-start/reference/objects/user.md) | User object |
+| [docs/tanstack-react-start/reference/overview.md](https://clerk.com/docs/tanstack-react-start/reference/overview.md) | Clerk TanStack React Start SDK |
 | [docs/tanstack-react-start/reference/types/api-key-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/tanstack-react-start/reference/types/backup-code-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/tanstack-react-start/reference/types/billing-applied-discount.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/tanstack-react-start/reference/types/billing-checkout-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/tanstack-react-start/reference/types/billing-checkout-totals.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/tanstack-react-start/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/tanstack-react-start/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/tanstack-react-start/reference/types/billing-credits.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-credits.md) | BillingCredits |
+| [docs/tanstack-react-start/reference/types/billing-discount-redemption.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/tanstack-react-start/reference/types/billing-discounts.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/tanstack-react-start/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/tanstack-react-start/reference/types/billing-money-amount.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/tanstack-react-start/reference/types/billing-payer-credit.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/tanstack-react-start/reference/types/billing-payer-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/tanstack-react-start/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/tanstack-react-start/reference/types/billing-payment-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/tanstack-react-start/reference/types/billing-payment-totals.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/tanstack-react-start/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/tanstack-react-start/reference/types/billing-per-unit-total.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/tanstack-react-start/reference/types/billing-period-totals.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/tanstack-react-start/reference/types/billing-plan-price.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/tanstack-react-start/reference/types/billing-plan-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/tanstack-react-start/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/tanstack-react-start/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/tanstack-react-start/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/tanstack-react-start/reference/types/billing-proration-discount.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/tanstack-react-start/reference/types/billing-statement-group.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/tanstack-react-start/reference/types/billing-statement-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/tanstack-react-start/reference/types/billing-statement-totals.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/tanstack-react-start/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/tanstack-react-start/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/tanstack-react-start/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/tanstack-react-start/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/tanstack-react-start/reference/types/billing-subscription-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/tanstack-react-start/reference/types/billing-totals.md](https://clerk.com/docs/tanstack-react-start/reference/types/billing-totals.md) | BillingTotals |
 | [docs/tanstack-react-start/reference/types/clerk-api-error.md](https://clerk.com/docs/tanstack-react-start/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -2230,6 +2406,7 @@ Pages: 2360
 | [docs/vue/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/vue/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/vue/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/vue/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/vue/guides/development/webhooks/billing.md](https://clerk.com/docs/vue/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/vue/reference/clerk-plugin.md](https://clerk.com/docs/vue/reference/clerk-plugin.md) | clerkPlugin |
 | [docs/vue/reference/components/api-keys.md](https://clerk.com/docs/vue/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/vue/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/vue/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/vue/reference/components/authentication/oauth-consent.md](https://clerk.com/docs/vue/reference/components/authentication/oauth-consent.md) | <OAuthConsent /> component |
@@ -2281,28 +2458,40 @@ Pages: 2360
 | [docs/vue/reference/objects/sign-in-future.md](https://clerk.com/docs/vue/reference/objects/sign-in-future.md) | SignInFuture object |
 | [docs/vue/reference/objects/sign-up-future.md](https://clerk.com/docs/vue/reference/objects/sign-up-future.md) | SignUpFuture object |
 | [docs/vue/reference/objects/user.md](https://clerk.com/docs/vue/reference/objects/user.md) | User object |
+| [docs/vue/reference/overview.md](https://clerk.com/docs/vue/reference/overview.md) | Clerk Vue SDK |
 | [docs/vue/reference/types/api-key-resource.md](https://clerk.com/docs/vue/reference/types/api-key-resource.md) | APIKeyResource |
 | [docs/vue/reference/types/backup-code-resource.md](https://clerk.com/docs/vue/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/vue/reference/types/billing-applied-discount.md](https://clerk.com/docs/vue/reference/types/billing-applied-discount.md) | BillingAppliedDiscount |
 | [docs/vue/reference/types/billing-checkout-resource.md](https://clerk.com/docs/vue/reference/types/billing-checkout-resource.md) | BillingCheckoutResource |
 | [docs/vue/reference/types/billing-checkout-totals.md](https://clerk.com/docs/vue/reference/types/billing-checkout-totals.md) | BillingCheckoutTotals |
 | [docs/vue/reference/types/billing-credit-balance-resource.md](https://clerk.com/docs/vue/reference/types/billing-credit-balance-resource.md) | BillingCreditBalanceResource |
 | [docs/vue/reference/types/billing-credit-ledger-resource.md](https://clerk.com/docs/vue/reference/types/billing-credit-ledger-resource.md) | BillingCreditLedgerResource |
+| [docs/vue/reference/types/billing-credits.md](https://clerk.com/docs/vue/reference/types/billing-credits.md) | BillingCredits |
+| [docs/vue/reference/types/billing-discount-redemption.md](https://clerk.com/docs/vue/reference/types/billing-discount-redemption.md) | BillingDiscountRedemption |
+| [docs/vue/reference/types/billing-discounts.md](https://clerk.com/docs/vue/reference/types/billing-discounts.md) | BillingDiscounts |
 | [docs/vue/reference/types/billing-initialized-payment-method-resource.md](https://clerk.com/docs/vue/reference/types/billing-initialized-payment-method-resource.md) | BillingInitializedPaymentMethodResource |
 | [docs/vue/reference/types/billing-money-amount.md](https://clerk.com/docs/vue/reference/types/billing-money-amount.md) | BillingMoneyAmount |
+| [docs/vue/reference/types/billing-payer-credit.md](https://clerk.com/docs/vue/reference/types/billing-payer-credit.md) | BillingPayerCredit |
 | [docs/vue/reference/types/billing-payer-resource.md](https://clerk.com/docs/vue/reference/types/billing-payer-resource.md) | BillingPayerResource |
 | [docs/vue/reference/types/billing-payment-method-resource.md](https://clerk.com/docs/vue/reference/types/billing-payment-method-resource.md) | BillingPaymentMethodResource |
 | [docs/vue/reference/types/billing-payment-resource.md](https://clerk.com/docs/vue/reference/types/billing-payment-resource.md) | BillingPaymentResource |
+| [docs/vue/reference/types/billing-payment-totals.md](https://clerk.com/docs/vue/reference/types/billing-payment-totals.md) | BillingPaymentTotals |
 | [docs/vue/reference/types/billing-per-unit-total-tier.md](https://clerk.com/docs/vue/reference/types/billing-per-unit-total-tier.md) | BillingPerUnitTotalTier |
 | [docs/vue/reference/types/billing-per-unit-total.md](https://clerk.com/docs/vue/reference/types/billing-per-unit-total.md) | BillingPerUnitTotal |
+| [docs/vue/reference/types/billing-period-totals.md](https://clerk.com/docs/vue/reference/types/billing-period-totals.md) | BillingPeriodTotals |
 | [docs/vue/reference/types/billing-plan-price.md](https://clerk.com/docs/vue/reference/types/billing-plan-price.md) | BillingPlanPrice |
 | [docs/vue/reference/types/billing-plan-resource.md](https://clerk.com/docs/vue/reference/types/billing-plan-resource.md) | BillingPlanResource |
 | [docs/vue/reference/types/billing-plan-unit-price-tier.md](https://clerk.com/docs/vue/reference/types/billing-plan-unit-price-tier.md) | BillingPlanUnitPriceTier |
 | [docs/vue/reference/types/billing-plan-unit-price.md](https://clerk.com/docs/vue/reference/types/billing-plan-unit-price.md) | BillingPlanUnitPrice |
+| [docs/vue/reference/types/billing-proration-credit-detail.md](https://clerk.com/docs/vue/reference/types/billing-proration-credit-detail.md) | BillingProrationCreditDetail |
+| [docs/vue/reference/types/billing-proration-discount.md](https://clerk.com/docs/vue/reference/types/billing-proration-discount.md) | BillingProrationDiscount |
 | [docs/vue/reference/types/billing-statement-group.md](https://clerk.com/docs/vue/reference/types/billing-statement-group.md) | BillingStatementGroup |
 | [docs/vue/reference/types/billing-statement-resource.md](https://clerk.com/docs/vue/reference/types/billing-statement-resource.md) | BillingStatementResource |
 | [docs/vue/reference/types/billing-statement-totals.md](https://clerk.com/docs/vue/reference/types/billing-statement-totals.md) | BillingStatementTotals |
+| [docs/vue/reference/types/billing-subscription-item-next-payment.md](https://clerk.com/docs/vue/reference/types/billing-subscription-item-next-payment.md) | BillingSubscriptionItemNextPayment |
 | [docs/vue/reference/types/billing-subscription-item-resource.md](https://clerk.com/docs/vue/reference/types/billing-subscription-item-resource.md) | BillingSubscriptionItemResource |
 | [docs/vue/reference/types/billing-subscription-item-seats.md](https://clerk.com/docs/vue/reference/types/billing-subscription-item-seats.md) | BillingSubscriptionItemSeats |
+| [docs/vue/reference/types/billing-subscription-next-payment.md](https://clerk.com/docs/vue/reference/types/billing-subscription-next-payment.md) | BillingSubscriptionNextPayment |
 | [docs/vue/reference/types/billing-subscription-resource.md](https://clerk.com/docs/vue/reference/types/billing-subscription-resource.md) | BillingSubscriptionResource |
 | [docs/vue/reference/types/billing-totals.md](https://clerk.com/docs/vue/reference/types/billing-totals.md) | BillingTotals |
 | [docs/vue/reference/types/clerk-api-error.md](https://clerk.com/docs/vue/reference/types/clerk-api-error.md) | ClerkAPIError |
@@ -2363,4 +2552,5 @@ Pages: 2360
 | [docs/vue/reference/types/verification-resource.md](https://clerk.com/docs/vue/reference/types/verification-resource.md) | VerificationResource |
 | [docs/vue/reference/types/waitlist.md](https://clerk.com/docs/vue/reference/types/waitlist.md) | Waitlist |
 | [docs/vue/reference/types/web3-wallet.md](https://clerk.com/docs/vue/reference/types/web3-wallet.md) | Web3Wallet |
+| [docs/vue/reference/update-clerk-options.md](https://clerk.com/docs/vue/reference/update-clerk-options.md) | updateClerkOptions() |
 | [docs.md](https://clerk.com/docs.md) | Welcome to Clerk Docs |

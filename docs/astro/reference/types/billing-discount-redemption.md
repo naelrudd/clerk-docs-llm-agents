@@ -1,0 +1,31 @@
+# BillingDiscountRedemption
+
+> Billing regularly introduces new features and UI changes to Clerk's components. If you'd like to remain on a specific version of Clerk's components or SDK, you can follow the steps in the [pinning](https://clerk.com/docs/pinning.md?sdk=astro) documentation.
+
+A discount redemption applied to a subscription item.
+
+## Properties
+
+| Property                                             | Type                                                                                       | Description                                                                                                                                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="amount"></a> `amount?`                        | [BillingMoneyAmount](https://clerk.com/docs/astro/reference/types/billing-money-amount.md) | The monetary value of the discount applied to the subscription item.                                                                                                                |
+| <a id="amountoff"></a> `amountOff?`                  | [BillingMoneyAmount](https://clerk.com/docs/astro/reference/types/billing-money-amount.md) | The configured fixed amount off when `effect` is `'fixed_amount'`. This is the discount's configured value, which can differ from the `amount` actually applied to the transaction. |
+| <a id="cyclesapplied"></a> `cyclesApplied`           | `number`                                                                                   | The number of billing cycles to which the discount has already been applied.                                                                                                        |
+| <a id="cyclesremaining"></a> `cyclesRemaining`       | `null | number`                                                                 | The number of billing cycles for which the discount remains active. `null` means the discount does not expire after a fixed number of cycles.                                       |
+| <a id="discountid"></a> `discountId`                 | `string`                                                                                   | The unique identifier of the redeemed discount.                                                                                                                                     |
+| <a id="effect"></a> `effect?`                        | `"percentage" | "fixed_amount"`                                                 | Whether the discount subtracts a percentage or a fixed amount.                                                                                                                      |
+| <a id="id"></a> `id`                                 | `string`                                                                                   | The unique identifier of the discount redemption.                                                                                                                                   |
+| <a id="name"></a> `name`                             | `string`                                                                                   | The display name of the discount.                                                                                                                                                   |
+| <a id="percentoff"></a> `percentOff?`                | `number`                                                                                   | The percentage deducted when `effect` is `'percentage'`.                                                                                                                            |
+| <a id="promocode"></a> `promoCode?`                  | `string`                                                                                   | The promotion code used to redeem the discount.                                                                                                                                     |
+| <a id="redeemedat"></a> `redeemedAt`                 | `Date`                                                                                     | The date and time when the discount was redeemed.                                                                                                                                   |
+| <a id="redeemedby"></a> `redeemedBy`                 | `null | string`                                                                 | The identifier of the user who redeemed the discount. `null` if no user was recorded.                                                                                               |
+| <a id="source"></a> `source`                         | `"promotion" | "manual" | "promo_code"`                                         | How the discount was applied to the subscription item.                                                                                                                              |
+| <a id="status"></a> `status?`                        | `"active" | "exhausted" | "removed"`                                            | The current status of the discount redemption.                                                                                                                                      |
+| <a id="subscriptionitemid"></a> `subscriptionItemId` | `string`                                                                                   | The unique identifier of the subscription item receiving the discount.                                                                                                              |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
