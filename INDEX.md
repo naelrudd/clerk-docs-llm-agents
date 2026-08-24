@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2550
+Pages: 2557
 
 | Path | First heading |
 |---|---|
@@ -11,6 +11,7 @@ Pages: 2550
 | [docs/android/guides/configure/auth-strategies/social-connections/overview.md](https://clerk.com/docs/android/guides/configure/auth-strategies/social-connections/overview.md) | Social connections (OAuth) |
 | [docs/android/guides/customizing-clerk/clerk-theme.md](https://clerk.com/docs/android/guides/customizing-clerk/clerk-theme.md) | ClerkTheme |
 | [docs/android/guides/development/custom-flows/account-updates/user-impersonation.md](https://clerk.com/docs/android/guides/development/custom-flows/account-updates/user-impersonation.md) | Build a custom flow for handling user impersonation |
+| [docs/android/guides/development/custom-flows/authentication/biometric-sign-in.md](https://clerk.com/docs/android/guides/development/custom-flows/authentication/biometric-sign-in.md) | Build a custom authentication flow using biometric sign-in |
 | [docs/android/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/android/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/android/reference/native-mobile/auth.md](https://clerk.com/docs/android/reference/native-mobile/auth.md) | Authentication flows |
 | [docs/android/reference/native-mobile/clerk.md](https://clerk.com/docs/android/reference/native-mobile/clerk.md) | Clerk |
@@ -384,6 +385,7 @@ Pages: 2550
 | [docs/expo/guides/customizing-clerk/appearance-prop/themes.md](https://clerk.com/docs/expo/guides/customizing-clerk/appearance-prop/themes.md) | Themes |
 | [docs/expo/guides/customizing-clerk/appearance-prop/variables.md](https://clerk.com/docs/expo/guides/customizing-clerk/appearance-prop/variables.md) | Variables prop |
 | [docs/expo/guides/development/custom-flows/account-updates/user-impersonation.md](https://clerk.com/docs/expo/guides/development/custom-flows/account-updates/user-impersonation.md) | Build a custom flow for handling user impersonation |
+| [docs/expo/guides/development/custom-flows/authentication/biometric-sign-in.md](https://clerk.com/docs/expo/guides/development/custom-flows/authentication/biometric-sign-in.md) | Build a custom authentication flow using biometric sign-in |
 | [docs/expo/guides/development/custom-flows/authentication/bot-sign-up-protection.md](https://clerk.com/docs/expo/guides/development/custom-flows/authentication/bot-sign-up-protection.md) | Add bot protection to your custom sign-up flow |
 | [docs/expo/guides/development/custom-flows/authentication/google-one-tap.md](https://clerk.com/docs/expo/guides/development/custom-flows/authentication/google-one-tap.md) | Build a custom Google One Tap authentication flow |
 | [docs/expo/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/expo/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
@@ -432,12 +434,15 @@ Pages: 2550
 | [docs/expo/reference/native-components/theming.md](https://clerk.com/docs/expo/reference/native-components/theming.md) | Theming Expo native components (Beta) |
 | [docs/expo/reference/native-components/user-button.md](https://clerk.com/docs/expo/reference/native-components/user-button.md) | <UserButton /> |
 | [docs/expo/reference/native-components/user-profile-view.md](https://clerk.com/docs/expo/reference/native-components/user-profile-view.md) | <UserProfileView /> component |
+| [docs/expo/reference/native-hooks/use-auth-view-state.md](https://clerk.com/docs/expo/reference/native-hooks/use-auth-view-state.md) | useAuthViewState() |
 | [docs/expo/reference/native-hooks/use-hosted-auth.md](https://clerk.com/docs/expo/reference/native-hooks/use-hosted-auth.md) | useHostedAuth() |
 | [docs/expo/reference/native-hooks/use-local-credentials.md](https://clerk.com/docs/expo/reference/native-hooks/use-local-credentials.md) | useLocalCredentials() |
 | [docs/expo/reference/native-hooks/use-oauth.md](https://clerk.com/docs/expo/reference/native-hooks/use-oauth.md) | useOAuth() (Deprecated) |
 | [docs/expo/reference/native-hooks/use-sign-in-with-apple.md](https://clerk.com/docs/expo/reference/native-hooks/use-sign-in-with-apple.md) | useSignInWithApple() |
 | [docs/expo/reference/native-hooks/use-sign-in-with-google.md](https://clerk.com/docs/expo/reference/native-hooks/use-sign-in-with-google.md) | useSignInWithGoogle() |
 | [docs/expo/reference/native-hooks/use-sso.md](https://clerk.com/docs/expo/reference/native-hooks/use-sso.md) | useSSO() |
+| [docs/expo/reference/native-hooks/use-trusted-devices.md](https://clerk.com/docs/expo/reference/native-hooks/use-trusted-devices.md) | useTrustedDevices() |
+| [docs/expo/reference/native-hooks/use-user-profile-custom-page-navigation.md](https://clerk.com/docs/expo/reference/native-hooks/use-user-profile-custom-page-navigation.md) | useUserProfileCustomPageNavigation() |
 | [docs/expo/reference/objects/api-keys.md](https://clerk.com/docs/expo/reference/objects/api-keys.md) | APIKeys object |
 | [docs/expo/reference/objects/billing.md](https://clerk.com/docs/expo/reference/objects/billing.md) | Billing object |
 | [docs/expo/reference/objects/clerk.md](https://clerk.com/docs/expo/reference/objects/clerk.md) | Clerk class |
@@ -638,6 +643,7 @@ Pages: 2550
 | [docs/guides/billing/custom-plans.md](https://clerk.com/docs/guides/billing/custom-plans.md) | Custom Plans and prices |
 | [docs/guides/billing/default-plans.md](https://clerk.com/docs/guides/billing/default-plans.md) | Default Plans |
 | [docs/guides/billing/discounts.md](https://clerk.com/docs/guides/billing/discounts.md) | Discounts and promo codes |
+| [docs/guides/billing/free-and-complimentary-access.md](https://clerk.com/docs/guides/billing/free-and-complimentary-access.md) | Free and complimentary access |
 | [docs/guides/billing/free-trials.md](https://clerk.com/docs/guides/billing/free-trials.md) | Free trials |
 | [docs/guides/billing/overview.md](https://clerk.com/docs/guides/billing/overview.md) | Clerk Billing |
 | [docs/guides/billing/seat-based-plans.md](https://clerk.com/docs/guides/billing/seat-based-plans.md) | Seat-based Plans |
@@ -928,6 +934,7 @@ Pages: 2550
 | [docs/ios/guides/configure/auth-strategies/sign-in-with-apple.md](https://clerk.com/docs/ios/guides/configure/auth-strategies/sign-in-with-apple.md) | Sign in with Apple |
 | [docs/ios/guides/configure/auth-strategies/social-connections/overview.md](https://clerk.com/docs/ios/guides/configure/auth-strategies/social-connections/overview.md) | Social connections (OAuth) |
 | [docs/ios/guides/customizing-clerk/clerk-theme.md](https://clerk.com/docs/ios/guides/customizing-clerk/clerk-theme.md) | ClerkTheme |
+| [docs/ios/guides/development/custom-flows/authentication/biometric-sign-in.md](https://clerk.com/docs/ios/guides/development/custom-flows/authentication/biometric-sign-in.md) | Build a custom authentication flow using biometric sign-in |
 | [docs/ios/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/ios/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/ios/reference/native-mobile/auth.md](https://clerk.com/docs/ios/reference/native-mobile/auth.md) | Authentication flows |
 | [docs/ios/reference/native-mobile/clerk.md](https://clerk.com/docs/ios/reference/native-mobile/clerk.md) | Clerk |
