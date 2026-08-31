@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2557
+Pages: 2566
 
 | Path | First heading |
 |---|---|
@@ -435,6 +435,7 @@ Pages: 2557
 | [docs/expo/reference/native-components/user-button.md](https://clerk.com/docs/expo/reference/native-components/user-button.md) | <UserButton /> |
 | [docs/expo/reference/native-components/user-profile-view.md](https://clerk.com/docs/expo/reference/native-components/user-profile-view.md) | <UserProfileView /> component |
 | [docs/expo/reference/native-hooks/use-auth-view-state.md](https://clerk.com/docs/expo/reference/native-hooks/use-auth-view-state.md) | useAuthViewState() |
+| [docs/expo/reference/native-hooks/use-biometric-credentials.md](https://clerk.com/docs/expo/reference/native-hooks/use-biometric-credentials.md) | useBiometricCredentials() |
 | [docs/expo/reference/native-hooks/use-hosted-auth.md](https://clerk.com/docs/expo/reference/native-hooks/use-hosted-auth.md) | useHostedAuth() |
 | [docs/expo/reference/native-hooks/use-local-credentials.md](https://clerk.com/docs/expo/reference/native-hooks/use-local-credentials.md) | useLocalCredentials() |
 | [docs/expo/reference/native-hooks/use-oauth.md](https://clerk.com/docs/expo/reference/native-hooks/use-oauth.md) | useOAuth() (Deprecated) |
@@ -720,7 +721,9 @@ Pages: 2557
 | [docs/guides/dashboard/dns-domains/proxy-fapi.md](https://clerk.com/docs/guides/dashboard/dns-domains/proxy-fapi.md) | Proxying the Clerk Frontend API |
 | [docs/guides/dashboard/dns-domains/satellite-domains.md](https://clerk.com/docs/guides/dashboard/dns-domains/satellite-domains.md) | Authentication across different domains |
 | [docs/guides/dashboard/dns-domains/subdomain-allowlist.md](https://clerk.com/docs/guides/dashboard/dns-domains/subdomain-allowlist.md) | Subdomain allowlist |
+| [docs/guides/dashboard/logs/admin-logs.md](https://clerk.com/docs/guides/dashboard/logs/admin-logs.md) | Admin Logs |
 | [docs/guides/dashboard/logs/application-logs.md](https://clerk.com/docs/guides/dashboard/logs/application-logs.md) | Application Logs |
+| [docs/guides/dashboard/logs/overview.md](https://clerk.com/docs/guides/dashboard/logs/overview.md) | Dashboard Logs |
 | [docs/guides/dashboard/manage-team-access.md](https://clerk.com/docs/guides/dashboard/manage-team-access.md) | Manage team access |
 | [docs/guides/dashboard/organization-profile.md](https://clerk.com/docs/guides/dashboard/organization-profile.md) | Organization profile |
 | [docs/guides/dashboard/overview.md](https://clerk.com/docs/guides/dashboard/overview.md) | Manage your workspace |
@@ -838,6 +841,7 @@ Pages: 2557
 | [docs/guides/development/testing/playwright/test-sign-up-flows.md](https://clerk.com/docs/guides/development/testing/playwright/test-sign-up-flows.md) | Test the sign-up form |
 | [docs/guides/development/testing/postman-or-insomnia.md](https://clerk.com/docs/guides/development/testing/postman-or-insomnia.md) | Testing with Postman or Insomnia |
 | [docs/guides/development/testing/test-emails-and-phones.md](https://clerk.com/docs/guides/development/testing/test-emails-and-phones.md) | Test emails and phones |
+| [docs/guides/development/testing/test-organization-domains.md](https://clerk.com/docs/guides/development/testing/test-organization-domains.md) | Test Organization domains |
 | [docs/guides/development/troubleshooting/email-deliverability.md](https://clerk.com/docs/guides/development/troubleshooting/email-deliverability.md) | Email deliverability |
 | [docs/guides/development/troubleshooting/email-domain-name-warmup.md](https://clerk.com/docs/guides/development/troubleshooting/email-domain-name-warmup.md) | New domain reputation and email warm-up |
 | [docs/guides/development/troubleshooting/email-suppression-lists.md](https://clerk.com/docs/guides/development/troubleshooting/email-suppression-lists.md) | Email suppression lists |
@@ -910,6 +914,7 @@ Pages: 2557
 | [docs/guides/secure/device-trust.md](https://clerk.com/docs/guides/secure/device-trust.md) | Device Trust |
 | [docs/guides/secure/features.md](https://clerk.com/docs/guides/secure/features.md) | Features |
 | [docs/guides/secure/legal-compliance.md](https://clerk.com/docs/guides/secure/legal-compliance.md) | Legal compliance |
+| [docs/guides/secure/mfa-recovery.md](https://clerk.com/docs/guides/secure/mfa-recovery.md) | MFA account recovery |
 | [docs/guides/secure/overview.md](https://clerk.com/docs/guides/secure/overview.md) | Securing your app |
 | [docs/guides/secure/password-protection-and-rules.md](https://clerk.com/docs/guides/secure/password-protection-and-rules.md) | Password protection and rules |
 | [docs/guides/secure/restricting-access.md](https://clerk.com/docs/guides/secure/restricting-access.md) | Restrictions |
@@ -1175,6 +1180,7 @@ Pages: 2557
 | [docs/nextjs/reference/components/control/redirect-to-user-profile.md](https://clerk.com/docs/nextjs/reference/components/control/redirect-to-user-profile.md) | <RedirectToUserProfile /> (deprecated) |
 | [docs/nextjs/reference/components/control/show.md](https://clerk.com/docs/nextjs/reference/components/control/show.md) | <Show> |
 | [docs/nextjs/reference/components/organization/create-organization.md](https://clerk.com/docs/nextjs/reference/components/organization/create-organization.md) | <CreateOrganization /> component |
+| [docs/nextjs/reference/components/organization/invite-members-button.md](https://clerk.com/docs/nextjs/reference/components/organization/invite-members-button.md) | <InviteMembersButton /> |
 | [docs/nextjs/reference/components/organization/organization-list.md](https://clerk.com/docs/nextjs/reference/components/organization/organization-list.md) | <OrganizationList /> component |
 | [docs/nextjs/reference/components/organization/organization-profile.md](https://clerk.com/docs/nextjs/reference/components/organization/organization-profile.md) | <OrganizationProfile /> component |
 | [docs/nextjs/reference/components/organization/organization-switcher.md](https://clerk.com/docs/nextjs/reference/components/organization/organization-switcher.md) | <OrganizationSwitcher /> component |
@@ -1563,6 +1569,7 @@ Pages: 2557
 | [docs/react/reference/components/control/redirect-to-user-profile.md](https://clerk.com/docs/react/reference/components/control/redirect-to-user-profile.md) | <RedirectToUserProfile /> (deprecated) |
 | [docs/react/reference/components/control/show.md](https://clerk.com/docs/react/reference/components/control/show.md) | <Show> |
 | [docs/react/reference/components/organization/create-organization.md](https://clerk.com/docs/react/reference/components/organization/create-organization.md) | <CreateOrganization /> component |
+| [docs/react/reference/components/organization/invite-members-button.md](https://clerk.com/docs/react/reference/components/organization/invite-members-button.md) | <InviteMembersButton /> |
 | [docs/react/reference/components/organization/organization-list.md](https://clerk.com/docs/react/reference/components/organization/organization-list.md) | <OrganizationList /> component |
 | [docs/react/reference/components/organization/organization-profile.md](https://clerk.com/docs/react/reference/components/organization/organization-profile.md) | <OrganizationProfile /> component |
 | [docs/react/reference/components/organization/organization-switcher.md](https://clerk.com/docs/react/reference/components/organization/organization-switcher.md) | <OrganizationSwitcher /> component |
@@ -1763,6 +1770,7 @@ Pages: 2557
 | [docs/react-router/reference/components/control/redirect-to-user-profile.md](https://clerk.com/docs/react-router/reference/components/control/redirect-to-user-profile.md) | <RedirectToUserProfile /> (deprecated) |
 | [docs/react-router/reference/components/control/show.md](https://clerk.com/docs/react-router/reference/components/control/show.md) | <Show> |
 | [docs/react-router/reference/components/organization/create-organization.md](https://clerk.com/docs/react-router/reference/components/organization/create-organization.md) | <CreateOrganization /> component |
+| [docs/react-router/reference/components/organization/invite-members-button.md](https://clerk.com/docs/react-router/reference/components/organization/invite-members-button.md) | <InviteMembersButton /> |
 | [docs/react-router/reference/components/organization/organization-list.md](https://clerk.com/docs/react-router/reference/components/organization/organization-list.md) | <OrganizationList /> component |
 | [docs/react-router/reference/components/organization/organization-profile.md](https://clerk.com/docs/react-router/reference/components/organization/organization-profile.md) | <OrganizationProfile /> component |
 | [docs/react-router/reference/components/organization/organization-switcher.md](https://clerk.com/docs/react-router/reference/components/organization/organization-switcher.md) | <OrganizationSwitcher /> component |
@@ -2255,6 +2263,7 @@ Pages: 2557
 | [docs/tanstack-react-start/reference/components/control/redirect-to-user-profile.md](https://clerk.com/docs/tanstack-react-start/reference/components/control/redirect-to-user-profile.md) | <RedirectToUserProfile /> (deprecated) |
 | [docs/tanstack-react-start/reference/components/control/show.md](https://clerk.com/docs/tanstack-react-start/reference/components/control/show.md) | <Show> |
 | [docs/tanstack-react-start/reference/components/organization/create-organization.md](https://clerk.com/docs/tanstack-react-start/reference/components/organization/create-organization.md) | <CreateOrganization /> component |
+| [docs/tanstack-react-start/reference/components/organization/invite-members-button.md](https://clerk.com/docs/tanstack-react-start/reference/components/organization/invite-members-button.md) | <InviteMembersButton /> |
 | [docs/tanstack-react-start/reference/components/organization/organization-list.md](https://clerk.com/docs/tanstack-react-start/reference/components/organization/organization-list.md) | <OrganizationList /> component |
 | [docs/tanstack-react-start/reference/components/organization/organization-profile.md](https://clerk.com/docs/tanstack-react-start/reference/components/organization/organization-profile.md) | <OrganizationProfile /> component |
 | [docs/tanstack-react-start/reference/components/organization/organization-switcher.md](https://clerk.com/docs/tanstack-react-start/reference/components/organization/organization-switcher.md) | <OrganizationSwitcher /> component |

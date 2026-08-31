@@ -1,0 +1,75 @@
+# <InviteMembersButton />
+
+The `<InviteMembersButton />` component renders a button that opens a modal containing the Organization invite-members form. It works like [<SignInButton mode="modal">](https://clerk.com/docs/react/reference/components/unstyled/sign-in-button.md): wrap your own button and selecting it opens the modal.
+
+> `<InviteMembersButton />` only works when there's an Active Organization and the current member has permission to manage memberships (`org:sys_memberships:manage`). Render it only for those members, gating it with [<Show>](https://clerk.com/docs/react/reference/components/control/show.md) when you're unsure. If either requirement isn't met, selecting the button does nothing in production and throws a descriptive error in development.
+
+## Usage
+
+### Basic usage
+
+By default, `<InviteMembersButton />` renders a button labeled "Invite members". The examples below gate it behind [<Show>](https://clerk.com/docs/react/reference/components/control/show.md) to check whether the current member has the `org:sys_memberships:manage` permission before rendering it.
+
+filename: src/components/Members.tsx
+```tsx
+import { InviteMembersButton, Show } from '@clerk/react'
+
+const Members = () => {
+  return (
+    <Show when={{ permission: 'org:sys_memberships:manage' }}>
+      <InviteMembersButton />
+    </Show>
+  )
+}
+
+export default Members
+```
+
+### Custom usage
+
+You can create a custom button by wrapping your own button, or button text, in the `<InviteMembersButton>` component. Any click handlers attached to your button are preserved.
+
+filename: src/components/Members.tsx
+```tsx
+import { InviteMembersButton, Show } from '@clerk/react'
+
+const Members = () => {
+  return (
+    <Show when={{ permission: 'org:sys_memberships:manage' }}>
+      <InviteMembersButton>
+        <button onClick={() => console.log('Opening invite modal')} className="custom-button">
+          Invite members
+        </button>
+      </InviteMembersButton>
+    </Show>
+  )
+}
+
+export default Members
+```
+
+If you want to render multiple elements, wrap them in a single parent element:
+
+```tsx
+<InviteMembersButton>
+  <button>
+    <span>Invite</span>
+    <span aria-hidden="true"> →</span>
+  </button>
+</InviteMembersButton>
+```
+
+## Properties
+
+The `<InviteMembersButton />` component accepts the following properties, all of which are **optional**:
+
+| Name        | Type                    | Description                                                                                                                                                                                              |
+| ----------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children?   | React.ReactNode         | The button element to wrap. Only accepts one child; if you want to render multiple elements, wrap them in a single parent element. If not provided, defaults to a button with the text "Invite members". |
+| appearance? | Appearance | undefined | An object to style your components. Will only affect Clerk components and not Account Portal pages.                                                                                                      |
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

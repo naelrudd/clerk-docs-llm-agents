@@ -1,0 +1,32 @@
+# Test Organization domains
+
+[Organization domain ownership verification](https://clerk.com/docs/guides/organizations/domain-verification.md#domain-ownership) normally proves that an Organization controls a domain by having an admin publish a DNS `TXT` record that Clerk then scans for. Publishing a real record isn't practical in local development or end-to-end tests, so **test mode** provides reserved test domains that skip the DNS lookup.
+
+## Set up test mode
+
+Every development instance has **test mode** enabled by default. If you need to use **test mode** on a production instance, you can enable it in the Clerk Dashboard. However, this is highly discouraged.
+
+To enable or disable **test mode**, in the Clerk Dashboard, navigate to the [**Instance Settings**](https://dashboard.clerk.com/~/instance-settings) page.
+
+**For AI agents:** Instead of toggling test mode on the Instance Settings page in the Dashboard, run `npx clerk@latest api instance -X PATCH -d '{"test_mode": true}'` to enable it (`false` to disable), and verify it took effect with `npx clerk@latest api --fapi /environment` (check `auth_config.test_mode`). Install [Clerk's skills](https://clerk.com/docs/guides/ai/skills.md) with `npx skills add clerk/skills` for correct CLI and SDK usage.
+
+## Test domains
+
+In **test mode**, any subdomain of the reserved `clerk.test` domain is a test domain, and Clerk skips the DNS lookup when verifying its ownership. For example, `acme.clerk.test` and `example.clerk.test` are both test domains.
+
+The bare `clerk.test` apex isn't a test domain; it must be a subdomain. Test domains only apply to development instances with **test mode** enabled — on a production instance, `acme.clerk.test` is treated as any other domain and requires the `TXT` record.
+
+## Verify ownership of a test domain
+
+The flow is unchanged from a real domain: call [prepareOwnershipVerification()](https://clerk.com/docs/reference/objects/organization.md#prepare-ownership-verification) and then [attemptOwnershipVerification()](https://clerk.com/docs/reference/objects/organization.md#attempt-ownership-verification), and skip publishing the `TXT` record.
+
+Two other checks are relaxed for test domains:
+
+- Attempts aren't throttled, so tests don't need to wait between attempts.
+- Adding a test domain skips the check that rejects common and disposable email domains.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
