@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2566
+Pages: 2567
 
 | Path | First heading |
 |---|---|
@@ -663,6 +663,7 @@ Pages: 2566
 | [docs/guides/configure/auth-strategies/enterprise-connections/saml/okta.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/saml/okta.md) | Add Okta Workforce as a SAML connection |
 | [docs/guides/configure/auth-strategies/enterprise-connections/self-serve-sso.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/self-serve-sso.md) | Self-serve SSO |
 | [docs/guides/configure/auth-strategies/oauth/client-id-metadata-documents.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/client-id-metadata-documents.md) | Manage OAuth clients with Client ID Metadata Documents (Beta) |
+| [docs/guides/configure/auth-strategies/oauth/device-authorization-grant.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/device-authorization-grant.md) | Use OAuth Device Authorization Grant (Beta) |
 | [docs/guides/configure/auth-strategies/oauth/how-clerk-implements-oauth.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/how-clerk-implements-oauth.md) | How Clerk implements OAuth |
 | [docs/guides/configure/auth-strategies/oauth/overview.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/overview.md) | OAuth and OIDC overview |
 | [docs/guides/configure/auth-strategies/oauth/scoped-access.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/scoped-access.md) | Use OAuth for scoped access |
