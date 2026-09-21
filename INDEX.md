@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2567
+Pages: 2568
 
 | Path | First heading |
 |---|---|
@@ -725,6 +725,7 @@ Pages: 2567
 | [docs/guides/dashboard/logs/admin-logs.md](https://clerk.com/docs/guides/dashboard/logs/admin-logs.md) | Admin Logs |
 | [docs/guides/dashboard/logs/application-logs.md](https://clerk.com/docs/guides/dashboard/logs/application-logs.md) | Application Logs |
 | [docs/guides/dashboard/logs/overview.md](https://clerk.com/docs/guides/dashboard/logs/overview.md) | Dashboard Logs |
+| [docs/guides/dashboard/logs/sms-delivery-events.md](https://clerk.com/docs/guides/dashboard/logs/sms-delivery-events.md) | SMS delivery events |
 | [docs/guides/dashboard/manage-team-access.md](https://clerk.com/docs/guides/dashboard/manage-team-access.md) | Manage team access |
 | [docs/guides/dashboard/organization-profile.md](https://clerk.com/docs/guides/dashboard/organization-profile.md) | Organization profile |
 | [docs/guides/dashboard/overview.md](https://clerk.com/docs/guides/dashboard/overview.md) | Manage your workspace |
