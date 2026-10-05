@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2568
+Pages: 2722
 
 | Path | First heading |
 |---|---|
@@ -192,6 +192,7 @@ Pages: 2568
 | [docs/astro/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/astro/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/astro/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/astro/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/astro/reference/types/signed-in-session-resource.md](https://clerk.com/docs/astro/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/astro/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/astro/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/astro/reference/types/sso.md](https://clerk.com/docs/astro/reference/types/sso.md) | SSO Types |
 | [docs/astro/reference/types/totp-resource.md](https://clerk.com/docs/astro/reference/types/totp-resource.md) | TOTPResource |
 | [docs/astro/reference/types/user-organization-invitation.md](https://clerk.com/docs/astro/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -361,6 +362,7 @@ Pages: 2568
 | [docs/chrome-extension/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/chrome-extension/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/chrome-extension/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/chrome-extension/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/chrome-extension/reference/types/signed-in-session-resource.md](https://clerk.com/docs/chrome-extension/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/chrome-extension/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/chrome-extension/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/chrome-extension/reference/types/sso.md](https://clerk.com/docs/chrome-extension/reference/types/sso.md) | SSO Types |
 | [docs/chrome-extension/reference/types/totp-resource.md](https://clerk.com/docs/chrome-extension/reference/types/totp-resource.md) | TOTPResource |
 | [docs/chrome-extension/reference/types/user-organization-invitation.md](https://clerk.com/docs/chrome-extension/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -368,6 +370,143 @@ Pages: 2568
 | [docs/chrome-extension/reference/types/waitlist.md](https://clerk.com/docs/chrome-extension/reference/types/waitlist.md) | Waitlist |
 | [docs/chrome-extension/reference/types/web3-wallet.md](https://clerk.com/docs/chrome-extension/reference/types/web3-wallet.md) | Web3Wallet |
 | [docs/cli.md](https://clerk.com/docs/cli.md) | Clerk CLI |
+| [docs/electron/getting-started/quickstart.md](https://clerk.com/docs/electron/getting-started/quickstart.md) | Electron Quickstart (Beta) |
+| [docs/electron/guides/configure/auth-strategies/social-connections/overview.md](https://clerk.com/docs/electron/guides/configure/auth-strategies/social-connections/overview.md) | Social connections (OAuth) |
+| [docs/electron/guides/customizing-clerk/adding-items/organization-profile.md](https://clerk.com/docs/electron/guides/customizing-clerk/adding-items/organization-profile.md) | Add custom pages and links to the <OrganizationProfile /> component |
+| [docs/electron/guides/customizing-clerk/adding-items/user-button.md](https://clerk.com/docs/electron/guides/customizing-clerk/adding-items/user-button.md) | Add custom items and links to the <UserButton /> component |
+| [docs/electron/guides/customizing-clerk/adding-items/user-profile.md](https://clerk.com/docs/electron/guides/customizing-clerk/adding-items/user-profile.md) | Add custom pages and links to the <UserProfile /> component |
+| [docs/electron/guides/customizing-clerk/appearance-prop/bring-your-own-css.md](https://clerk.com/docs/electron/guides/customizing-clerk/appearance-prop/bring-your-own-css.md) | Bring your own CSS |
+| [docs/electron/guides/customizing-clerk/appearance-prop/captcha.md](https://clerk.com/docs/electron/guides/customizing-clerk/appearance-prop/captcha.md) | captcha prop |
+| [docs/electron/guides/customizing-clerk/appearance-prop/options.md](https://clerk.com/docs/electron/guides/customizing-clerk/appearance-prop/options.md) | Options prop |
+| [docs/electron/guides/customizing-clerk/appearance-prop/overview.md](https://clerk.com/docs/electron/guides/customizing-clerk/appearance-prop/overview.md) | Appearance prop |
+| [docs/electron/guides/customizing-clerk/appearance-prop/themes.md](https://clerk.com/docs/electron/guides/customizing-clerk/appearance-prop/themes.md) | Themes |
+| [docs/electron/guides/customizing-clerk/appearance-prop/variables.md](https://clerk.com/docs/electron/guides/customizing-clerk/appearance-prop/variables.md) | Variables prop |
+| [docs/electron/guides/development/custom-flows/account-updates/user-impersonation.md](https://clerk.com/docs/electron/guides/development/custom-flows/account-updates/user-impersonation.md) | Build a custom flow for handling user impersonation |
+| [docs/electron/guides/development/custom-flows/authentication/bot-sign-up-protection.md](https://clerk.com/docs/electron/guides/development/custom-flows/authentication/bot-sign-up-protection.md) | Add bot protection to your custom sign-up flow |
+| [docs/electron/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/electron/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
+| [docs/electron/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/electron/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/electron/guides/secure/waitlist.md](https://clerk.com/docs/electron/guides/secure/waitlist.md) | Build a custom waitlist page |
+| [docs/electron/reference/components/api-keys.md](https://clerk.com/docs/electron/reference/components/api-keys.md) | <APIKeys /> component |
+| [docs/electron/reference/components/authentication/sign-in.md](https://clerk.com/docs/electron/reference/components/authentication/sign-in.md) | <SignIn /> component |
+| [docs/electron/reference/components/authentication/sign-up.md](https://clerk.com/docs/electron/reference/components/authentication/sign-up.md) | <SignUp /> component |
+| [docs/electron/reference/components/authentication/task-choose-organization.md](https://clerk.com/docs/electron/reference/components/authentication/task-choose-organization.md) | <TaskChooseOrganization /> component |
+| [docs/electron/reference/components/authentication/task-reset-password.md](https://clerk.com/docs/electron/reference/components/authentication/task-reset-password.md) | <TaskResetPassword /> component |
+| [docs/electron/reference/components/authentication/task-setup-mfa.md](https://clerk.com/docs/electron/reference/components/authentication/task-setup-mfa.md) | <TaskSetupMFA /> component |
+| [docs/electron/reference/components/authentication/waitlist.md](https://clerk.com/docs/electron/reference/components/authentication/waitlist.md) | <Waitlist /> component |
+| [docs/electron/reference/components/clerk-provider.md](https://clerk.com/docs/electron/reference/components/clerk-provider.md) | <ClerkProvider> component |
+| [docs/electron/reference/components/control/clerk-degraded.md](https://clerk.com/docs/electron/reference/components/control/clerk-degraded.md) | <ClerkDegraded> component |
+| [docs/electron/reference/components/control/clerk-failed.md](https://clerk.com/docs/electron/reference/components/control/clerk-failed.md) | <ClerkFailed> component |
+| [docs/electron/reference/components/control/clerk-loaded.md](https://clerk.com/docs/electron/reference/components/control/clerk-loaded.md) | <ClerkLoaded> component |
+| [docs/electron/reference/components/control/clerk-loading.md](https://clerk.com/docs/electron/reference/components/control/clerk-loading.md) | <ClerkLoading> component |
+| [docs/electron/reference/components/control/redirect-to-create-organization.md](https://clerk.com/docs/electron/reference/components/control/redirect-to-create-organization.md) | <RedirectToCreateOrganization /> component (Deprecated) |
+| [docs/electron/reference/components/control/redirect-to-organization-profile.md](https://clerk.com/docs/electron/reference/components/control/redirect-to-organization-profile.md) | <RedirectToOrganizationProfile /> component (Deprecated) |
+| [docs/electron/reference/components/control/redirect-to-sign-in.md](https://clerk.com/docs/electron/reference/components/control/redirect-to-sign-in.md) | <RedirectToSignIn /> component |
+| [docs/electron/reference/components/control/redirect-to-sign-up.md](https://clerk.com/docs/electron/reference/components/control/redirect-to-sign-up.md) | <RedirectToSignUp /> component |
+| [docs/electron/reference/components/control/redirect-to-tasks.md](https://clerk.com/docs/electron/reference/components/control/redirect-to-tasks.md) | <RedirectToTasks /> component |
+| [docs/electron/reference/components/control/redirect-to-user-profile.md](https://clerk.com/docs/electron/reference/components/control/redirect-to-user-profile.md) | <RedirectToUserProfile /> component (Deprecated) |
+| [docs/electron/reference/components/control/show.md](https://clerk.com/docs/electron/reference/components/control/show.md) | <Show> component |
+| [docs/electron/reference/components/organization/create-organization.md](https://clerk.com/docs/electron/reference/components/organization/create-organization.md) | <CreateOrganization /> component |
+| [docs/electron/reference/components/organization/invite-members-button.md](https://clerk.com/docs/electron/reference/components/organization/invite-members-button.md) | <InviteMembersButton /> |
+| [docs/electron/reference/components/organization/organization-list.md](https://clerk.com/docs/electron/reference/components/organization/organization-list.md) | <OrganizationList /> component |
+| [docs/electron/reference/components/organization/organization-profile.md](https://clerk.com/docs/electron/reference/components/organization/organization-profile.md) | <OrganizationProfile /> component |
+| [docs/electron/reference/components/organization/organization-switcher.md](https://clerk.com/docs/electron/reference/components/organization/organization-switcher.md) | <OrganizationSwitcher /> component |
+| [docs/electron/reference/components/overview.md](https://clerk.com/docs/electron/reference/components/overview.md) | Component Reference |
+| [docs/electron/reference/components/unstyled/sign-in-button.md](https://clerk.com/docs/electron/reference/components/unstyled/sign-in-button.md) | <SignInButton> component |
+| [docs/electron/reference/components/unstyled/sign-out-button.md](https://clerk.com/docs/electron/reference/components/unstyled/sign-out-button.md) | <SignOutButton> component |
+| [docs/electron/reference/components/unstyled/sign-up-button.md](https://clerk.com/docs/electron/reference/components/unstyled/sign-up-button.md) | <SignUpButton> component |
+| [docs/electron/reference/components/user/user-avatar.md](https://clerk.com/docs/electron/reference/components/user/user-avatar.md) | <UserAvatar /> component |
+| [docs/electron/reference/components/user/user-button.md](https://clerk.com/docs/electron/reference/components/user/user-button.md) | <UserButton /> component |
+| [docs/electron/reference/components/user/user-profile.md](https://clerk.com/docs/electron/reference/components/user/user-profile.md) | <UserProfile /> component |
+| [docs/electron/reference/components/utilities/portal-provider.md](https://clerk.com/docs/electron/reference/components/utilities/portal-provider.md) | <UNSAFE\_PortalProvider> component |
+| [docs/electron/reference/create-clerk-bridge.md](https://clerk.com/docs/electron/reference/create-clerk-bridge.md) | createClerkBridge() (Beta) |
+| [docs/electron/reference/expose-clerk-bridge.md](https://clerk.com/docs/electron/reference/expose-clerk-bridge.md) | exposeClerkBridge() (Beta) |
+| [docs/electron/reference/hooks/overview.md](https://clerk.com/docs/electron/reference/hooks/overview.md) | Hooks Reference |
+| [docs/electron/reference/hooks/use-api-keys.md](https://clerk.com/docs/electron/reference/hooks/use-api-keys.md) | useAPIKeys() |
+| [docs/electron/reference/hooks/use-auth.md](https://clerk.com/docs/electron/reference/hooks/use-auth.md) | useAuth() |
+| [docs/electron/reference/hooks/use-clerk.md](https://clerk.com/docs/electron/reference/hooks/use-clerk.md) | useClerk() |
+| [docs/electron/reference/hooks/use-organization-creation-defaults.md](https://clerk.com/docs/electron/reference/hooks/use-organization-creation-defaults.md) | useOrganizationCreationDefaults() |
+| [docs/electron/reference/hooks/use-organization-list.md](https://clerk.com/docs/electron/reference/hooks/use-organization-list.md) | useOrganizationList() |
+| [docs/electron/reference/hooks/use-organization.md](https://clerk.com/docs/electron/reference/hooks/use-organization.md) | useOrganization() |
+| [docs/electron/reference/hooks/use-reverification.md](https://clerk.com/docs/electron/reference/hooks/use-reverification.md) | useReverification() |
+| [docs/electron/reference/hooks/use-session-list.md](https://clerk.com/docs/electron/reference/hooks/use-session-list.md) | useSessionList() |
+| [docs/electron/reference/hooks/use-session.md](https://clerk.com/docs/electron/reference/hooks/use-session.md) | useSession() |
+| [docs/electron/reference/hooks/use-sign-in.md](https://clerk.com/docs/electron/reference/hooks/use-sign-in.md) | useSignIn() |
+| [docs/electron/reference/hooks/use-sign-up.md](https://clerk.com/docs/electron/reference/hooks/use-sign-up.md) | useSignUp() |
+| [docs/electron/reference/hooks/use-user.md](https://clerk.com/docs/electron/reference/hooks/use-user.md) | useUser() |
+| [docs/electron/reference/hooks/use-waitlist.md](https://clerk.com/docs/electron/reference/hooks/use-waitlist.md) | useWaitlist() |
+| [docs/electron/reference/objects/api-keys.md](https://clerk.com/docs/electron/reference/objects/api-keys.md) | APIKeys object (Beta) |
+| [docs/electron/reference/objects/clerk.md](https://clerk.com/docs/electron/reference/objects/clerk.md) | Clerk class |
+| [docs/electron/reference/objects/client.md](https://clerk.com/docs/electron/reference/objects/client.md) | Client object |
+| [docs/electron/reference/objects/organization.md](https://clerk.com/docs/electron/reference/objects/organization.md) | Organization object |
+| [docs/electron/reference/objects/overview.md](https://clerk.com/docs/electron/reference/objects/overview.md) | Key Clerk objects |
+| [docs/electron/reference/objects/session.md](https://clerk.com/docs/electron/reference/objects/session.md) | Session object |
+| [docs/electron/reference/objects/sign-in-future.md](https://clerk.com/docs/electron/reference/objects/sign-in-future.md) | SignInFuture object |
+| [docs/electron/reference/objects/sign-in.md](https://clerk.com/docs/electron/reference/objects/sign-in.md) | SignIn object (Legacy) |
+| [docs/electron/reference/objects/sign-up-future.md](https://clerk.com/docs/electron/reference/objects/sign-up-future.md) | SignUpFuture object |
+| [docs/electron/reference/objects/sign-up.md](https://clerk.com/docs/electron/reference/objects/sign-up.md) | SignUp object (Legacy) |
+| [docs/electron/reference/objects/user.md](https://clerk.com/docs/electron/reference/objects/user.md) | User object |
+| [docs/electron/reference/overview.md](https://clerk.com/docs/electron/reference/overview.md) | Clerk Electron SDK (Beta) |
+| [docs/electron/reference/passkeys.md](https://clerk.com/docs/electron/reference/passkeys.md) | Configure passkeys for Electron (Beta) |
+| [docs/electron/reference/storage.md](https://clerk.com/docs/electron/reference/storage.md) | storage() (Beta) |
+| [docs/electron/reference/types/api-key-resource.md](https://clerk.com/docs/electron/reference/types/api-key-resource.md) | APIKeyResource |
+| [docs/electron/reference/types/backup-code-resource.md](https://clerk.com/docs/electron/reference/types/backup-code-resource.md) | BackupCodeResource |
+| [docs/electron/reference/types/clerk-api-error.md](https://clerk.com/docs/electron/reference/types/clerk-api-error.md) | ClerkAPIError |
+| [docs/electron/reference/types/clerk-api-response-error.md](https://clerk.com/docs/electron/reference/types/clerk-api-response-error.md) | ClerkAPIResponseError |
+| [docs/electron/reference/types/clerk-error.md](https://clerk.com/docs/electron/reference/types/clerk-error.md) | ClerkError |
+| [docs/electron/reference/types/clerk-paginated-response.md](https://clerk.com/docs/electron/reference/types/clerk-paginated-response.md) | ClerkPaginatedResponse |
+| [docs/electron/reference/types/custom-menu-item.md](https://clerk.com/docs/electron/reference/types/custom-menu-item.md) | CustomMenuItem |
+| [docs/electron/reference/types/custom-page.md](https://clerk.com/docs/electron/reference/types/custom-page.md) | CustomPage |
+| [docs/electron/reference/types/deleted-object-resource.md](https://clerk.com/docs/electron/reference/types/deleted-object-resource.md) | DeletedObjectResource |
+| [docs/electron/reference/types/email-address.md](https://clerk.com/docs/electron/reference/types/email-address.md) | EmailAddress |
+| [docs/electron/reference/types/enterprise-account-connection.md](https://clerk.com/docs/electron/reference/types/enterprise-account-connection.md) | EnterpriseAccountConnection |
+| [docs/electron/reference/types/enterprise-account.md](https://clerk.com/docs/electron/reference/types/enterprise-account.md) | EnterpriseAccount |
+| [docs/electron/reference/types/errors.md](https://clerk.com/docs/electron/reference/types/errors.md) | Errors |
+| [docs/electron/reference/types/external-account.md](https://clerk.com/docs/electron/reference/types/external-account.md) | ExternalAccount |
+| [docs/electron/reference/types/feature-resource.md](https://clerk.com/docs/electron/reference/types/feature-resource.md) | FeatureResource |
+| [docs/electron/reference/types/handle-o-auth-callback-params.md](https://clerk.com/docs/electron/reference/types/handle-o-auth-callback-params.md) | HandleOAuthCallbackParams |
+| [docs/electron/reference/types/identification-link-resource.md](https://clerk.com/docs/electron/reference/types/identification-link-resource.md) | IdentificationLinkResource |
+| [docs/electron/reference/types/image-resource.md](https://clerk.com/docs/electron/reference/types/image-resource.md) | ImageResource |
+| [docs/electron/reference/types/last-authentication-strategy.md](https://clerk.com/docs/electron/reference/types/last-authentication-strategy.md) | LastAuthenticationStrategy |
+| [docs/electron/reference/types/metadata.md](https://clerk.com/docs/electron/reference/types/metadata.md) | Metadata |
+| [docs/electron/reference/types/oauth-application.md](https://clerk.com/docs/electron/reference/types/oauth-application.md) | OAuthApplication |
+| [docs/electron/reference/types/oauth-consent-info.md](https://clerk.com/docs/electron/reference/types/oauth-consent-info.md) | OAuthConsentInfo |
+| [docs/electron/reference/types/oauth-consent-scope.md](https://clerk.com/docs/electron/reference/types/oauth-consent-scope.md) | OAuthConsentScope |
+| [docs/electron/reference/types/organization-creation-defaults.md](https://clerk.com/docs/electron/reference/types/organization-creation-defaults.md) | OrganizationCreationDefaults |
+| [docs/electron/reference/types/organization-custom-permission-key.md](https://clerk.com/docs/electron/reference/types/organization-custom-permission-key.md) | OrganizationCustomPermissionKey |
+| [docs/electron/reference/types/organization-custom-role-key.md](https://clerk.com/docs/electron/reference/types/organization-custom-role-key.md) | OrganizationCustomRoleKey |
+| [docs/electron/reference/types/organization-domain-resource.md](https://clerk.com/docs/electron/reference/types/organization-domain-resource.md) | OrganizationDomainResource |
+| [docs/electron/reference/types/organization-domains-bulk-ownership-verification-resource.md](https://clerk.com/docs/electron/reference/types/organization-domains-bulk-ownership-verification-resource.md) | OrganizationDomainsBulkOwnershipVerificationResource |
+| [docs/electron/reference/types/organization-invitation.md](https://clerk.com/docs/electron/reference/types/organization-invitation.md) | OrganizationInvitation |
+| [docs/electron/reference/types/organization-membership-request.md](https://clerk.com/docs/electron/reference/types/organization-membership-request.md) | OrganizationMembershipRequest |
+| [docs/electron/reference/types/organization-membership.md](https://clerk.com/docs/electron/reference/types/organization-membership.md) | OrganizationMembership |
+| [docs/electron/reference/types/organization-suggestion.md](https://clerk.com/docs/electron/reference/types/organization-suggestion.md) | OrganizationSuggestion |
+| [docs/electron/reference/types/overview.md](https://clerk.com/docs/electron/reference/types/overview.md) | Clerk types |
+| [docs/electron/reference/types/passkey-resource.md](https://clerk.com/docs/electron/reference/types/passkey-resource.md) | PasskeyResource |
+| [docs/electron/reference/types/permission-resource.md](https://clerk.com/docs/electron/reference/types/permission-resource.md) | PermissionResource |
+| [docs/electron/reference/types/phone-number.md](https://clerk.com/docs/electron/reference/types/phone-number.md) | PhoneNumber |
+| [docs/electron/reference/types/protect-check-resource.md](https://clerk.com/docs/electron/reference/types/protect-check-resource.md) | ProtectCheckResource |
+| [docs/electron/reference/types/public-user-data.md](https://clerk.com/docs/electron/reference/types/public-user-data.md) | PublicUserData |
+| [docs/electron/reference/types/redirect-options.md](https://clerk.com/docs/electron/reference/types/redirect-options.md) | RedirectOptions |
+| [docs/electron/reference/types/role-resource.md](https://clerk.com/docs/electron/reference/types/role-resource.md) | RoleResource |
+| [docs/electron/reference/types/session-status.md](https://clerk.com/docs/electron/reference/types/session-status.md) | SessionStatus |
+| [docs/electron/reference/types/session-task.md](https://clerk.com/docs/electron/reference/types/session-task.md) | SessionTask |
+| [docs/electron/reference/types/session-verification.md](https://clerk.com/docs/electron/reference/types/session-verification.md) | SessionVerification |
+| [docs/electron/reference/types/session-with-activities.md](https://clerk.com/docs/electron/reference/types/session-with-activities.md) | SessionWithActivities |
+| [docs/electron/reference/types/set-active-params.md](https://clerk.com/docs/electron/reference/types/set-active-params.md) | SetActiveParams |
+| [docs/electron/reference/types/sign-in-first-factor.md](https://clerk.com/docs/electron/reference/types/sign-in-first-factor.md) | SignInFirstFactor |
+| [docs/electron/reference/types/sign-in-initial-values.md](https://clerk.com/docs/electron/reference/types/sign-in-initial-values.md) | SignInInitialValues |
+| [docs/electron/reference/types/sign-in-redirect-options.md](https://clerk.com/docs/electron/reference/types/sign-in-redirect-options.md) | SignInRedirectOptions |
+| [docs/electron/reference/types/sign-in-second-factor.md](https://clerk.com/docs/electron/reference/types/sign-in-second-factor.md) | SignInSecondFactor |
+| [docs/electron/reference/types/sign-up-initial-values.md](https://clerk.com/docs/electron/reference/types/sign-up-initial-values.md) | SignUpInitialValues |
+| [docs/electron/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/electron/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
+| [docs/electron/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/electron/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
+| [docs/electron/reference/types/signed-in-session-resource.md](https://clerk.com/docs/electron/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/electron/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/electron/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
+| [docs/electron/reference/types/sso.md](https://clerk.com/docs/electron/reference/types/sso.md) | SSO Types |
+| [docs/electron/reference/types/totp-resource.md](https://clerk.com/docs/electron/reference/types/totp-resource.md) | TOTPResource |
+| [docs/electron/reference/types/user-organization-invitation.md](https://clerk.com/docs/electron/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
+| [docs/electron/reference/types/verification-resource.md](https://clerk.com/docs/electron/reference/types/verification-resource.md) | VerificationResource |
+| [docs/electron/reference/types/waitlist.md](https://clerk.com/docs/electron/reference/types/waitlist.md) | Waitlist |
 | [docs/expo/getting-started/quickstart.md](https://clerk.com/docs/expo/getting-started/quickstart.md) | Expo Quickstart |
 | [docs/expo/guides/account-portal/hosted-auth.md](https://clerk.com/docs/expo/guides/account-portal/hosted-auth.md) | Use hosted authentication in native apps |
 | [docs/expo/guides/billing/for-b2b.md](https://clerk.com/docs/expo/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
@@ -545,6 +684,7 @@ Pages: 2568
 | [docs/expo/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/expo/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/expo/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/expo/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/expo/reference/types/signed-in-session-resource.md](https://clerk.com/docs/expo/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/expo/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/expo/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/expo/reference/types/sso.md](https://clerk.com/docs/expo/reference/types/sso.md) | SSO Types |
 | [docs/expo/reference/types/totp-resource.md](https://clerk.com/docs/expo/reference/types/totp-resource.md) | TOTPResource |
 | [docs/expo/reference/types/user-organization-invitation.md](https://clerk.com/docs/expo/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -661,7 +801,9 @@ Pages: 2568
 | [docs/guides/configure/auth-strategies/enterprise-connections/saml/custom-provider.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/saml/custom-provider.md) | Add a custom Identity Provider (IdP) as a SAML connection |
 | [docs/guides/configure/auth-strategies/enterprise-connections/saml/google.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/saml/google.md) | Add Google Workspace as a SAML connection |
 | [docs/guides/configure/auth-strategies/enterprise-connections/saml/okta.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/saml/okta.md) | Add Okta Workforce as a SAML connection |
+| [docs/guides/configure/auth-strategies/enterprise-connections/self-serve-directory-sync.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/self-serve-directory-sync.md) | Self-serve Directory Sync |
 | [docs/guides/configure/auth-strategies/enterprise-connections/self-serve-sso.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/self-serve-sso.md) | Self-serve SSO |
+| [docs/guides/configure/auth-strategies/enterprise-connections/sso-bypass.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/sso-bypass.md) | SSO bypass |
 | [docs/guides/configure/auth-strategies/oauth/client-id-metadata-documents.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/client-id-metadata-documents.md) | Manage OAuth clients with Client ID Metadata Documents (Beta) |
 | [docs/guides/configure/auth-strategies/oauth/device-authorization-grant.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/device-authorization-grant.md) | Use OAuth Device Authorization Grant (Beta) |
 | [docs/guides/configure/auth-strategies/oauth/how-clerk-implements-oauth.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/how-clerk-implements-oauth.md) | How Clerk implements OAuth |
@@ -669,8 +811,10 @@ Pages: 2568
 | [docs/guides/configure/auth-strategies/oauth/scoped-access.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/scoped-access.md) | Use OAuth for scoped access |
 | [docs/guides/configure/auth-strategies/oauth/single-sign-on.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/single-sign-on.md) | Use OAuth for Single Sign-On (SSO) |
 | [docs/guides/configure/auth-strategies/oauth/verify-oauth-tokens.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth/verify-oauth-tokens.md) | Verify OAuth tokens with Clerk |
+| [docs/guides/configure/auth-strategies/oauth-deep-links.md](https://clerk.com/docs/guides/configure/auth-strategies/oauth-deep-links.md) | Configure OAuth and SSO deep links for Electron (Beta) |
 | [docs/guides/configure/auth-strategies/sign-up-sign-in-options.md](https://clerk.com/docs/guides/configure/auth-strategies/sign-up-sign-in-options.md) | Sign-up and sign-in options |
 | [docs/guides/configure/auth-strategies/social-connections/account-linking.md](https://clerk.com/docs/guides/configure/auth-strategies/social-connections/account-linking.md) | Account linking for OAuth |
+| [docs/guides/configure/auth-strategies/social-connections/agentid.md](https://clerk.com/docs/guides/configure/auth-strategies/social-connections/agentid.md) | Add AgentID as a social connection |
 | [docs/guides/configure/auth-strategies/social-connections/apple.md](https://clerk.com/docs/guides/configure/auth-strategies/social-connections/apple.md) | Add Apple as a social connection |
 | [docs/guides/configure/auth-strategies/social-connections/atlassian.md](https://clerk.com/docs/guides/configure/auth-strategies/social-connections/atlassian.md) | Add Atlassian as a social connection |
 | [docs/guides/configure/auth-strategies/social-connections/bitbucket.md](https://clerk.com/docs/guides/configure/auth-strategies/social-connections/bitbucket.md) | Add Bitbucket as a social connection |
@@ -782,6 +926,7 @@ Pages: 2568
 | [docs/guides/development/deployment/behind-a-proxy.md](https://clerk.com/docs/guides/development/deployment/behind-a-proxy.md) | Deploy a Clerk app behind a proxy |
 | [docs/guides/development/deployment/changing-domains.md](https://clerk.com/docs/guides/development/deployment/changing-domains.md) | Change domain |
 | [docs/guides/development/deployment/chrome-extension.md](https://clerk.com/docs/guides/development/deployment/chrome-extension.md) | Deploy a Chrome Extension to production |
+| [docs/guides/development/deployment/electron.md](https://clerk.com/docs/guides/development/deployment/electron.md) | Deploy an Electron app to production (Beta) |
 | [docs/guides/development/deployment/expo.md](https://clerk.com/docs/guides/development/deployment/expo.md) | Deploy an Expo app to production |
 | [docs/guides/development/deployment/production.md](https://clerk.com/docs/guides/development/deployment/production.md) | Deploy your Clerk app to production |
 | [docs/guides/development/deployment/staging-alternatives.md](https://clerk.com/docs/guides/development/deployment/staging-alternatives.md) | Staging alternatives |
@@ -790,6 +935,7 @@ Pages: 2568
 | [docs/guides/development/errors/backend-api.md](https://clerk.com/docs/guides/development/errors/backend-api.md) | Backend API errors |
 | [docs/guides/development/errors/frontend-api.md](https://clerk.com/docs/guides/development/errors/frontend-api.md) | Frontend API errors |
 | [docs/guides/development/errors/overview.md](https://clerk.com/docs/guides/development/errors/overview.md) | Errors overview |
+| [docs/guides/development/errors/platform-api.md](https://clerk.com/docs/guides/development/errors/platform-api.md) | Platform API errors |
 | [docs/guides/development/geo-blocking.md](https://clerk.com/docs/guides/development/geo-blocking.md) | Basic geo blocking |
 | [docs/guides/development/hybrid-rendering.md](https://clerk.com/docs/guides/development/hybrid-rendering.md) | Astro hybrid rendering |
 | [docs/guides/development/image-optimization.md](https://clerk.com/docs/guides/development/image-optimization.md) | Use image optimization to improve app performance |
@@ -1105,6 +1251,7 @@ Pages: 2568
 | [docs/js-frontend/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/js-frontend/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/js-frontend/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/js-frontend/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/js-frontend/reference/types/signed-in-session-resource.md](https://clerk.com/docs/js-frontend/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/js-frontend/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/js-frontend/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/js-frontend/reference/types/sso.md](https://clerk.com/docs/js-frontend/reference/types/sso.md) | SSO Types |
 | [docs/js-frontend/reference/types/totp-resource.md](https://clerk.com/docs/js-frontend/reference/types/totp-resource.md) | TOTPResource |
 | [docs/js-frontend/reference/types/user-organization-invitation.md](https://clerk.com/docs/js-frontend/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -1326,6 +1473,7 @@ Pages: 2568
 | [docs/nextjs/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/nextjs/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/nextjs/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/nextjs/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/nextjs/reference/types/signed-in-session-resource.md](https://clerk.com/docs/nextjs/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/nextjs/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/nextjs/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/nextjs/reference/types/sso.md](https://clerk.com/docs/nextjs/reference/types/sso.md) | SSO Types |
 | [docs/nextjs/reference/types/totp-resource.md](https://clerk.com/docs/nextjs/reference/types/totp-resource.md) | TOTPResource |
 | [docs/nextjs/reference/types/user-organization-invitation.md](https://clerk.com/docs/nextjs/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -1502,6 +1650,7 @@ Pages: 2568
 | [docs/nuxt/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/nuxt/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/nuxt/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/nuxt/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/nuxt/reference/types/signed-in-session-resource.md](https://clerk.com/docs/nuxt/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/nuxt/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/nuxt/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/nuxt/reference/types/sso.md](https://clerk.com/docs/nuxt/reference/types/sso.md) | SSO Types |
 | [docs/nuxt/reference/types/totp-resource.md](https://clerk.com/docs/nuxt/reference/types/totp-resource.md) | TOTPResource |
 | [docs/nuxt/reference/types/user-organization-invitation.md](https://clerk.com/docs/nuxt/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -1708,6 +1857,7 @@ Pages: 2568
 | [docs/react/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/react/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/react/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/react/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/react/reference/types/signed-in-session-resource.md](https://clerk.com/docs/react/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/react/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/react/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/react/reference/types/sso.md](https://clerk.com/docs/react/reference/types/sso.md) | SSO Types |
 | [docs/react/reference/types/totp-resource.md](https://clerk.com/docs/react/reference/types/totp-resource.md) | TOTPResource |
 | [docs/react/reference/types/user-organization-invitation.md](https://clerk.com/docs/react/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -1903,6 +2053,7 @@ Pages: 2568
 | [docs/react-router/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/react-router/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/react-router/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/react-router/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/react-router/reference/types/signed-in-session-resource.md](https://clerk.com/docs/react-router/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/react-router/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/react-router/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/react-router/reference/types/sso.md](https://clerk.com/docs/react-router/reference/types/sso.md) | SSO Types |
 | [docs/react-router/reference/types/totp-resource.md](https://clerk.com/docs/react-router/reference/types/totp-resource.md) | TOTPResource |
 | [docs/react-router/reference/types/user-organization-invitation.md](https://clerk.com/docs/react-router/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
@@ -2394,12 +2545,14 @@ Pages: 2568
 | [docs/tanstack-react-start/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/tanstack-react-start/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/tanstack-react-start/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/tanstack-react-start/reference/types/signed-in-session-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/tanstack-react-start/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/tanstack-react-start/reference/types/sso.md](https://clerk.com/docs/tanstack-react-start/reference/types/sso.md) | SSO Types |
 | [docs/tanstack-react-start/reference/types/totp-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/totp-resource.md) | TOTPResource |
 | [docs/tanstack-react-start/reference/types/user-organization-invitation.md](https://clerk.com/docs/tanstack-react-start/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |
 | [docs/tanstack-react-start/reference/types/verification-resource.md](https://clerk.com/docs/tanstack-react-start/reference/types/verification-resource.md) | VerificationResource |
 | [docs/tanstack-react-start/reference/types/waitlist.md](https://clerk.com/docs/tanstack-react-start/reference/types/waitlist.md) | Waitlist |
 | [docs/tanstack-react-start/reference/types/web3-wallet.md](https://clerk.com/docs/tanstack-react-start/reference/types/web3-wallet.md) | Web3Wallet |
+| [docs/templates.md](https://clerk.com/docs/templates.md) | Clerk templates and examples |
 | [docs/vue/getting-started/quickstart.md](https://clerk.com/docs/vue/getting-started/quickstart.md) | Vue Quickstart |
 | [docs/vue/guides/billing/for-b2b.md](https://clerk.com/docs/vue/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/vue/guides/billing/for-b2c.md](https://clerk.com/docs/vue/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
@@ -2564,6 +2717,7 @@ Pages: 2568
 | [docs/vue/reference/types/sign-up-redirect-options.md](https://clerk.com/docs/vue/reference/types/sign-up-redirect-options.md) | SignUpRedirectOptions |
 | [docs/vue/reference/types/sign-up-verification-resource.md](https://clerk.com/docs/vue/reference/types/sign-up-verification-resource.md) | SignUpVerificationResource |
 | [docs/vue/reference/types/signed-in-session-resource.md](https://clerk.com/docs/vue/reference/types/signed-in-session-resource.md) | SignedInSessionResource |
+| [docs/vue/reference/types/sso-bypass-allowlist-resource.md](https://clerk.com/docs/vue/reference/types/sso-bypass-allowlist-resource.md) | SSOBypassAllowlistResource |
 | [docs/vue/reference/types/sso.md](https://clerk.com/docs/vue/reference/types/sso.md) | SSO Types |
 | [docs/vue/reference/types/totp-resource.md](https://clerk.com/docs/vue/reference/types/totp-resource.md) | TOTPResource |
 | [docs/vue/reference/types/user-organization-invitation.md](https://clerk.com/docs/vue/reference/types/user-organization-invitation.md) | UserOrganizationInvitation |

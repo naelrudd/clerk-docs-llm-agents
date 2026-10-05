@@ -1,0 +1,71 @@
+# Build a custom waitlist form
+
+> This guide is for users who want to build a custom flow. To use a _prebuilt_ UI, use the [Account Portal pages](https://clerk.com/docs/guides/account-portal/overview.md?sdk=electron) or [prebuilt components](https://clerk.com/docs/electron/reference/components/overview.md).
+
+Clerk's [<Waitlist />](https://clerk.com/docs/electron/reference/components/authentication/waitlist.md) component provides an out-of-the-box solution for allowing users to join your waitlist for early access to your app. However, if you're building a custom user interface, you can use the [useWaitlist()](https://clerk.com/docs/electron/reference/hooks/use-waitlist.md) hook to build a custom waitlist form.
+
+This guide demonstrates how to use the Clerk API to build a custom user interface for joining your app's waitlist.
+
+## Before you start
+
+Before using the `useWaitlist()` hook, you must enable **Waitlist** mode in the Clerk Dashboard.
+
+> [**Email** must be enabled in the Clerk Dashboard](https://clerk.com/docs/guides/configure/auth-strategies/sign-up-sign-in-options.md?sdk=electron#email) to allow waitlist invitation emails to be sent to users after they are approved. Support for sending waitlist invitations when **Email** is disabled is actively being worked on.
+
+To enable **Waitlist** mode:
+
+1. In the Clerk Dashboard, navigate to the [**Access mode**](https://dashboard.clerk.com/~/user-authentication/access-mode) page.
+2. Select **Waitlist** and select **Save**.
+
+## Build the custom flow
+
+The following example demonstrates how to use the `useWaitlist()` hook to create a custom waitlist form. Users can submit their email address to join the waitlist, and the component displays appropriate feedback based on the submission state.
+
+filename: src/App.tsx
+```tsx
+import { useWaitlist } from '@clerk/electron/react'
+
+export default function WaitlistPage() {
+  const { waitlist, errors, fetchStatus } = useWaitlist()
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const emailAddress = formData.get('emailAddress') as string
+
+    const { error } = await waitlist.join({ emailAddress })
+    if (error) {
+      console.error('Failed to join waitlist:', error)
+    }
+  }
+
+  if (waitlist.id) {
+    return (
+      <div>
+        <h1>Successfully joined the waitlist!</h1>
+        <p>We'll notify you when you're approved.</p>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <h1>Join the Waitlist</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email address</label>
+        <input id="email" name="emailAddress" type="email" required />
+        {errors.fields.emailAddress && <p>{errors.fields.emailAddress.longMessage}</p>}
+        <button type="submit" disabled={fetchStatus === 'fetching'}>
+          {fetchStatus === 'fetching' ? 'Submitting...' : 'Join Waitlist'}
+        </button>
+      </form>
+    </div>
+  )
+}
+```
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
