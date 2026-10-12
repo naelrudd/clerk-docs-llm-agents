@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2722
+Pages: 2746
 
 | Path | First heading |
 |---|---|
@@ -13,7 +13,9 @@ Pages: 2722
 | [docs/android/guides/development/custom-flows/account-updates/user-impersonation.md](https://clerk.com/docs/android/guides/development/custom-flows/account-updates/user-impersonation.md) | Build a custom flow for handling user impersonation |
 | [docs/android/guides/development/custom-flows/authentication/biometric-sign-in.md](https://clerk.com/docs/android/guides/development/custom-flows/authentication/biometric-sign-in.md) | Build a custom authentication flow using biometric sign-in |
 | [docs/android/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/android/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/android/guides/secure/authorization-checks.md](https://clerk.com/docs/android/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/android/reference/native-mobile/auth.md](https://clerk.com/docs/android/reference/native-mobile/auth.md) | Authentication flows |
+| [docs/android/reference/native-mobile/billing.md](https://clerk.com/docs/android/reference/native-mobile/billing.md) | Billing |
 | [docs/android/reference/native-mobile/clerk.md](https://clerk.com/docs/android/reference/native-mobile/clerk.md) | Clerk |
 | [docs/android/reference/native-mobile/configuration.md](https://clerk.com/docs/android/reference/native-mobile/configuration.md) | Configure the SDK |
 | [docs/android/reference/native-mobile/installation.md](https://clerk.com/docs/android/reference/native-mobile/installation.md) | Install the SDK |
@@ -57,6 +59,7 @@ Pages: 2722
 | [docs/astro/guides/development/webhooks/billing.md](https://clerk.com/docs/astro/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
 | [docs/astro/guides/organizations/control-access/check-access.md](https://clerk.com/docs/astro/guides/organizations/control-access/check-access.md) | Check Roles and Permissions with Authorization Checks |
 | [docs/astro/guides/organizations/getting-started.md](https://clerk.com/docs/astro/guides/organizations/getting-started.md) | Get started with Organizations |
+| [docs/astro/guides/secure/authorization-checks.md](https://clerk.com/docs/astro/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/astro/guides/users/reading.md](https://clerk.com/docs/astro/guides/users/reading.md) | Read user data |
 | [docs/astro/reference/clerk-middleware.md](https://clerk.com/docs/astro/reference/clerk-middleware.md) | clerkMiddleware() | Astro |
 | [docs/astro/reference/client-side-helpers/auth-store.md](https://clerk.com/docs/astro/reference/client-side-helpers/auth-store.md) | $authStore |
@@ -220,6 +223,7 @@ Pages: 2722
 | [docs/chrome-extension/guides/development/custom-flows/authentication/legacy/embedded-email-links.md](https://clerk.com/docs/chrome-extension/guides/development/custom-flows/authentication/legacy/embedded-email-links.md) | Embeddable email links with sign-in tokens (Legacy) |
 | [docs/chrome-extension/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/chrome-extension/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/chrome-extension/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/chrome-extension/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/chrome-extension/guides/secure/authorization-checks.md](https://clerk.com/docs/chrome-extension/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/chrome-extension/reference/components/api-keys.md](https://clerk.com/docs/chrome-extension/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/chrome-extension/reference/components/authentication/sign-in.md](https://clerk.com/docs/chrome-extension/reference/components/authentication/sign-in.md) | <SignIn /> component |
 | [docs/chrome-extension/reference/components/authentication/sign-up.md](https://clerk.com/docs/chrome-extension/reference/components/authentication/sign-up.md) | <SignUp /> component |
@@ -385,6 +389,7 @@ Pages: 2722
 | [docs/electron/guides/development/custom-flows/authentication/bot-sign-up-protection.md](https://clerk.com/docs/electron/guides/development/custom-flows/authentication/bot-sign-up-protection.md) | Add bot protection to your custom sign-up flow |
 | [docs/electron/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/electron/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/electron/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/electron/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/electron/guides/secure/authorization-checks.md](https://clerk.com/docs/electron/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/electron/guides/secure/waitlist.md](https://clerk.com/docs/electron/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/electron/reference/components/api-keys.md](https://clerk.com/docs/electron/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/electron/reference/components/authentication/sign-in.md](https://clerk.com/docs/electron/reference/components/authentication/sign-in.md) | <SignIn /> component |
@@ -530,6 +535,7 @@ Pages: 2722
 | [docs/expo/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/expo/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/expo/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/expo/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/expo/guides/development/webhooks/billing.md](https://clerk.com/docs/expo/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/expo/guides/secure/authorization-checks.md](https://clerk.com/docs/expo/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/expo/guides/users/reading.md](https://clerk.com/docs/expo/guides/users/reading.md) | Read user data |
 | [docs/expo/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/expo/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/expo/reference/components/authentication/sign-in.md](https://clerk.com/docs/expo/reference/components/authentication/sign-in.md) | <SignIn /> component |
@@ -713,6 +719,7 @@ Pages: 2722
 | [docs/expressjs/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/expressjs/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/expressjs/guides/development/verifying-api-keys.md](https://clerk.com/docs/expressjs/guides/development/verifying-api-keys.md) | Verify API keys in your Express application with Clerk |
 | [docs/expressjs/guides/development/webhooks/billing.md](https://clerk.com/docs/expressjs/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/expressjs/guides/secure/authorization-checks.md](https://clerk.com/docs/expressjs/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/expressjs/reference/clerk-middleware.md](https://clerk.com/docs/expressjs/reference/clerk-middleware.md) | clerkMiddleware() |
 | [docs/expressjs/reference/components/overview.md](https://clerk.com/docs/expressjs/reference/components/overview.md) | Component Reference |
 | [docs/expressjs/reference/get-auth.md](https://clerk.com/docs/expressjs/reference/get-auth.md) | getAuth() |
@@ -739,6 +746,7 @@ Pages: 2722
 | [docs/fastify/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/fastify/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/fastify/guides/development/verifying-api-keys.md](https://clerk.com/docs/fastify/guides/development/verifying-api-keys.md) | Verify API keys in your Fastify application with Clerk |
 | [docs/fastify/guides/development/webhooks/billing.md](https://clerk.com/docs/fastify/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/fastify/guides/secure/authorization-checks.md](https://clerk.com/docs/fastify/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/fastify/reference/clerk-plugin.md](https://clerk.com/docs/fastify/reference/clerk-plugin.md) | clerkPlugin() |
 | [docs/fastify/reference/components/overview.md](https://clerk.com/docs/fastify/reference/components/overview.md) | Component Reference |
 | [docs/fastify/reference/get-auth.md](https://clerk.com/docs/fastify/reference/get-auth.md) | getAuth() |
@@ -765,6 +773,7 @@ Pages: 2722
 | [docs/go/guides/development/custom-flows/authentication/legacy/embedded-email-links.md](https://clerk.com/docs/go/guides/development/custom-flows/authentication/legacy/embedded-email-links.md) | Embeddable email links with sign-in tokens (Legacy) |
 | [docs/go/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/go/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/go/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/go/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/go/guides/secure/authorization-checks.md](https://clerk.com/docs/go/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/go/reference/components/overview.md](https://clerk.com/docs/go/reference/components/overview.md) | Component Reference |
 | [docs/go/reference/overview.md](https://clerk.com/docs/go/reference/overview.md) | Clerk Go SDK |
 | [docs/guides/account-portal/direct-links.md](https://clerk.com/docs/guides/account-portal/direct-links.md) | Linking to Account Portal pages |
@@ -790,6 +799,7 @@ Pages: 2722
 | [docs/guides/billing/seat-based-plans.md](https://clerk.com/docs/guides/billing/seat-based-plans.md) | Seat-based Plans |
 | [docs/guides/configure/auth-strategies/enterprise-connections/account-linking.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/account-linking.md) | Account linking |
 | [docs/guides/configure/auth-strategies/enterprise-connections/authentication-flows.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/authentication-flows.md) | Enterprise SSO authentication flows |
+| [docs/guides/configure/auth-strategies/enterprise-connections/certificate-rotation.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/certificate-rotation.md) | Rotate IdP signing certificates |
 | [docs/guides/configure/auth-strategies/enterprise-connections/custom-attribute-mapping.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/custom-attribute-mapping.md) | Custom Attribute Mapping |
 | [docs/guides/configure/auth-strategies/enterprise-connections/directory-sync.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/directory-sync.md) | Directory Sync (SCIM) |
 | [docs/guides/configure/auth-strategies/enterprise-connections/easie/google.md](https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/easie/google.md) | Add Google as an EASIE connection |
@@ -868,6 +878,7 @@ Pages: 2722
 | [docs/guides/dashboard/dns-domains/subdomain-allowlist.md](https://clerk.com/docs/guides/dashboard/dns-domains/subdomain-allowlist.md) | Subdomain allowlist |
 | [docs/guides/dashboard/logs/admin-logs.md](https://clerk.com/docs/guides/dashboard/logs/admin-logs.md) | Admin Logs |
 | [docs/guides/dashboard/logs/application-logs.md](https://clerk.com/docs/guides/dashboard/logs/application-logs.md) | Application Logs |
+| [docs/guides/dashboard/logs/email-logs.md](https://clerk.com/docs/guides/dashboard/logs/email-logs.md) | Email Logs |
 | [docs/guides/dashboard/logs/overview.md](https://clerk.com/docs/guides/dashboard/logs/overview.md) | Dashboard Logs |
 | [docs/guides/dashboard/logs/sms-delivery-events.md](https://clerk.com/docs/guides/dashboard/logs/sms-delivery-events.md) | SMS delivery events |
 | [docs/guides/dashboard/manage-team-access.md](https://clerk.com/docs/guides/dashboard/manage-team-access.md) | Manage team access |
@@ -1061,6 +1072,7 @@ Pages: 2722
 | [docs/guides/secure/client-trust.md](https://clerk.com/docs/guides/secure/client-trust.md) | Client Trust |
 | [docs/guides/secure/device-trust.md](https://clerk.com/docs/guides/secure/device-trust.md) | Device Trust |
 | [docs/guides/secure/features.md](https://clerk.com/docs/guides/secure/features.md) | Features |
+| [docs/guides/secure/legacy-bot-protection.md](https://clerk.com/docs/guides/secure/legacy-bot-protection.md) | Bot sign-up protection (Legacy) |
 | [docs/guides/secure/legal-compliance.md](https://clerk.com/docs/guides/secure/legal-compliance.md) | Legal compliance |
 | [docs/guides/secure/mfa-recovery.md](https://clerk.com/docs/guides/secure/mfa-recovery.md) | MFA account recovery |
 | [docs/guides/secure/overview.md](https://clerk.com/docs/guides/secure/overview.md) | Securing your app |
@@ -1089,7 +1101,9 @@ Pages: 2722
 | [docs/ios/guides/customizing-clerk/clerk-theme.md](https://clerk.com/docs/ios/guides/customizing-clerk/clerk-theme.md) | ClerkTheme |
 | [docs/ios/guides/development/custom-flows/authentication/biometric-sign-in.md](https://clerk.com/docs/ios/guides/development/custom-flows/authentication/biometric-sign-in.md) | Build a custom authentication flow using biometric sign-in |
 | [docs/ios/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/ios/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/ios/guides/secure/authorization-checks.md](https://clerk.com/docs/ios/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/ios/reference/native-mobile/auth.md](https://clerk.com/docs/ios/reference/native-mobile/auth.md) | Authentication flows |
+| [docs/ios/reference/native-mobile/billing.md](https://clerk.com/docs/ios/reference/native-mobile/billing.md) | Billing |
 | [docs/ios/reference/native-mobile/clerk.md](https://clerk.com/docs/ios/reference/native-mobile/clerk.md) | Clerk |
 | [docs/ios/reference/native-mobile/configuration.md](https://clerk.com/docs/ios/reference/native-mobile/configuration.md) | Configure the SDK |
 | [docs/ios/reference/native-mobile/installation.md](https://clerk.com/docs/ios/reference/native-mobile/installation.md) | Install the SDK |
@@ -1131,6 +1145,7 @@ Pages: 2722
 | [docs/js-frontend/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/js-frontend/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/js-frontend/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/js-frontend/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/js-frontend/guides/development/webhooks/billing.md](https://clerk.com/docs/js-frontend/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/js-frontend/guides/secure/authorization-checks.md](https://clerk.com/docs/js-frontend/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/js-frontend/reference/components/api-keys.md](https://clerk.com/docs/js-frontend/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/js-frontend/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/js-frontend/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
 | [docs/js-frontend/reference/components/authentication/oauth-consent.md](https://clerk.com/docs/js-frontend/reference/components/authentication/oauth-consent.md) | <OAuthConsent /> component |
@@ -1294,6 +1309,7 @@ Pages: 2722
 | [docs/nextjs/guides/development/webhooks/billing.md](https://clerk.com/docs/nextjs/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
 | [docs/nextjs/guides/organizations/control-access/check-access.md](https://clerk.com/docs/nextjs/guides/organizations/control-access/check-access.md) | Check Roles and Permissions with Authorization Checks |
 | [docs/nextjs/guides/organizations/getting-started.md](https://clerk.com/docs/nextjs/guides/organizations/getting-started.md) | Get started with Organizations |
+| [docs/nextjs/guides/secure/authorization-checks.md](https://clerk.com/docs/nextjs/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/nextjs/guides/secure/protect-content.md](https://clerk.com/docs/nextjs/guides/secure/protect-content.md) | Protect content from unauthenticated users |
 | [docs/nextjs/guides/secure/waitlist.md](https://clerk.com/docs/nextjs/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/nextjs/guides/users/reading.md](https://clerk.com/docs/nextjs/guides/users/reading.md) | Read user data |
@@ -1510,6 +1526,7 @@ Pages: 2722
 | [docs/nuxt/guides/development/webhooks/billing.md](https://clerk.com/docs/nuxt/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
 | [docs/nuxt/guides/organizations/control-access/check-access.md](https://clerk.com/docs/nuxt/guides/organizations/control-access/check-access.md) | Check Roles and Permissions with Authorization Checks |
 | [docs/nuxt/guides/organizations/getting-started.md](https://clerk.com/docs/nuxt/guides/organizations/getting-started.md) | Get started with Organizations |
+| [docs/nuxt/guides/secure/authorization-checks.md](https://clerk.com/docs/nuxt/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/nuxt/guides/secure/protect-content.md](https://clerk.com/docs/nuxt/guides/secure/protect-content.md) | Protect content from unauthenticated users |
 | [docs/nuxt/guides/secure/waitlist.md](https://clerk.com/docs/nuxt/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/nuxt/guides/users/reading.md](https://clerk.com/docs/nuxt/guides/users/reading.md) | Read user data |
@@ -1691,6 +1708,7 @@ Pages: 2722
 | [docs/react/guides/development/webhooks/billing.md](https://clerk.com/docs/react/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
 | [docs/react/guides/organizations/control-access/check-access.md](https://clerk.com/docs/react/guides/organizations/control-access/check-access.md) | Check Roles and Permissions with Authorization Checks |
 | [docs/react/guides/organizations/getting-started.md](https://clerk.com/docs/react/guides/organizations/getting-started.md) | Get started with Organizations |
+| [docs/react/guides/secure/authorization-checks.md](https://clerk.com/docs/react/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/react/guides/secure/waitlist.md](https://clerk.com/docs/react/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/react/guides/users/reading.md](https://clerk.com/docs/react/guides/users/reading.md) | Read user data |
 | [docs/react/reference/components/api-keys.md](https://clerk.com/docs/react/reference/components/api-keys.md) | <APIKeys /> component |
@@ -1895,6 +1913,7 @@ Pages: 2722
 | [docs/react-router/guides/development/webhooks/billing.md](https://clerk.com/docs/react-router/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
 | [docs/react-router/guides/organizations/control-access/check-access.md](https://clerk.com/docs/react-router/guides/organizations/control-access/check-access.md) | Check Roles and Permissions with Authorization Checks |
 | [docs/react-router/guides/organizations/getting-started.md](https://clerk.com/docs/react-router/guides/organizations/getting-started.md) | Get started with Organizations |
+| [docs/react-router/guides/secure/authorization-checks.md](https://clerk.com/docs/react-router/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/react-router/guides/secure/waitlist.md](https://clerk.com/docs/react-router/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/react-router/guides/users/reading.md](https://clerk.com/docs/react-router/guides/users/reading.md) | Read user data |
 | [docs/react-router/reference/clerk-middleware.md](https://clerk.com/docs/react-router/reference/clerk-middleware.md) | clerkMiddleware() | React Router |
@@ -2119,6 +2138,7 @@ Pages: 2722
 | [docs/reference/backend/instance/update.md](https://clerk.com/docs/reference/backend/instance/update.md) | update() |
 | [docs/reference/backend/invitations/create-invitation-bulk.md](https://clerk.com/docs/reference/backend/invitations/create-invitation-bulk.md) | createInvitationBulk() |
 | [docs/reference/backend/invitations/create-invitation.md](https://clerk.com/docs/reference/backend/invitations/create-invitation.md) | createInvitation() |
+| [docs/reference/backend/invitations/delete-invitation.md](https://clerk.com/docs/reference/backend/invitations/delete-invitation.md) | deleteInvitation() |
 | [docs/reference/backend/invitations/get-invitation-list.md](https://clerk.com/docs/reference/backend/invitations/get-invitation-list.md) | getInvitationList() |
 | [docs/reference/backend/invitations/revoke-invitation.md](https://clerk.com/docs/reference/backend/invitations/revoke-invitation.md) | revokeInvitation() |
 | [docs/reference/backend/m2m-tokens/create-token.md](https://clerk.com/docs/reference/backend/m2m-tokens/create-token.md) | createToken() |
@@ -2217,6 +2237,7 @@ Pages: 2722
 | [docs/reference/backend/types/backend-organization.md](https://clerk.com/docs/reference/backend/types/backend-organization.md) | The Backend Organization object |
 | [docs/reference/backend/types/backend-phone-number.md](https://clerk.com/docs/reference/backend/types/backend-phone-number.md) | The Backend PhoneNumber object |
 | [docs/reference/backend/types/backend-redirect-url.md](https://clerk.com/docs/reference/backend/types/backend-redirect-url.md) | The Backend RedirectUrl object |
+| [docs/reference/backend/types/backend-saml-connection-idp-certificate.md](https://clerk.com/docs/reference/backend/types/backend-saml-connection-idp-certificate.md) | The Backend SamlConnectionIdpCertificate object |
 | [docs/reference/backend/types/backend-saml-connection.md](https://clerk.com/docs/reference/backend/types/backend-saml-connection.md) | The Backend SamlConnection object |
 | [docs/reference/backend/types/backend-session-activity.md](https://clerk.com/docs/reference/backend/types/backend-session-activity.md) | The Backend SessionActivity object |
 | [docs/reference/backend/types/backend-session.md](https://clerk.com/docs/reference/backend/types/backend-session.md) | The Backend Session object |
@@ -2348,6 +2369,7 @@ Pages: 2722
 | [docs/ruby/guides/development/custom-flows/authentication/legacy/embedded-email-links.md](https://clerk.com/docs/ruby/guides/development/custom-flows/authentication/legacy/embedded-email-links.md) | Embeddable email links with sign-in tokens (Legacy) |
 | [docs/ruby/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/ruby/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/ruby/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/ruby/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/ruby/guides/secure/authorization-checks.md](https://clerk.com/docs/ruby/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/ruby/reference/components/overview.md](https://clerk.com/docs/ruby/reference/components/overview.md) | Component Reference |
 | [docs/ruby/reference/overview.md](https://clerk.com/docs/ruby/reference/overview.md) | Clerk Ruby SDK |
 | [docs/ruby/reference/rack.md](https://clerk.com/docs/ruby/reference/rack.md) | Ruby with Rack |
@@ -2385,6 +2407,7 @@ Pages: 2722
 | [docs/tanstack-react-start/guides/development/webhooks/billing.md](https://clerk.com/docs/tanstack-react-start/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
 | [docs/tanstack-react-start/guides/organizations/control-access/check-access.md](https://clerk.com/docs/tanstack-react-start/guides/organizations/control-access/check-access.md) | Check Roles and Permissions with Authorization Checks |
 | [docs/tanstack-react-start/guides/organizations/getting-started.md](https://clerk.com/docs/tanstack-react-start/guides/organizations/getting-started.md) | Get started with Organizations |
+| [docs/tanstack-react-start/guides/secure/authorization-checks.md](https://clerk.com/docs/tanstack-react-start/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/tanstack-react-start/guides/secure/waitlist.md](https://clerk.com/docs/tanstack-react-start/guides/secure/waitlist.md) | Build a custom waitlist page |
 | [docs/tanstack-react-start/guides/users/reading.md](https://clerk.com/docs/tanstack-react-start/guides/users/reading.md) | Read user data |
 | [docs/tanstack-react-start/reference/auth.md](https://clerk.com/docs/tanstack-react-start/reference/auth.md) | auth() |
@@ -2577,6 +2600,7 @@ Pages: 2722
 | [docs/vue/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/vue/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/vue/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/vue/guides/development/custom-flows/error-handling.md) | Error handling |
 | [docs/vue/guides/development/webhooks/billing.md](https://clerk.com/docs/vue/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
+| [docs/vue/guides/secure/authorization-checks.md](https://clerk.com/docs/vue/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/vue/reference/clerk-plugin.md](https://clerk.com/docs/vue/reference/clerk-plugin.md) | clerkPlugin |
 | [docs/vue/reference/components/api-keys.md](https://clerk.com/docs/vue/reference/components/api-keys.md) | <APIKeys /> component |
 | [docs/vue/reference/components/authentication/google-one-tap.md](https://clerk.com/docs/vue/reference/components/authentication/google-one-tap.md) | <GoogleOneTap /> component |
