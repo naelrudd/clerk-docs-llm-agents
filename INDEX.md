@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2746
+Pages: 2750
 
 | Path | First heading |
 |---|---|
@@ -1060,6 +1060,10 @@ Pages: 2746
 | [docs/guides/organizations/metadata.md](https://clerk.com/docs/guides/organizations/metadata.md) | Organization metadata |
 | [docs/guides/organizations/org-slugs-in-urls.md](https://clerk.com/docs/guides/organizations/org-slugs-in-urls.md) | Use Organization slugs in URLs |
 | [docs/guides/organizations/overview.md](https://clerk.com/docs/guides/organizations/overview.md) | Organizations |
+| [docs/guides/protect/device-intelligence.md](https://clerk.com/docs/guides/protect/device-intelligence.md) | Device Intelligence |
+| [docs/guides/protect/overview.md](https://clerk.com/docs/guides/protect/overview.md) | Clerk Protect |
+| [docs/guides/protect/setup.md](https://clerk.com/docs/guides/protect/setup.md) | Set up Protect |
+| [docs/guides/protect/system-protections/require-device-intelligence.md](https://clerk.com/docs/guides/protect/system-protections/require-device-intelligence.md) | Require Device Intelligence checks |
 | [docs/guides/secure/authorization-checks.md](https://clerk.com/docs/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/guides/secure/basic-rbac.md](https://clerk.com/docs/guides/secure/basic-rbac.md) | Implement basic Role Based Access Control (RBAC) with metadata |
 | [docs/guides/secure/best-practices/csp-headers.md](https://clerk.com/docs/guides/secure/best-practices/csp-headers.md) | Configure Clerk Content-Security-Policy headers |
