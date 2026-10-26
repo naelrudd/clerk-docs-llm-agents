@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2750
+Pages: 2768
 
 | Path | First heading |
 |---|---|
@@ -698,6 +698,7 @@ Pages: 2750
 | [docs/expo/reference/types/waitlist.md](https://clerk.com/docs/expo/reference/types/waitlist.md) | Waitlist |
 | [docs/expo/reference/types/web3-wallet.md](https://clerk.com/docs/expo/reference/types/web3-wallet.md) | Web3Wallet |
 | [docs/expressjs/getting-started/quickstart.md](https://clerk.com/docs/expressjs/getting-started/quickstart.md) | Express Quickstart |
+| [docs/expressjs/guides/ai/mcp/agent-feedback.md](https://clerk.com/docs/expressjs/guides/ai/mcp/agent-feedback.md) | Collect feedback from agents using your MCP server |
 | [docs/expressjs/guides/ai/mcp/build-mcp-server.md](https://clerk.com/docs/expressjs/guides/ai/mcp/build-mcp-server.md) | Build an MCP server in your application with Clerk |
 | [docs/expressjs/guides/billing/for-b2b.md](https://clerk.com/docs/expressjs/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/expressjs/guides/billing/for-b2c.md](https://clerk.com/docs/expressjs/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
@@ -1014,6 +1015,7 @@ Pages: 2750
 | [docs/guides/development/upgrading/overview.md](https://clerk.com/docs/guides/development/upgrading/overview.md) | Upgrade guides overview |
 | [docs/guides/development/upgrading/upgrade-guides/2025-11-10.md](https://clerk.com/docs/guides/development/upgrading/upgrade-guides/2025-11-10.md) | Upgrade to API version 2025-11-10 |
 | [docs/guides/development/upgrading/upgrade-guides/2026-05-12.md](https://clerk.com/docs/guides/development/upgrading/upgrade-guides/2026-05-12.md) | Upgrade to API version 2026-05-12 |
+| [docs/guides/development/upgrading/upgrade-guides/2026-08-20.md](https://clerk.com/docs/guides/development/upgrading/upgrade-guides/2026-08-20.md) | Upgrade to API version 2026-08-20 |
 | [docs/guides/development/upgrading/upgrade-guides/android-v1.md](https://clerk.com/docs/guides/development/upgrading/upgrade-guides/android-v1.md) | Migrate from Clerk Android SDK v0 to v1 |
 | [docs/guides/development/upgrading/upgrade-guides/core-2/backend.md](https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-2/backend.md) | Upgrading @clerk/backend to Core 2 |
 | [docs/guides/development/upgrading/upgrade-guides/core-2/chrome-extension.md](https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-2/chrome-extension.md) | Upgrading @clerk/chrome-extension to Core 2 |
@@ -1060,10 +1062,24 @@ Pages: 2750
 | [docs/guides/organizations/metadata.md](https://clerk.com/docs/guides/organizations/metadata.md) | Organization metadata |
 | [docs/guides/organizations/org-slugs-in-urls.md](https://clerk.com/docs/guides/organizations/org-slugs-in-urls.md) | Use Organization slugs in URLs |
 | [docs/guides/organizations/overview.md](https://clerk.com/docs/guides/organizations/overview.md) | Organizations |
+| [docs/guides/protect/bot-protection.md](https://clerk.com/docs/guides/protect/bot-protection.md) | Challenge suspicious sign-ups |
 | [docs/guides/protect/device-intelligence.md](https://clerk.com/docs/guides/protect/device-intelligence.md) | Device Intelligence |
+| [docs/guides/protect/device-trust.md](https://clerk.com/docs/guides/protect/device-trust.md) | Device Trust |
+| [docs/guides/protect/getting-started.md](https://clerk.com/docs/guides/protect/getting-started.md) | Get started with Protect |
 | [docs/guides/protect/overview.md](https://clerk.com/docs/guides/protect/overview.md) | Clerk Protect |
+| [docs/guides/protect/protections/block-disposable-email-addresses.md](https://clerk.com/docs/guides/protect/protections/block-disposable-email-addresses.md) | Block disposable email addresses |
+| [docs/guides/protect/protections/block-email-subaddresses.md](https://clerk.com/docs/guides/protect/protections/block-email-subaddresses.md) | Block email subaddresses |
+| [docs/guides/protect/protections/block-risky-email-domains.md](https://clerk.com/docs/guides/protect/protections/block-risky-email-domains.md) | Block risky email domains |
+| [docs/guides/protect/protections/block-sign-ups-by-country.md](https://clerk.com/docs/guides/protect/protections/block-sign-ups-by-country.md) | Block sign-ups by country |
+| [docs/guides/protect/protections/block-suspicious-network-types.md](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) | Block sign-ups from suspicious network types |
+| [docs/guides/protect/protections/challenge-residential-proxies.md](https://clerk.com/docs/guides/protect/protections/challenge-residential-proxies.md) | Challenge residential proxies |
+| [docs/guides/protect/protections/limit-sign-ups-per-ip-address.md](https://clerk.com/docs/guides/protect/protections/limit-sign-ups-per-ip-address.md) | Limit sign-ups per IP address |
+| [docs/guides/protect/protections/overview.md](https://clerk.com/docs/guides/protect/protections/overview.md) | Protections |
+| [docs/guides/protect/protections/require-device-intelligence.md](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md) | Require Device Intelligence checks |
 | [docs/guides/protect/setup.md](https://clerk.com/docs/guides/protect/setup.md) | Set up Protect |
 | [docs/guides/protect/system-protections/require-device-intelligence.md](https://clerk.com/docs/guides/protect/system-protections/require-device-intelligence.md) | Require Device Intelligence checks |
+| [docs/guides/protect/user-enumeration-protection.md](https://clerk.com/docs/guides/protect/user-enumeration-protection.md) | User enumeration protection |
+| [docs/guides/protect/user-lockout.md](https://clerk.com/docs/guides/protect/user-lockout.md) | Lock accounts after failed sign-ins |
 | [docs/guides/secure/authorization-checks.md](https://clerk.com/docs/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/guides/secure/basic-rbac.md](https://clerk.com/docs/guides/secure/basic-rbac.md) | Implement basic Role Based Access Control (RBAC) with metadata |
 | [docs/guides/secure/best-practices/csp-headers.md](https://clerk.com/docs/guides/secure/best-practices/csp-headers.md) | Configure Clerk Content-Security-Policy headers |
@@ -1084,6 +1100,7 @@ Pages: 2750
 | [docs/guides/secure/restricting-access.md](https://clerk.com/docs/guides/secure/restricting-access.md) | Restrictions |
 | [docs/guides/secure/reverification.md](https://clerk.com/docs/guides/secure/reverification.md) | Add reverification for sensitive actions |
 | [docs/guides/secure/rotate-api-keys.md](https://clerk.com/docs/guides/secure/rotate-api-keys.md) | Rotate your Clerk API keys |
+| [docs/guides/secure/secret-key-ip-allowlist.md](https://clerk.com/docs/guides/secure/secret-key-ip-allowlist.md) | Restrict a Secret Key to specific IP addresses |
 | [docs/guides/secure/session-options.md](https://clerk.com/docs/guides/secure/session-options.md) | Session options |
 | [docs/guides/secure/user-enumeration-protection.md](https://clerk.com/docs/guides/secure/user-enumeration-protection.md) | User enumeration protection |
 | [docs/guides/secure/user-lockout.md](https://clerk.com/docs/guides/secure/user-lockout.md) | Brute force attacks and locking user accounts |
@@ -1279,6 +1296,7 @@ Pages: 2750
 | [docs/js-frontend/reference/types/web3-wallet.md](https://clerk.com/docs/js-frontend/reference/types/web3-wallet.md) | Web3Wallet |
 | [docs/maintenance-mode.md](https://clerk.com/docs/maintenance-mode.md) | Maintenance Mode |
 | [docs/nextjs/getting-started/quickstart.md](https://clerk.com/docs/nextjs/getting-started/quickstart.md) | Add Clerk Authentication to Next.js |
+| [docs/nextjs/guides/ai/mcp/agent-feedback.md](https://clerk.com/docs/nextjs/guides/ai/mcp/agent-feedback.md) | Collect feedback from agents using your MCP server |
 | [docs/nextjs/guides/ai/mcp/build-mcp-server.md](https://clerk.com/docs/nextjs/guides/ai/mcp/build-mcp-server.md) | Build an MCP server in your application with Clerk |
 | [docs/nextjs/guides/ai/prompts.md](https://clerk.com/docs/nextjs/guides/ai/prompts.md) | AI prompts |
 | [docs/nextjs/guides/billing/for-b2b.md](https://clerk.com/docs/nextjs/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |

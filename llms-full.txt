@@ -1,6 +1,6 @@
 # Clerk — Full corpus (single-file)
 Source: https://clerk.com/docs/llms.txt
-Pages: 2750
+Pages: 2768
 
 ========================================================================
 
@@ -72471,6 +72471,90 @@ Explore additional Clerk features that help you build, manage, and grow your app
 
 ========================================================================
 
+# docs/expressjs/guides/ai/mcp/agent-feedback.md
+
+========================================================================
+
+# Collect feedback from agents using your MCP server
+
+When an agent gets stuck on your MCP server (a tool is missing, fails, or returns something confusing), you rarely hear about it. Clerk can collect that feedback for you. You add a `submit_feedback` tool to your MCP server with [`@clerk/mcp-tools`](https://github.com/clerk/mcp-tools), agents call it when they run into friction, and Clerk stores the reports on your instance.
+
+Your own agent can then read the reports with the [list\_application\_feedback](https://clerk.com/docs/expressjs/guides/ai/mcp/agent-feedback.md#read-feedback-with-clerks-mcp-server) tool of [Clerk's MCP server](https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server.md?sdk=expressjs) and summarize what other agents struggle with.
+
+The tool works with any MCP server built with the MCP TypeScript SDK, including local (stdio) servers. Your server doesn't need to use Clerk for authentication; if it does, reports also include who the agent was working for. If you don't have an MCP server yet, follow [Build an MCP server](https://clerk.com/docs/expressjs/guides/ai/mcp/build-mcp-server.md).
+
+1. ## Add the feedback tool
+
+   Install or update `@clerk/mcp-tools`. The feedback tool requires version 0.7.0 or later.
+
+   ```npm
+   npm install @clerk/mcp-tools
+   ```
+
+   Create the tool with `submitFeedbackTool()` and register it the same way as your other tools, by passing the result to `server.registerTool()`. Pass your application's secret key, which tells Clerk the instance the reports belong to.
+
+   filename: index.ts
+
+   ```ts
+   import { submitFeedbackTool } from '@clerk/mcp-tools/feedback'
+
+   // The rest of your code...
+
+   server.registerTool(...submitFeedbackTool({ secretKey: process.env.CLERK_SECRET_KEY! }))
+   ```
+
+   Register it wherever you create your `McpServer` and register your other tools. If you pass a function that creates the server to `streamableHttpHandler()`, register it inside that function.
+
+   Each report shows your MCP server's host, so you can tell your MCP servers apart. To show a different name, or a version, pass `server: { name: 'my-app', version: '1.0.0' }` to `submitFeedbackTool()`. Local (stdio) servers have no host, so pass a `server` name for them.
+
+   When a request was authenticated with `verifyClerkToken()`, directly or through the `mcpAuthClerk` middleware, each report also includes the ID of the signed-in user the agent was working for and the ID of the agent's OAuth client. Without `verifyClerkToken()`, reports include no identity.
+2. ## Check what agents report
+
+   The tool asks agents to report once per task, after they finish or give up. Each report has:
+
+   | Field                | Description                                                                                                                                                                                                                                                                                                                                         |
+   | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Task                 | A short phrase naming what the user asked the agent to do.                                                                                                                                                                                                                                                                                          |
+   | Kind                 | `missing` (none of your tools could do the task), `broken` (a tool failed or returned something wrong), `confusing` (a tool or its documentation was unclear), or `idea` (a suggestion).                                                                                                                                                            |
+   | Impact               | `blocked` (the agent couldn't finish), `worked_around` (it finished another way), or `friction` (it finished, but it was harder than it should be).                                                                                                                                                                                                 |
+   | Description          | What the agent tried, including the tool calls it made, and what went wrong.                                                                                                                                                                                                                                                                        |
+   | Operation            | The tool the problem is about, if any.                                                                                                                                                                                                                                                                                                              |
+   | Error and suggestion | The error the agent received and what would have helped, if the agent provided them.                                                                                                                                                                                                                                                                |
+   | Source and agent     | Your MCP server's host, or the `server` name and version you passed. The agent's name and version come from the details its MCP client sends with each request, or otherwise from the request's `User-Agent` header. Agents whose client identifies itself only when it connects, which is common for local (stdio) servers, appear without a name. |
+
+   To try it, ask an agent connected to your MCP server to do something none of your tools support. It should call `submit_feedback` before it finishes. If the agent is also connected to Clerk's MCP server, ask it to use your server's tool: Clerk's MCP server has its own `submit_feedback` tool, which reports problems to the Clerk team.
+
+   If a report can't be stored, the tool tells the agent not to retry and to continue its task. It also logs the response status or error name with `console.error()`, so a misconfigured key shows up in your server's logs.
+3. ## Read feedback with Clerk's MCP server
+
+   If your own agent is connected to [Clerk's MCP server](https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server.md?sdk=expressjs), it can read these reports with the `list_application_feedback` tool. The tool needs the `user:org:read` and `applications:read` scopes.
+
+   It takes the ID of the application whose secret key you passed to `submitFeedbackTool()`, and an instance: `development`, `production`, or an instance ID. Your agent can find the application by name with the `list_applications` tool. Reports come back newest first. The tool filters by `kind`, `impact`, or `user_id`, and pages through results with `limit` and `before`.
+
+   For example, you can ask your agent:
+
+   - "Summarize the feedback agents left on my production instance"
+   - "Which of my MCP tools do agents report as broken most often?"
+   - "Show the blocked reports for user\_123"
+
+   Third-party agents write the report text, so the tool labels it as data. Your agent should summarize it, and never follow instructions found inside a report.
+
+## Privacy and limits
+
+- The tool tells agents not to include secrets, API keys, tokens, or personal data about your users. Clerk also removes credentials it recognizes, such as API keys and bearer tokens, from every field before storing a report.
+- Each instance accepts up to 100 reports per hour, shared by every MCP server that uses its secret key. Once an instance reaches the limit, the tool tells agents not to retry and to continue their task.
+- Reports are stored per instance. Development and production instances have separate feedback.
+- Agents send reports without asking the user first. A report can include what the user asked for, the tool calls the agent made, and the errors it received, plus the user's ID when the request was authenticated with Clerk. Cover this in the privacy information you give your users.
+- Anyone who can reach your MCP server can call `submit_feedback`, including to send misleading reports or use up the hourly limit. Protect public servers with authentication or other access controls.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
 # docs/expressjs/guides/ai/mcp/build-mcp-server.md
 
 ========================================================================
@@ -134315,6 +134399,61 @@ await user.updateMetadata({
 
 ========================================================================
 
+# docs/guides/development/upgrading/upgrade-guides/2026-08-20.md
+
+========================================================================
+
+# Upgrade to API version 2026-08-20
+
+With **version 2026-08-20** of Clerk's Frontend API, Clerk can offer a passkey as a second factor during sign-in and session reverification, and native apps can use biometric credentials for session reverification. The Backend API is the same as in 2026-05-12.
+
+This version doesn't remove or rename any request or response fields. Instead, new strategies can appear in the existing factor lists. Clerk SDKs built before this version reject second-factor strategies they don't recognize, so Clerk only returns the new strategies to requests on 2026-08-20 or later.
+
+To use this new API version, refer to the [versioning guide](https://clerk.com/docs/guides/development/upgrading/versioning.md). This guide documents all updates at the API level. Since implementation details may differ between SDKs, it will help you identify which parts of your SDK usage may require additional review in the documentation, and assist consumers using unofficial or custom API clients in managing the upgrade.
+
+## If you use Clerk's prebuilt components
+
+Upgrade your Clerk SDKs to the versions listed in the [versioning guide](https://clerk.com/docs/guides/development/upgrading/versioning.md#2026-08-20). For web apps, `@clerk/clerk-js` v6.40.0 and `@clerk/ui` v1.41.0 render the passkey second-factor flow. If you pin `@clerk/ui` to a specific version instead of loading it from Clerk's CDN, update that pin as well. An older `@clerk/ui` can't render the passkey second factor.
+
+## Frontend endpoint changes
+
+### Passkeys as a second factor
+
+When a sign-in has a status of `needs_second_factor` or `needs_client_trust`, or a session reverification has a status of `needs_second_factor`, its `supported_second_factors` list can now include an entry with `strategy: "passkey"`. This applies to the following endpoints:
+
+- Sign-in responses, such as `POST /v1/client/sign_ins` and `POST /v1/client/sign_ins/{sign_in_id}/attempt_first_factor`.
+- Session reverification responses, such as `POST /v1/client/sessions/{session_id}/verify` and `POST /v1/client/sessions/{session_id}/verify/attempt_first_factor`.
+
+Clerk offers a passkey as a second factor only when all of the following are true:
+
+- [**Passkeys satisfy multi-factor authentication**](https://clerk.com/docs/guides/configure/auth-strategies/sign-up-sign-in-options.md#passkeys-and-multi-factor-authentication) is on for your instance.
+- The user has a verified passkey.
+- The first factor wasn't a passkey. A passkey first factor already satisfies the second factor.
+- The request comes from a native app, or your instance has opted in to offering passkeys as a second factor to web apps. Existing instances can't turn on this opt-in in the Clerk Dashboard yet.
+
+To complete the second factor with a passkey, call the prepare and attempt second-factor endpoints with `strategy=passkey`. The attempt request takes the WebAuthn credential in `public_key_credential` and requires the `Origin` header.
+
+| Flow                   | Prepare                                                              | Attempt                                                              |
+| ---------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Sign-in                | `POST /v1/client/sign_ins/{sign_in_id}/prepare_second_factor`        | `POST /v1/client/sign_ins/{sign_in_id}/attempt_second_factor`        |
+| Session reverification | `POST /v1/client/sessions/{session_id}/verify/prepare_second_factor` | `POST /v1/client/sessions/{session_id}/verify/attempt_second_factor` |
+
+If you build custom flows with Clerk's JavaScript SDK, [signIn.authenticateWithPasskey()](https://clerk.com/docs/reference/objects/sign-in.md#authenticatewithpasskey) completes the second factor when the sign-in is at `needs_second_factor` or `needs_client_trust`, and `session.verifyWithPasskey({ level: 'second_factor' })` completes the second factor of a session reverification.
+
+If you call the Frontend API directly, ensure any code that branches on second-factor strategies handles `passkey`, or skips strategies it doesn't recognize.
+
+### Biometric credentials for session reverification
+
+For requests from native apps that have [biometric sign-in](https://clerk.com/docs/guides/development/custom-flows/authentication/biometric-sign-in.md) enabled, a session reverification's `supported_first_factors` and `supported_second_factors` lists can now include an entry with `strategy: "trusted_device"` for each biometric credential the user enrolled on that device. Web requests are unaffected.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
 # docs/guides/development/upgrading/upgrade-guides/android-v1.md
 
 ========================================================================
@@ -144743,6 +144882,64 @@ Now that you understand what Organizations are and how they work, you can:
 
 ========================================================================
 
+# docs/guides/protect/bot-protection.md
+
+========================================================================
+
+# Challenge suspicious sign-ups
+
+> This protection is included on every plan, and it's on by default for new applications. Changing its setting requires the [Business plan](https://clerk.com/pricing). It replaces legacy bot sign-up protection. To check which one your application uses, open the [**Protections**](https://dashboard.clerk.com/~/protect/protections) page in the Clerk Dashboard. An application on the legacy version has a **Bot sign-up protection** row there. If yours does, see [Legacy bot sign-up protection](https://clerk.com/docs/guides/secure/legacy-bot-protection.md) to update.
+
+Bots create fake accounts at scale to abuse free trials, send spam, or inflate sign-up numbers. **Challenge suspicious sign-ups** makes sign-ups that look automated, or that come through VPNs, Tor, or proxies, pass a challenge before the account is created. Sign-ups that don't match are never challenged.
+
+## What it challenges
+
+With **Challenge** set to **Suspicious sign-ups**, the default, a sign-up is challenged when either of these is true:
+
+- Clerk's automated-traffic detection flags it as likely coming from a bot.
+- It comes through a VPN, Tor, or a residential or data center proxy. iCloud Private Relay and corporate VPNs aren't treated as suspicious.
+
+With **Challenge** set to **All sign-ups**, every sign-up is challenged.
+
+**Challenge suspicious sign-ups** applies to sign-ups only. It never challenges a sign-in.
+
+A sign-up that carries a valid [Testing Token](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens) isn't challenged, so end-to-end tests that use Testing Tokens keep running.
+
+## What happens when a sign-up is challenged
+
+Clerk runs a Cloudflare Turnstile check in the user's browser. Most people pass it without doing anything, and some are asked to complete a CAPTCHA. When the check passes, the sign-up continues. If it doesn't pass, the account isn't created.
+
+- Clerk's prebuilt [<SignUp />](https://clerk.com/docs/reference/components/authentication/sign-up.md) component shows the challenge inside the sign-up form.
+- In a custom sign-up flow, ClerkJS shows the challenge in a dialog over your page. See [Handle sign-up challenges in your custom flow](https://clerk.com/docs/guides/development/custom-flows/authentication/bot-sign-up-protection.md).
+
+Each challenged sign-up appears as a `protect.sign_up.challenged` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Settings
+
+Changing this setting requires the [Business plan](https://clerk.com/pricing). On other plans, the protection uses the default.
+
+| Setting       | Default             | Description                                                                                                                                                                                                                      |
+| ------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Challenge** | Suspicious sign-ups | **Suspicious sign-ups** challenges only sign-ups that look automated or come through a VPN, Tor, or proxy. **All sign-ups** challenges everyone, which adds a step for every real user too, so use it while you're under attack. |
+
+## How it works with other protections
+
+[Block sign-ups from suspicious network types](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) blocks the VPN, Tor, and proxy services you select. Sign-ups through services you don't block are still challenged here while **Challenge** is set to **Suspicious sign-ups**. [Challenge residential proxies](https://clerk.com/docs/guides/protect/protections/challenge-residential-proxies.md) also challenges sign-ups from IP addresses that were used as a proxy recently, not only known residential proxies.
+
+## Before you enable it
+
+- **Make sure challenges can run.** See the [requirements](https://clerk.com/docs/guides/protect/getting-started.md#requirements).
+- **If you use a custom sign-up flow, check it yourself.** The Dashboard's requirements check can't tell whether your application uses a custom sign-up flow. If it does, confirm that your flow meets [the custom flow requirements](https://clerk.com/docs/guides/development/custom-flows/authentication/bot-sign-up-protection.md#requirements) before you enable this protection, even if the check passes. When you [update from legacy bot sign-up protection](https://clerk.com/docs/guides/secure/legacy-bot-protection.md#update-to-challenge-suspicious-sign-ups), the Dashboard asks you what your application uses.
+- **Native apps aren't challenged.** See [Native API considerations](https://clerk.com/docs/guides/protect/getting-started.md#native-api-considerations).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
 # docs/guides/protect/device-intelligence.md
 
 ========================================================================
@@ -144763,6 +144960,146 @@ Clerk enables Device Intelligence automatically when a new application is create
 Device Intelligence doesn't block or challenge sign-ups on its own. [Require Device Intelligence checks](https://clerk.com/docs/guides/protect/system-protections/require-device-intelligence.md) is a separate protection. When enabled, it blocks a browser sign-up if Clerk has no verified Device Intelligence result when the sign-up is created.
 
 To disable Device Intelligence, first disable **Require Device Intelligence checks**, then [contact support](https://clerk.com/contact/support). Without Device Intelligence, that protection blocks every browser sign-up.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/device-trust.md
+
+========================================================================
+
+# Device Trust
+
+> This protection is included on every plan, and it's on by default for applications created after November 14, 2025.
+
+Device Trust is Clerk's defense against [credential stuffing](https://owasp.org/www-community/attacks/Credential_stuffing) attacks - a type of attack where bad actors use lists of stolen passwords to attempt to gain unauthorized access to user accounts.
+
+When Device Trust is enabled, Clerk treats every new device as untrusted until the user has verified their identity with a second factor.
+
+## How Device Trust works
+
+Device Trust automatically requires a second factor when **all of the following conditions are met**:
+
+1. The user enters a **valid password**.
+2. The user **hasn't enabled [multi-factor authentication (MFA)](https://clerk.com/docs/guides/configure/auth-strategies/sign-up-sign-in-options.md#multi-factor-authentication)**.
+3. The user is signing in from a **new device**.
+
+When these conditions are met, Clerk uses an email code, SMS code, or email link based on your settings. The user must complete this verification to finish the sign-in process.
+
+> If the user has already enabled MFA (such as an authenticator app or SMS verification), Device Trust will not trigger - their existing MFA method will be used instead.
+
+## How long a device remains trusted
+
+Device Trust doesn't have a separate, configurable trust duration. On web applications, Clerk recognizes a browser through the client authentication cookie, so the browser remains trusted for as long as that cookie remains present and valid.
+
+If the cookie expires, is deleted, or is unavailable - for example, after the user clears their browser data, switches browser profiles, or starts a private browsing session without the existing cookie - Clerk treats the browser as a new device and may require second-factor verification again.
+
+You can't configure the Device Trust duration in the Clerk Dashboard or for an individual sign-in attempt. To access the expiration time of the current client's authentication cookie, use the [Client.cookieExpiresAt](https://clerk.com/docs/reference/objects/client.md#properties) property:
+
+```ts
+const expiresAt = clerk.client.cookieExpiresAt
+```
+
+For development instances, this property is always `null`. For production instances, it reports the cookie's current expiration time, but can also be `null`. Clerk can refresh the client cookie, so this value can change. A user can also delete the cookie before it expires. If you display the value, describe it as the current cookie expiration time rather than a guaranteed Device Trust expiration date.
+
+> Device Trust is automatic and Clerk doesn't provide a supported per-sign-in option for changing how long a browser remains trusted. If you build a custom sign-in UI, use informational text to explain how long the browser can remain recognized instead of presenting a "Remember this device" checkbox as a Device Trust setting.
+
+## Settings
+
+This protection has no settings.
+
+## How it works with other protections
+
+Device Trust helps when an attacker already has a user's correct password. [Lock accounts after failed sign-ins](https://clerk.com/docs/guides/protect/user-lockout.md) covers the opposite case, where an attacker guesses at a password and gets it wrong. [Reject compromised passwords](https://clerk.com/docs/guides/secure/password-protection-and-rules.md#reject-compromised-passwords) makes users replace passwords that have appeared in data breaches, which are the passwords credential stuffing relies on.
+
+## Before you enable it
+
+- **Turn on password sign-in.** Device Trust requires [password-based sign-in](https://clerk.com/docs/guides/configure/auth-strategies/sign-up-sign-in-options.md#user-and-authentication) to be enabled.
+- **Check your custom sign-in flow.** If you've built one that allows password sign-ins, it must handle the `needs_client_trust` status. See [Impact on custom sign-in flows](#impact-on-custom-sign-in-flows).
+
+**For AI agents:** Instead of enabling Device Trust on the Protections page in the Dashboard, run `npx clerk@latest config patch --json '{"auth_password":{"device_trust":{"enabled":true}}}'` (check the current setting first with `npx clerk@latest config pull --keys auth_password`). Install [Clerk's skills](https://clerk.com/docs/guides/ai/skills.md) with `npx skills add clerk/skills` for correct CLI and SDK usage.
+
+## How Device Trust differs from traditional MFA
+
+| Aspect                  | Device Trust                        | Traditional MFA                            |
+| ----------------------- | ----------------------------------- | ------------------------------------------ |
+| **Trigger**             | Automatic on new devices            | User must enable it                        |
+| **Verification method** | Email code, SMS code, or email link | TOTP, SMS code, backup codes               |
+| **User setup required** | None                                | User must configure their preferred method |
+| **When it applies**     | Only for password sign-ins          | All sign-ins                               |
+
+## Impact on custom sign-in flows
+
+If you've built a custom sign-in flow that allows password-based sign-ins using the Clerk API or SDKs, you'll need to handle the `needs_client_trust` status that Device Trust can trigger.
+
+> Device Trust was previously called "Client Trust." The feature was renamed, but its API values - including the `needs_client_trust` status - kept their original names so that existing integrations keep working.
+>
+> If an older application has Device Trust enabled but your custom sign-in flow receives the legacy `needs_second_factor` status instead of `needs_client_trust`, opt in to the **Device Trust Status** update on the [**Updates**](https://dashboard.clerk.com/~/updates) page. This update doesn't enable Device Trust. It only changes the custom-flow response from `needs_second_factor` to `needs_client_trust`.
+
+When Device Trust requires verification, the sign-in attempt will return a status of `needs_client_trust` with `email_code`, `phone_code`, or `email_link` in the `supportedSecondFactors` array. Your flow should:
+
+1. Check if the sign-in status is `needs_client_trust`.
+2. Check if `email_code`, `phone_code`, or `email_link` is in the `supportedSecondFactors` array.
+3. Call `prepareSecondFactor()` for the selected strategy.
+4. Complete the selected strategy's verification.
+5. If successful, set the session as active.
+
+For a complete implementation example, see the [email/password custom flow guide](https://clerk.com/docs/guides/development/custom-flows/authentication/email-password.md#sign-in-flow).
+
+> If your application supports both Device Trust and user-enabled MFA, make sure to handle both the `needs_client_trust` and `needs_second_factor` statuses. The `needs_client_trust` status is returned when Device Trust triggers on a new device, while `needs_second_factor` is returned when the user has MFA enabled on their account.
+
+## Limitations
+
+- **Password-only**: Device Trust only applies to password-based sign-ins. Passwordless authentication methods (such as email link sign-ins, OTPs, passkeys, and OAuth) are not affected.
+- **Email/Phone number required**: Device Trust requires the user to have a verified email address or phone number to receive the verification.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/getting-started.md
+
+========================================================================
+
+# Get started with Protect
+
+Before you can enable protections, your application must meet the following requirements.
+
+## Requirements
+
+- **ClerkJS 6.39.0 or later** - Clerk's SDKs load the latest version by default. If you bundle or host `@clerk/clerk-js` yourself, update it. To check your version, run `window.Clerk.version` in your browser's console.
+- **Content Security Policy** - If your application sets one, add [Clerk's CSP headers](https://clerk.com/docs/guides/secure/best-practices/csp-headers.md).
+- **Custom flows** - If your application uses custom authentication flows, they need to handle new error messages and [display challenges](https://clerk.com/docs/guides/development/custom-flows/authentication/bot-sign-up-protection.md).
+- **Current bot protection** - Older applications might use legacy bot sign-up protection and need to [update to **Challenge suspicious sign-ups**](https://clerk.com/docs/guides/secure/legacy-bot-protection.md#update-to-challenge-suspicious-sign-ups).
+
+## Enable protections
+
+Navigate to the [**Protections**](https://dashboard.clerk.com/~/protect/protections) page in the Clerk Dashboard to configure each protection. See [Protections](https://clerk.com/docs/guides/protect/protections/overview.md) for a description of what each one does.
+
+Each instance has separate protection settings. Test sign-ups in development without a [testing token](#bypass-protections-in-tests), review any Protect events in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events), then enable the same protections in your production instance.
+
+## Native API considerations
+
+Clerk's native SDKs for iOS, Android, and Expo require the Native API to be enabled and don't support challenges yet.
+
+- **Protections configured to challenge** will allow attempts from native environments without a challenge.
+- **Protections configured to block** still apply to native environments.
+- **[Require Device Intelligence checks](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md)** applies to browsers only, so native environments skip it.
+
+Because the Native API is public, attackers can also use it to bypass challenge-based protections. Only enable it if your application requires it. When the Native API is disabled, Clerk rejects requests from native applications with a `native_api_disabled` error.
+
+## Bypass protections in tests
+
+[Testing tokens](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens) let automated tests skip the protections that block or challenge. [Require Device Intelligence checks](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md) is the exception: it still checks a sign-up that carries a testing token, so browser tests need to meet the same [requirements](#requirements).
 
 ---
 
@@ -144802,6 +145139,500 @@ Clerk builds and maintains the following system protections. The **Action** colu
 | [Require Device Intelligence checks](https://clerk.com/docs/guides/protect/system-protections/require-device-intelligence.md) | Blocks a sign-up created by a browser that has no verified Device Intelligence result. | Block     |
 
 > [Device Intelligence](https://clerk.com/docs/guides/protect/device-intelligence.md) runs background checks in browsers without adding a visible step. It doesn't block sign-ups on its own; **Require Device Intelligence checks** uses the result when enabled.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/block-disposable-email-addresses.md
+
+========================================================================
+
+# Block disposable email addresses
+
+> This protection is included on every plan, and it's off by default.
+
+Disposable email addresses are throwaway inboxes, commonly used to create spam accounts. This protection blocks email addresses that are known to be disposable.
+
+## What it blocks
+
+An email address is blocked when its domain is known to be disposable. This applies when someone signs up, and when a user adds an email address to an existing account. It doesn't affect sign-ins, so existing users with a disposable address can keep signing in.
+
+Clerk checks the email address's domain and each of its parent domains. For example, an address at `mail.example.com` is blocked if `mail.example.com` or `example.com` is known to be disposable. If a domain that your users rely on is blocked by mistake, [contact support](https://clerk.com/contact/support).
+
+## What happens when an address is blocked
+
+The user sees an error that the email address isn't allowed, and can't continue with that address.
+
+## Settings
+
+This protection has no settings.
+
+## How it works with other protections
+
+- **Risky domains.** This protection blocks only domains already known to be disposable. To also block sign-ups from email domains that Clerk rates as risky, turn on [Block risky email domains](https://clerk.com/docs/guides/protect/protections/block-risky-email-domains.md), which requires the [Business plan](https://clerk.com/pricing).
+- **Extra accounts from one inbox.** [Block email subaddresses](https://clerk.com/docs/guides/protect/protections/block-email-subaddresses.md) blocks variations of an email address that already has an account.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/block-email-subaddresses.md
+
+========================================================================
+
+# Block email subaddresses
+
+> This protection is included on every plan, and it's off by default.
+
+Many email providers deliver mail sent to a subaddress, such as `user+1@example.com`, to the same inbox as `user@example.com`. Someone can use this to create many accounts from a single inbox. This protection blocks an email address when another address that differs only by its subaddress already has an account.
+
+## What it blocks
+
+When someone signs up with an email address, or adds one to an existing account, Clerk removes the subaddress and checks whether the resulting base address is already registered. If it is, the new address is blocked. For example, if `user@example.com` already has an account, `user+1@example.com` is blocked.
+
+Email providers use different formats for subaddresses, so Clerk applies different rules depending on the provider:
+
+| Provider            | Domains                                                                                                                                                                                                                                                                                                                            | Subaddress separators | Additional matching                                                                                                                 |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Gmail               | `gmail.com`, `googlemail.com`                                                                                                                                                                                                                                                                                                      | `+`, `=`, `#`         | Dots in the local part are ignored. For example, if `jsmith@gmail.com` already has an account, `j.smith@gmail.com` will be blocked. |
+| Yahoo Mail          | Yahoo's own mail domains: `yahoo.com`, `ymail.com`, `rocketmail.com`, `y7mail.com`, and Yahoo's country domains such as `yahoo.co.uk`, `yahoo.fr`, `yahoo.co.jp`, and `yahoo.com.br`. Domains that merely begin with a `yahoo` label, such as `yahoo.dev` or a `yahoo.` subdomain on a hosting provider, are not treated as Yahoo. | `+`, `=`, `#`, `-`    | —                                                                                                                                   |
+| All other providers | Any other domain                                                                                                                                                                                                                                                                                                                   | `+`, `=`, `#`         | —                                                                                                                                   |
+
+The first sign-up for a base address is allowed, even if it uses a subaddress. Only later sign-ups that use another variation of the same base address are blocked.
+
+Existing accounts aren't affected. Users who already have an account with a subaddress can keep signing in.
+
+## What happens when an address is blocked
+
+The user sees an error that the email address is already in use, and can't continue with that address.
+
+## Settings
+
+This protection has no settings.
+
+## How it works with other protections
+
+[Block disposable email addresses](https://clerk.com/docs/guides/protect/protections/block-disposable-email-addresses.md) blocks throwaway inboxes. This protection blocks extra accounts from one real inbox. They cover different tricks, so you can turn on both.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/block-risky-email-domains.md
+
+========================================================================
+
+# Block risky email domains
+
+> This protection requires the [Business plan](https://clerk.com/pricing), and it's off by default.
+
+Bad actors who create fake accounts in bulk often use email domains that were set up for abuse. This protection blocks sign-ups from email domains that Clerk rates as risky.
+
+## What it blocks
+
+A sign-up is blocked when Clerk rates the domain of its email address as risky at the **Protection level** you choose. Higher levels block more domains. This protection catches many risky domains, but not all of them.
+
+This protection checks the email address as soon as it's entered.
+
+This protection applies to sign-ups only. It never affects a sign-in. A sign-up without an email address, such as one using only a phone number, isn't affected.
+
+## What happens when a sign-up is blocked
+
+The account isn't created, and the user sees a message that they can't sign up. See [What blocked users see](https://clerk.com/docs/guides/protect/protections/overview.md#what-blocked-users-see).
+
+Each blocked sign-up appears as a `protect.sign_up.blocked` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Settings
+
+| Setting              | Default | Description                                                                    |
+| -------------------- | ------- | ------------------------------------------------------------------------------ |
+| **Protection level** | Medium  | How risky an email domain has to look before sign-ups that use it are blocked. |
+
+Each level blocks more domains than the one before it:
+
+- **Low** blocks only the riskiest domains.
+- **Medium** blocks risky domains. It's recommended for most applications.
+- **High** blocks more domains, including some used by new businesses.
+- **Very high** blocks the most domains, including many used by new businesses. Use it while you're under attack.
+
+## How it works with other protections
+
+This protection isn't a list of disposable email providers, and many temporary-inbox services pass it. To block those, turn on [Block disposable email addresses](https://clerk.com/docs/guides/protect/protections/block-disposable-email-addresses.md).
+
+## Before you enable it
+
+- **Higher levels block some real customers.** At **High** and **Very high**, sign-ups from some newly founded businesses are blocked too. Start with **Medium**, and raise the **Protection level** while you're under attack.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/block-sign-ups-by-country.md
+
+========================================================================
+
+# Block sign-ups by country
+
+> This protection requires the [Business plan](https://clerk.com/pricing), and it's off by default.
+
+Some applications can only serve certain countries, because of licensing, regulations, or the markets they operate in. Others see most of their fake sign-ups from a few countries where they have few real users. This protection keeps a list of countries and uses it in one of two ways:
+
+- **Blocklist.** Sign-ups from the countries on the list are blocked. Everyone else is unaffected.
+- **Allowlist.** Only the countries on the list can sign up. Sign-ups from every other country are blocked.
+
+## What it blocks
+
+Clerk determines a sign-up's country from its IP address. A sign-up is blocked when:
+
+- **List type** is **Blocklist**, and its country is on the list.
+- **List type** is **Allowlist**, and its country isn't on the list. Sign-ups whose country can't be determined are blocked too.
+
+This protection applies to sign-ups only. It never affects a sign-in, so existing users can keep signing in from any country.
+
+## What happens when a sign-up is blocked
+
+The account isn't created, and the user sees a message that they can't sign up. See [What blocked users see](https://clerk.com/docs/guides/protect/protections/overview.md#what-blocked-users-see).
+
+Each blocked sign-up appears as a `protect.sign_up.blocked` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Settings
+
+| Setting       | Default   | Description                                                                                                                                                                          |
+| ------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **List type** | Blocklist | **Blocklist** blocks sign-ups from the countries on the list. **Allowlist** blocks sign-ups from every country not on the list, and from visitors whose country can't be determined. |
+| **Countries** | None      | The countries on your list.                                                                                                                                                          |
+
+## How it works with other protections
+
+[Block sign-ups from suspicious network types](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) blocks the VPN, Tor, and proxy services you select, which people can use to appear to be in another country. Turn it on too to make this protection harder to get around.
+
+## Before you enable it
+
+- **Country is based on the IP address.** Someone using a VPN appears to be in the country of the VPN server, so a determined person can get around this protection. See [How it works with other protections](#how-it-works-with-other-protections).
+- **With an allowlist, list every country you serve.** Sign-ups from any country you leave out are blocked, as are sign-ups whose country can't be determined.
+- **Existing users aren't affected.** This protection doesn't stop users who already have an account from signing in from a blocked country. If you're required to restrict access for legal reasons, this protection alone isn't enough.
+- **Check that Protect sees your visitors' IP addresses.** See [If you proxy Clerk's Frontend API](https://clerk.com/docs/guides/protect/protections/overview.md#if-you-proxy-clerks-frontend-api).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/block-suspicious-network-types.md
+
+========================================================================
+
+# Block sign-ups from suspicious network types
+
+> This protection requires the [Business plan](https://clerk.com/pricing), and it's off by default.
+
+Real people usually sign up from home broadband, mobile networks, and office connections. Scripts that create fake accounts in bulk usually run on rented cloud servers, and people who abuse free trials or evade bans often hide behind VPNs, Tor, and proxies. Plenty of real people use a VPN too, for privacy or because their employer requires it, so this protection lets you choose which network types to block.
+
+## What it blocks
+
+A sign-up is blocked when it comes from a network type selected under **Blocked network types**:
+
+| Network type                         | What it is                                                                       |
+| ------------------------------------ | -------------------------------------------------------------------------------- |
+| **Hosting and data center networks** | Cloud providers and data centers, such as AWS, Google Cloud, or Microsoft Azure. |
+| **Free VPNs**                        | Free VPN apps and browser extensions.                                            |
+| **Data center proxies**              | Proxy servers in data centers, often sold for scraping and automation.           |
+| **Open or public proxies**           | Proxies that anyone can use without an account.                                  |
+| **Tor**                              | The Tor network, which people usually use through Tor Browser.                   |
+| **iCloud Private Relay**             | Apple's privacy feature for Safari and some other apps on iPhone, iPad, and Mac. |
+| **Corporate VPNs**                   | Networks that companies route their employees' traffic through.                  |
+| **Paid consumer VPNs**               | Subscription VPN apps that people install on their phone or computer.            |
+
+Many VPNs, iCloud Private Relay, and some proxies run on hosting and data center networks. A connection that Clerk recognizes as one of the VPN, Tor, or proxy services above counts as that service, not as a hosting network, so people can sign up through a service you don't block even though it runs in a data center. A connection from a hosting network that Clerk doesn't recognize as one of those services counts as a hosting network.
+
+Some connections match more than one network type. For example, an iCloud Private Relay connection can also look like a free VPN. A connection that matches a VPN, Tor, or proxy type you block is blocked, even if it also matches one you don't, with one exception: while you don't block iCloud Private Relay or corporate VPNs, people using them can sign up, whatever else their connection matches.
+
+This protection doesn't affect connections from anywhere else, such as home and mobile networks.
+
+This protection applies to sign-ups only. It never blocks a sign-in, so existing users keep access wherever they connect from.
+
+## What happens when a sign-up is blocked
+
+The account isn't created, and the user sees a message that they can't sign up. See [What blocked users see](https://clerk.com/docs/guides/protect/protections/overview.md#what-blocked-users-see).
+
+Each blocked sign-up appears as a `protect.sign_up.blocked` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Settings
+
+| Setting                   | Default                                                                                       | Description                                     |
+| ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Blocked network types** | Hosting and data center networks, free VPNs, data center proxies, open or public proxies, Tor | Block sign-ups from the selected network types. |
+
+Keep at least one network type selected. To stop blocking all of them, disable the protection.
+
+## How it works with other protections
+
+**Residential proxies** route traffic through other people's home connections, so they look like home broadband. They're covered by [Challenge residential proxies](https://clerk.com/docs/guides/protect/protections/challenge-residential-proxies.md). This protection blocks one only when it's on a hosting network and you block hosting and data center networks.
+
+## Before you enable it
+
+- **Decide which VPNs to block.** Paid consumer VPNs aren't blocked by default, because many real people keep one turned on all the time. Block them only if you see fake sign-ups coming through them. If your users care about privacy, or many of them are in countries where VPNs are common, consider unblocking free VPNs too.
+- **Check that Protect sees your visitors' IP addresses.** If it sees your proxy's IP address instead, every sign-up can look like it comes from your proxy's network and be blocked. See [If you proxy Clerk's Frontend API](https://clerk.com/docs/guides/protect/protections/overview.md#if-you-proxy-clerks-frontend-api).
+- **Check where your automated tests sign up from.** Test runners in CI services, such as GitHub Actions, run on hosting networks, so their sign-ups are blocked unless they use a [Testing Token](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens). A sign-up that carries a valid Testing Token isn't checked, so end-to-end tests that use one keep running.
+- **A few real people sign up from servers.** For example, from a cloud desktop or a hosted development environment. If your users include developers, consider unblocking hosting and data center networks.
+- **Watch your logs after turning it on.** Review the `protect.sign_up.blocked` events. If real users are being blocked, check which network type they use, and consider unblocking it.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/challenge-residential-proxies.md
+
+========================================================================
+
+# Challenge residential proxies
+
+> This protection requires the [Business plan](https://clerk.com/pricing), and it's off by default.
+
+Residential proxies route traffic through ordinary home internet connections, so automated sign-ups look like they come from real households. The people whose connections are used often don't know: a free app or a smart device on their network has enrolled them in a proxy network. Blocking that traffic would also turn away some of those people, so this protection challenges it instead. The challenge is an automatic check in the visitor's browser, so a real person has nothing to solve. Every automated sign-up through one of these proxies has to complete it too, and each one costs whoever is renting the proxy.
+
+## What it challenges
+
+A sign-up is challenged when it comes from an IP address that's a known residential proxy, or that was used as a proxy recently. You choose how recently with the **Proxy activity window** setting.
+
+This protection applies to sign-ups only. It never affects a sign-in.
+
+## What happens when a sign-up is challenged
+
+The visitor's browser completes an automatic check, and the sign-up then continues. There's nothing for the visitor to solve. The check takes from a few seconds on a fast connection to a minute or more on a slow one, and if it doesn't finish, the account isn't created.
+
+Each challenged sign-up appears as a `protect.sign_up.challenged` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Settings
+
+| Setting                   | Default     | Description                                                                                                                                                                |
+| ------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Proxy activity window** | Last 7 days | How recently an IP address must have been used as a proxy for its sign-ups to be challenged. **Last 7 days** challenges more sign-ups; **Last 24 hours** challenges fewer. |
+
+## How it works with other protections
+
+[Block sign-ups from suspicious network types](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) doesn't target residential proxies, so this protection is usually what decides what happens to them. A residential proxy on a hosting network is blocked if you block hosting and data center networks.
+
+## Before you enable it
+
+- **Make sure challenges can run.** See the [requirements](https://clerk.com/docs/guides/protect/getting-started.md#requirements).
+- **Check that Protect sees your visitors' IP addresses.** See [If you proxy Clerk's Frontend API](https://clerk.com/docs/guides/protect/protections/overview.md#if-you-proxy-clerks-frontend-api).
+- **Some real people are checked too.** People whose home connections are part of a proxy network get the check like anyone else. It takes longer on a slow connection, and a sign-up whose check doesn't finish isn't created.
+- **Expect a cost, not a wall.** Residential proxy networks change constantly, and the challenge makes automated sign-ups through them more expensive rather than stopping all of them. Use it alongside other protections.
+- **Native apps aren't challenged.** See [Native API considerations](https://clerk.com/docs/guides/protect/getting-started.md#native-api-considerations).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/limit-sign-ups-per-ip-address.md
+
+========================================================================
+
+# Limit sign-ups per IP address
+
+> This protection requires the [Business plan](https://clerk.com/pricing), and it's off by default.
+
+Someone creating fake accounts from one machine or connection signs up again and again from the same IP address. This protection caps how many sign-ups an IP address can start in an hour, which limits the damage from any single source. Past the limit, further sign-ups from that IP address are blocked.
+
+## What it limits
+
+Protect counts the sign-ups started from each IP address over the past hour. When an IP address reaches your limit, further sign-ups from it are blocked until its count for the past hour drops below the limit again.
+
+Each sign-up counts once, however many steps it takes. A person who enters their details, verifies their email address, and finishes signing up counts as one sign-up. A sign-up counts when it starts, whether or not it's finished.
+
+This protection applies to sign-ups only. It never affects a sign-in.
+
+## What happens when the limit is reached
+
+Further sign-ups from that IP address are stopped at their first step: the account isn't created, and the user sees a message that they can't sign up. See [What blocked users see](https://clerk.com/docs/guides/protect/protections/overview.md#what-blocked-users-see).
+
+Each sign-up over the limit appears as a `protect.sign_up.blocked` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Settings
+
+| Setting                              | Default | Description                                                              |
+| ------------------------------------ | ------- | ------------------------------------------------------------------------ |
+| **Sign-ups per IP address per hour** | 15      | How many sign-ups one IP address can start in an hour. The minimum is 1. |
+
+## Choosing a limit
+
+On most applications, almost every IP address that signs up in an hour completes only one or two sign-ups. The limit also counts sign-ups that are started and never finished, so an IP address's count can be higher than the sign-ups it completes. When real people do reach the default limit from one IP address, it's usually a school or a classroom signing up together. Many people can share one IP address: everyone in an office, on a university campus, or on some mobile networks. Set the limit above the number of sign-ups you'd expect to start from your busiest shared IP address in an hour. If your customers sign up whole teams at once from an office network, set it higher. A real person who reaches the limit can't sign up until the IP address's count drops below it, so when in doubt, set the limit higher rather than lower.
+
+## How it works with other protections
+
+This protection stops a single source from creating many accounts. It doesn't catch someone who spreads sign-ups across many IP addresses, one account each. [Block sign-ups from suspicious network types](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) helps when those addresses are VPNs, Tor, proxies, or hosting networks, but not when they're ordinary home or mobile connections.
+
+## Before you enable it
+
+- **Check your automated tests.** A test suite that creates many accounts from one machine reaches the limit. Tests that use a [Testing Token](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens) aren't counted. On a development instance, a suite that signs up with `+clerk_test` addresses and no Testing Token reaches the limit quickly.
+- **Check that Protect sees your visitors' IP addresses.** If it sees your proxy's IP address instead, every sign-up counts against that one IP address, and the limit is reached quickly. See [If you proxy Clerk's Frontend API](https://clerk.com/docs/guides/protect/protections/overview.md#if-you-proxy-clerks-frontend-api).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/overview.md
+
+========================================================================
+
+# Protections
+
+Protections are defenses that Clerk builds and maintains, and that you can turn on for your application. Each one targets a specific kind of abuse, such as password guessing or sign-ups from cloud servers.
+
+## How protections work
+
+- **Each protection applies to specific steps.** Some apply to sign-ups, some to sign-ins, and some to both. A few also apply when a user adds an email address. The **Applies to** column in [Available protections](#available-protections) shows which.
+- **Each protection takes one kind of action.** Most block or challenge the attempt. Others lock the account, ask for a second factor, reject an email address, or limit how often something can be tried. The **Action** column shows which.
+- **Most are off until you turn them on.** These are on by default: [Challenge suspicious sign-ups](https://clerk.com/docs/guides/protect/bot-protection.md) and [Lock accounts after failed sign-ins](https://clerk.com/docs/guides/protect/user-lockout.md) for new applications, and [Device Trust](https://clerk.com/docs/guides/protect/device-trust.md) for applications created after November 14, 2025. Bulk [user enumeration protection](https://clerk.com/docs/guides/protect/user-enumeration-protection.md) is always on.
+- **Clerk also rate-limits sign-up and sign-in requests on every plan.** Each IP address can only start so many sign-ups and sign-ins, and submit so many passwords and codes, in a short time. These limits aren't a protection you manage. See [Frontend API requests](https://clerk.com/docs/guides/how-clerk-works/system-limits.md#frontend-api-requests).
+
+## Available protections
+
+### Included on every plan
+
+| Protection                                                                                                                | What it does                                                                                                      | Applies to                              | Action                                        |
+| ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------- |
+| [Challenge suspicious sign-ups](https://clerk.com/docs/guides/protect/bot-protection.md)                                  | Challenges sign-ups that look automated or come through VPNs, Tor, or proxies.                                    | Sign-ups                                | Challenge                                     |
+| [Require Device Intelligence checks](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md)    | Blocks a sign-up created by a browser that has no verified Device Intelligence result.                            | Sign-ups                                | Block                                         |
+| [Lock accounts after failed sign-ins](https://clerk.com/docs/guides/protect/user-lockout.md)                              | Locks an account after too many failed sign-in attempts.                                                          | Sign-ins                                | Lock account                                  |
+| [Device Trust](https://clerk.com/docs/guides/protect/device-trust.md)                                                     | Asks for a second factor when a user signs in with a password on a device Clerk doesn't recognize.                | Password sign-ins                       | Require second factor                         |
+| [User enumeration protection](https://clerk.com/docs/guides/protect/user-enumeration-protection.md)                       | Makes it harder to find out which email addresses and phone numbers have an account.                              | Sign-ups, sign-ins, and profile updates | Rate limit, or hide whether an account exists |
+| [Block email subaddresses](https://clerk.com/docs/guides/protect/protections/block-email-subaddresses.md)                 | Rejects an email address that adds a subaddress to one that already has an account, such as `user+1@example.com`. | Sign-ups and adding an email address    | Reject email address                          |
+| [Block disposable email addresses](https://clerk.com/docs/guides/protect/protections/block-disposable-email-addresses.md) | Rejects email addresses known to be disposable.                                                                   | Sign-ups and adding an email address    | Reject email address                          |
+
+### Included in the Business plan
+
+The following protections require the [Business plan](https://clerk.com/pricing):
+
+| Protection                                                                                                                          | What it does                                                          | Applies to | Action    |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------- | --------- |
+| [Block sign-ups from suspicious network types](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) | Blocks sign-ups from VPNs, Tor, proxies, and hosting networks.        | Sign-ups   | Block     |
+| [Challenge residential proxies](https://clerk.com/docs/guides/protect/protections/challenge-residential-proxies.md)                 | Challenges sign-ups that come through residential proxies.            | Sign-ups   | Challenge |
+| [Block sign-ups by country](https://clerk.com/docs/guides/protect/protections/block-sign-ups-by-country.md)                         | Blocks sign-ups by country, using a blocklist or an allowlist.        | Sign-ups   | Block     |
+| [Limit sign-ups per IP address](https://clerk.com/docs/guides/protect/protections/limit-sign-ups-per-ip-address.md)                 | Blocks sign-ups from an IP address when it exceeds your hourly limit. | Sign-ups   | Block     |
+| [Block risky email domains](https://clerk.com/docs/guides/protect/protections/block-risky-email-domains.md)                         | Blocks sign-ups from email domains that Clerk rates as risky.         | Sign-ups   | Block     |
+
+## Protections that block or challenge
+
+Protections whose action is **Block** or **Challenge** all work the way this section describes. For the other protections, each one's page explains when it applies and what the user sees.
+
+### When protections check an attempt
+
+- **Sign-ups**: most protections act as soon as a sign-up starts. [Block risky email domains](https://clerk.com/docs/guides/protect/protections/block-risky-email-domains.md) acts when the email address is entered.
+- **Sign-ins aren't checked.** These protections apply to sign-ups only, so they never stop existing users from signing in.
+- **Users you create yourself aren't checked.** These protections don't apply to users you create with the [Backend API](https://clerk.com/docs/reference/backend-api), in the Clerk Dashboard, or by importing them.
+- **Automated tests aren't checked, with one exception.** A sign-up that carries a valid [Testing Token](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens) isn't checked by these protections, so end-to-end tests keep running. [Require Device Intelligence checks](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md) still checks it.
+
+### What blocked users see
+
+When a protection blocks a sign-up, the attempt doesn't go through. What the user sees depends on where it's blocked and which versions of Clerk's SDKs your application runs:
+
+- **Prebuilt components with `@clerk/ui` 1.36.0 or later and ClerkJS 6.34.1 or later** show a screen explaining that the user can't continue, with a reference code. Core 3 SDKs load the latest versions automatically. The screen appears when the attempt is blocked on the first step, or when the user returns from a social or SSO provider.
+- **A block at a later step,** such as after the user enters a password or a verification code, shows a short error message instead of the full screen. So do older SDK versions.
+- **In a custom flow,** the request fails with an error whose code is `action_blocked`. See [Error handling](https://clerk.com/docs/guides/development/custom-flows/error-handling.md).
+
+When a protection challenges an attempt instead, the user completes a verification step and then carries on.
+
+### When more than one protection matches
+
+If more than one protection matches the same attempt, a block applies before a challenge.
+
+### Where decisions appear
+
+Every block and challenge appears as a [Protect event](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events) in Application Logs, so you can see what a protection is doing once it's on.
+
+### If you proxy Clerk's Frontend API
+
+Several of these protections decide based on where an attempt comes from, so Protect needs each visitor's IP address. If you [proxy Clerk's Frontend API](https://clerk.com/docs/guides/dashboard/dns-domains/proxy-fapi.md) through your own server, your proxy must send the visitor's IP address in the `X-Forwarded-For` header, as described in [Configure your proxy server](https://clerk.com/docs/guides/dashboard/dns-domains/proxy-fapi.md#configure-your-proxy-server). Otherwise every attempt looks like it comes from your proxy, and those protections can block everyone or no one.
+
+## Plans
+
+Some protections are included on every plan, and others require the Business plan. Each protection's page lists what it requires. See [pricing](https://clerk.com/pricing).
+
+## Manage protections in the Dashboard
+
+In the Clerk Dashboard, under **Protect**, navigate to the [**Protections**](https://dashboard.clerk.com/~/protect/protections) page. It lists the protections on your application, each with its **Status**. To enable a protection, change its settings, or disable it, select the settings icon at the end of its row. Without the [Business plan](https://clerk.com/pricing), a protection that requires it shows a lock icon and no status, and its settings icon leads to the upgrade. To test protections before you enable them in production, see [Enable protections](https://clerk.com/docs/guides/protect/getting-started.md#enable-protections).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/protections/require-device-intelligence.md
+
+========================================================================
+
+# Require Device Intelligence checks
+
+> This protection is included on every plan, and it's off by default.
+
+Scripts that create fake accounts in bulk often send sign-up requests straight to Clerk instead of loading your sign-up page in a real browser, so ClerkJS never runs for them. **Require Device Intelligence checks** blocks a sign-up created by a browser for which Clerk has no verified [Device Intelligence](#device-intelligence) result. ClerkJS runs Device Intelligence checks in the background; the checks don't block sign-ups on their own.
+
+## What it blocks
+
+A sign-up from a browser is blocked when Clerk has no verified Device Intelligence result for that browser at the moment the sign-up is created. Clerk checks once, at creation. Later steps, such as entering a verification code, aren't checked.
+
+The protection applies to sign-ups from browsers only:
+
+- It never checks a sign-in, so it doesn't stop existing users from signing in.
+- Sign-ups from native apps built with Clerk iOS, Android, and Expo SDKs aren't affected.
+
+## What happens when a sign-up is blocked
+
+The account isn't created, and the user sees a message that they can't sign up. See [What blocked users see](https://clerk.com/docs/guides/protect/protections/overview.md#what-blocked-users-see).
+
+Each blocked sign-up appears as a `protect.sign_up.blocked` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Device Intelligence
+
+Device Intelligence is a set of background checks that ClerkJS runs in the browser, and that Clerk verifies. They add no visible step during sign-up.
+
+Clerk enables Device Intelligence automatically when you create an application, or when your application passes or bypasses the requirements check in the Clerk Dashboard. It has no Dashboard setting. To disable it, first disable **Require Device Intelligence checks**, then [contact support](https://clerk.com/contact/support). Without Device Intelligence, this protection blocks every browser sign-up.
+
+## Settings
+
+This protection has no settings.
+
+## Before you enable it
+
+- **If Device Intelligence can't run, every browser sign-up is blocked.** That happens if [Device Intelligence isn't enabled](#device-intelligence) or your Content Security Policy blocks it. Users on a ClerkJS too old to run Device Intelligence are blocked too. Enable this protection in your [development instance](https://clerk.com/docs/guides/development/managing-environments.md#development-instance) first, then sign up from a browser yourself before you enable it in production.
+- **Check your automated tests.** [Testing Tokens](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens) don't skip this check. End-to-end tests that drive a real browser, such as Playwright or Cypress, run the check the same way your users' browsers do, so they need to meet the same [requirements](https://clerk.com/docs/guides/protect/getting-started.md#requirements).
 
 ---
 
@@ -144887,6 +145718,183 @@ Clerk rejects the sign-up, and the user can't continue. Each blocked attempt app
    - If **Disabled**, select **Enable**. In the dialog, toggle on **Enable**, then select **Save**.
    - If **Enabled**, the protection is already active. To disable it, select **Manage**, toggle off **Enable**, then select **Save**.
    - If **Setup required**, select **Manage** and complete the setup. See [Set up Protect](https://clerk.com/docs/guides/protect/setup.md#enable-protections).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/user-enumeration-protection.md
+
+========================================================================
+
+# User enumeration protection
+
+> This protection is included on every plan. Bulk protection is always on, and you can switch to Strict protection.
+
+User enumeration is a technique where attackers use failed authentication attempts to determine whether a specific user account exists in an application.
+
+For example, if a user signs in with an identifier that doesn't match an existing account, Clerk tells them no account was found. This is helpful for legitimate users who may not remember if they signed up. However, a malicious actor can exploit these error messages to check whether accounts exist for specific identifiers (like emails or phone numbers) and build a list of valid accounts. This is user enumeration.
+
+## How user enumeration protection works
+
+Bulk protection adds rate limiting while preserving the normal sign-in experience. Strict protection hides whether accounts exist, which provides stronger security but means legitimate users won't get helpful feedback if they use the wrong identifier or misremember their account. Choose strict protection if preventing account discovery is a priority for your application.
+
+### Bulk user enumeration protection
+
+**Bulk user enumeration protection** enforces rate limits to prevent attackers from checking registered email addresses and phone numbers in bulk. Targeted attacks against individual accounts are still possible.
+
+Clerk's existing PII protections still apply. For example, during sign-in, even though bulk protection reveals whether a user exists, Clerk redacts personal information, showing only enough to be recognizable (e.g., "Send SMS code to +\*\*\*\*\*\*\*\*00").
+
+### Strict user enumeration protection
+
+With **Strict user enumeration protection**, users **won't receive feedback about whether their identifier matches an existing account** until they verify their identity.
+
+> Under **strict**, the [<SignIn />](https://clerk.com/docs/reference/components/authentication/sign-in.md) component supports sign-in-or-up: a sign-in for an identifier that doesn't exist proceeds to verification, then transfers to sign-up once the user verifies their identity. Refer to [Sign-in-or-up under strict protection](#sign-in-or-up-under-strict-protection) for the requirements, including the restriction on password. The [Account Portal](https://clerk.com/docs/guides/account-portal/overview.md) hosts sign-in and sign-up on separate pages, so it can't transfer to sign-up under any setting — render `<SignIn />` in your own app for a sign-in-or-up experience.
+
+Strict enumeration covers:
+
+- Sign up: If you sign up with an email or phone number that already exists, Clerk won't send a verification code. Instead, it sends a notification (email or SMS) letting the account owner know someone tried to sign up, and suggesting they sign in instead.
+- Sign in: When the account exists, sign-in proceeds normally. When it doesn't, Clerk's behavior depends on the strategy:
+  - **Password or Web3 wallet**: The attempt is rejected without revealing whether the account exists.
+  - **Email code or email link**: Clerk shows the verification screen and sends a notification to the address explaining that someone attempted to sign in to a non-existent account.
+  - **Phone code**: Clerk shows the verification screen as if a message was sent, but doesn't actually send anything.
+    - Because SMS can be costly during an enumeration attack, Clerk doesn't send SMS for sign-in attempts to non-existent accounts. We're exploring ways to add SMS notifications as we develop our anti-fraud protections.
+- User profile: If you add an email or phone number to your profile that already exists, Clerk shows the verification screen as if a message was sent, but doesn't actually send anything. Clerk doesn't send notifications in this case, since these attempts are more likely to be attacks than real updates.
+
+## Settings
+
+Every application has **Bulk user enumeration protection**, and it can't be turned off. To remove the ability to determine whether an account exists, switch to **Strict user enumeration protection** in the protection's settings. See [Manage protections in the Dashboard](https://clerk.com/docs/guides/protect/protections/overview.md#manage-protections-in-the-dashboard).
+
+## Sign-in-or-up under strict protection
+
+Because a sign-in for an unknown identifier proceeds to verification instead of failing, [<SignIn />](https://clerk.com/docs/reference/components/authentication/sign-in.md) can create the account after the user verifies their identity, as long as your instance is in [**Open** access mode](https://clerk.com/docs/guides/secure/restricting-access.md#open). Unlike a standalone strict sign-in — which withholds verification from unknown identifiers, as described above — the sign-in-or-up flow sends a real verification code or email link so a new user can verify and continue to sign-up. No code changes are required. Refer to [sign-in-or-up](https://clerk.com/docs/guides/development/custom-sign-in-or-up-page.md) for how to render the flow, and to the [`signUpIfMissing` custom flow](https://clerk.com/docs/guides/development/custom-flows/authentication/sign-in-or-up.md#sign-in-or-up-with-signupifmissing) to build the same behavior yourself.
+
+Three limits apply under **strict** that don't apply otherwise:
+
+- **Your instance must be in Open access mode.** In [**Invite-only** or **Waitlist** access mode](https://clerk.com/docs/guides/secure/restricting-access.md#access-mode), `<SignIn />` falls back to a standalone strict sign-in. Sign-up can't succeed under either setting, but **strict** also withholds the reason: the "you need an invitation" response shown otherwise appears only when no account exists, so it's an enumeration signal that **strict** has to suppress. An uninvited visitor reaches the verification screen, receives only the notification described above, and isn't told why they can't continue.
+- **Password can't be the starting strategy.** A password step has no safe exit under **strict**: a visitor who doesn't have an account is sent to a password screen they can't get past. A visitor who types in an incorrect password can't be redirected to sign up, because Clerk can't reveal whether the identifier they tried matches an existing account. Either disable **Password**, or [set the instance's preferred sign-in strategy to OTP](https://clerk.com/docs/reference/backend-api/tag/instance-settings/PATCH/instance). On development instances, `<SignIn />` logs a console warning (`sign_up_if_missing_password_preferred`) when it detects this combination.
+- **Username identifiers aren't supported.** Clerk can't contact a user for verification with a username alone.
+
+## Password sign-in for accounts created with a social provider
+
+If **Password** is enabled and a user signs up with a social provider, they'll have an account with no password set. This is true even when password is required at sign-up, because social sign-up bypasses the password setup step.
+
+If that user later tries to sign in with the email on their social account instead of signing in through the social provider, Clerk will prompt them to enter a password. If the user tries entering a password, strict enumeration protection prevents Clerk from revealing that _no password_ is on file so, instead, the attempt fails with the same response as an _incorrect_ password, which can be confusing.
+
+Clerk's prebuilt components handle this in two ways: the sign-in start screen highlights the user's most recently used strategy with a **Last used** badge when they return on the same device, and the password screen always offers a **Use another method** option to switch strategies. In a custom sign-in flow, after calling `signIn.create()`, read [SignIn.supportedFirstFactors](https://clerk.com/docs/reference/objects/sign-in.md#properties) to detect which strategies the user has, and always offer the social provider as an alternative.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/protect/user-lockout.md
+
+========================================================================
+
+# Lock accounts after failed sign-ins
+
+> This protection is included on every plan, and it's on by default for new applications.
+
+User accounts are a vector for malicious attacks for many reasons, from impersonation to collecting personally identifiable information (PII). One method is a **"brute force"** attack, where a script will attempt many different passwords to sign into an account. One line of defense against these attacks is to temporarily deny attempts to sign into accounts that attempt too many failed sign-ins in a short period of time. Locking out sign-in attempts disrupts the attack and makes the account a less attractive target.
+
+## How Clerk protects against brute force attacks
+
+**Account lockout** is a Clerk feature that enables you to protect your users from brute-force attacks on static credentials. If enabled on your instance, Clerk automatically tracks each user's failed verification attempts during sign-in, such as an incorrect password or code.
+
+### How account lockout works
+
+By default, new Clerk instances lock user accounts after 10 failed sign-in attempts and require a one-hour cooldown period before anyone can attempt to sign in to that account again. The attempt limit default changed from 100 to 10 on **July 6, 2026** — existing instances kept their limit, and the one-hour cooldown is unchanged.
+
+If the maximum allowed attempts are reached, the user will be locked out from signing in again until the lockout duration lapses. Lockout can also be [configured to never expire](#settings), in which case the user will not be able to sign in unless an admin unlocks them.
+
+An admin can [unlock a user before the expiry of the lockout period via the Clerk Dashboard](#unlock-user-accounts) or [programmatically](#unlock-a-user-programmatically).
+
+Clerk measures the following actions as part of account lockout:
+
+- Password attempts
+- Password resets
+- Backup code requests
+- Email & Phone codes
+- TOTP attempts
+
+## What a locked out user sees
+
+When a user exceeds the maximum sign-in attempts, the Clerk [<SignIn />](https://clerk.com/docs/reference/components/authentication/sign-in.md) component will inform them of how long they have been locked out for and to contact support for more information.
+
+![The Clerk component sign-in form with a red alert stating 'Your account is locked. You will be able to try again in 59 minutes. For more information, contact support.'](https://clerk.com/docs/raw/_public/images/security/userlock_login.png)
+
+Clerk also emails the user at their primary email address to let them know their account is locked.
+
+> Currently, users cannot unlock their own account or submit a request to the admin to be unlocked ("self-service unlock"). This is an upcoming feature, so see the [changelog](https://clerk.com/changelog.md) periodically to find out when it is available. Until then, you can [lock and unlock user accounts programmatically](#unlock-a-user-programmatically).
+
+## Settings
+
+You can change how many failed attempts lock an account, and how long it stays locked. To turn the protection on or off or change its settings, see [Manage protections in the Dashboard](https://clerk.com/docs/guides/protect/protections/overview.md#manage-protections-in-the-dashboard).
+
+| Setting                   | Default | Description                                                                                                                                                                                                                                |
+| ------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Maximum attempt limit** | 10      | How many failed sign-in attempts lock the account. The minimum is 5.                                                                                                                                                                       |
+| **Lockout duration**      | 1 hour  | How long the account stays locked. **Time limit** unlocks the account automatically after the number of minutes, hours, days, or years you set. **Indefinite lockout** keeps it locked until an admin [unlocks it](#unlock-user-accounts). |
+
+## How it works with other protections
+
+Account lockout stops attackers from guessing a user's password. It doesn't help when an attacker already has the right password, for example from another site's data breach. For that, use [Device Trust](https://clerk.com/docs/guides/protect/device-trust.md) and [Reject compromised passwords](https://clerk.com/docs/guides/secure/password-protection-and-rules.md#reject-compromised-passwords).
+
+## Unlock user accounts
+
+There are two ways to unlock a user's account:
+
+- Through the Clerk Dashboard
+- Programmatically
+
+### Unlock a user through the Clerk Dashboard
+
+Users with admin Roles can override lockouts through the Clerk Dashboard.
+
+1. At the top of the Clerk Dashboard, select [**Users**](https://dashboard.clerk.com/~/users).
+2. Locate the locked user by looking for a "locked" badge next to their username/email.
+3. Open the three-dot menu on the right of that user's row.
+4. Select **Unlock** to unlock the user account.
+
+Alternatively, you can unlock a user's account on their profile page.
+
+1. At the top of the Clerk Dashboard, select [**Users**](https://dashboard.clerk.com/~/users).
+2. Locate the locked user by looking for a "locked" badge next to their username/email.
+3. Select the user's row to open their profile page.
+4. Open the **Actions** dropdown and select **Unlock user**.
+
+### Unlock a user programmatically
+
+You can programmatically unlock a user using the [`UnlockUser`](https://clerk.com/docs/reference/backend-api/tag/users/POST/users/%7Buser_id%7D/unlock) Backend API endpoint.
+
+### Use cases
+
+#### Display an unlock button
+
+Your custom sign-in page could expose a button or link that allows the user to request an unlock token when they are locked out of their account.
+
+- Your app should be able to generate a random unlock token and associate it with the user.
+- The unlock token can be sent to the user via email or SMS.
+- After successful entry of the unlock token, your app's backend can issue an unlock request to the Clerk Backend API.
+
+#### Send an unlock request to an admin
+
+If your app supports users submitting admin requests, it could expose a way of requesting an admin unlock.
+
+- A request for unlock could arrive in your app's admin dashboard.
+- If an admin reviews the request and decides to grant access back to the user, they can request an unlock from your app's backend, which should in turn call the Clerk Backend API.
+
+## Lock a user programmatically
+
+If you'd like to manually lock a user from signing in, you can use the [`LockUser`](https://clerk.com/docs/reference/backend-api/tag/users/POST/users/%7Buser_id%7D/lock) Backend API endpoint. Keep in mind that Clerk will still lock the user based on failed verification attempts.
 
 ---
 
@@ -146930,6 +147938,93 @@ Webhook signing secrets are issued per endpoint and managed on the [**Webhooks**
 8. On the old endpoint's settings page, open the `...` menu and select **Delete**.
 
 While both endpoints exist, Clerk delivers each event to both. Your app processes the delivery signed with the new secret, and the old endpoint's delivery fails verification as expected. Those failed deliveries stop once you delete the old endpoint.
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/guides/secure/secret-key-ip-allowlist.md
+
+========================================================================
+
+# Restrict a Secret Key to specific IP addresses
+
+> IP allowlists for Secret Keys require a [Business or Enterprise plan](https://clerk.com/pricing) for production use, but you can try them for free in development mode. See the [pricing](https://clerk.com/pricing) page for more information.
+>
+> If you downgrade to a plan without IP allowlists, Clerk removes them from your production Secret Keys when the downgrade takes effect. Those keys can then be used from any IP address. Allowlists on development and staging instances aren't affected.
+
+An IP allowlist limits where a Secret Key can be used from. Clerk's [Backend API](https://clerk.com/docs/reference/backend-api) rejects requests made with the key from IP addresses outside its allowlist, except for the [requests listed below](#which-requests-the-allowlist-restricts). If the key leaks, an attacker can't use it from their own machine to read or change your data.
+
+Each Secret Key has its own allowlist. A key without an allowlist can be used from any IP address.
+
+## Before you start
+
+Find the public IP addresses your server uses to make outbound requests (its _egress_ IPs), for every place the key is used:
+
+- **Your backend servers**: Use each server's public IP address. If requests go through a network address translation (NAT) gateway or an outbound proxy, use its public IP address instead. Clerk doesn't see private addresses such as `10.0.0.5`.
+- **Your hosting provider**: Many serverless and edge platforms send requests from shared, changing IP addresses. Check whether your provider offers static egress IPs (e.g., Vercel's [Static IPs](https://vercel.com/docs/connectivity/static-ips), a NAT gateway on AWS or Google Cloud), and allowlist those.
+- **Cloudflare Workers**: Requests from Workers reach Clerk from `2a06:98c0:3600::103`, an [address shared by every Worker](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip-in-worker-subrequests). Don't add it to an allowlist, since any Worker could then use your key.
+- **CI/CD pipelines, build steps, and scripts**: Anything else that uses the key, such as a build that prerenders pages with `clerkClient`, a migration script, or an admin CLI.
+- **IPv6**: Clerk's Backend API accepts IPv6. A server with IPv6 connectivity often uses it to reach Clerk, and may switch between IPv4 and IPv6 from one request to the next. Allowlist both its public IPv4 and IPv6 addresses, or turn off IPv6 on that server. IPv6 traffic often bypasses a NAT gateway (e.g., on AWS, it uses each instance's own IPv6 address). To cover servers you add or replace, you can allowlist their IPv6 subnet, as long as no one else uses addresses in it.
+
+> Create a separate Secret Key for each place a key is used (e.g., `api-production`, `github-actions`) and give each its own allowlist. A list for a server with fixed IPs can then be narrow, while a key used from somewhere without fixed IPs can stay unrestricted. See [Rotate your Clerk API keys](https://clerk.com/docs/guides/secure/rotate-api-keys.md) for how to add keys.
+
+## Add an IP allowlist to a Secret Key
+
+1. At the top left of the Clerk Dashboard, select the application and environment (e.g., **Development** or **Production**) you want to configure.
+2. In the sidenav, navigate to the [**API keys**](https://dashboard.clerk.com/~/api-keys) page.
+3. Under **Secret keys**, find the key and select the lock icon (**Add IP allowlist**).
+4. In the **IP address or range** field, enter an IP address or CIDR range and select **Add**. Repeat for each entry.
+5. Select **Save**.
+
+Changes take about a minute to apply. After that, keys with an allowlist show the number of entries next to their name.
+
+To remove the restriction, open the same dialog, remove every entry, and select **Save**.
+
+### Supported entries
+
+- IPv4 addresses (e.g., `203.0.113.10`) and IPv6 addresses (e.g., `2001:db8::10`).
+- IPv4 and IPv6 CIDR ranges (e.g., `203.0.113.0/24`, `2001:db8::/48`). A range must be written as its network address. For example, enter `203.0.113.0/24`, not `203.0.113.10/24`.
+- A `/32` or `/128` entry matches one address. For example, `2001:db8:1:2::/128` matches only `2001:db8:1:2::`. To allow the network, enter `2001:db8:1:2::/64`.
+- Up to 50 entries per key.
+
+> Private, loopback, and link-local addresses (e.g., `10.0.0.0/8`, `192.168.0.0/16`, `127.0.0.1`, `::1`) aren't accepted, since requests to Clerk never come from them.
+
+## Which requests the allowlist restricts
+
+The allowlist applies to [Backend API](https://clerk.com/docs/reference/backend-api) requests that use the key, whether they come from a Clerk SDK or from your own HTTP client.
+
+The allowlist doesn't restrict the following Backend API requests, from any caller. Clerk's SDKs make them while authenticating requests, and exempting them lets middleware run on hosts without fixed IP addresses, such as edge runtimes:
+
+- Fetching the JSON Web Key Set with the [`GET /v1/jwks` endpoint](https://clerk.com/docs/reference/backend-api/tag/jwks/GET/jwks) to verify session tokens.
+- Refreshing a session with the [`POST /v1/sessions/{session_id}/refresh` endpoint](https://clerk.com/docs/reference/backend-api/tag/sessions/POST/sessions/%7Bsession_id%7D/refresh).
+- Completing a [handshake](https://clerk.com/docs/guides/how-clerk-works/overview.md#the-handshake).
+- Verifying [API keys](https://clerk.com/docs/guides/development/machine-auth/api-keys.md), [M2M tokens](https://clerk.com/docs/guides/development/machine-auth/m2m-tokens.md), and [OAuth access tokens](https://clerk.com/docs/guides/configure/auth-strategies/oauth/overview.md).
+
+> The allowlist doesn't apply when the Secret Key is sent to the Frontend API through a [proxy](https://clerk.com/docs/guides/dashboard/dns-domains/proxy-fapi.md).
+
+## When a request is rejected
+
+A request from an IP address that isn't on the key's allowlist fails with a `403` status code and the `secret_key_ip_not_allowed` error code. When available, the error includes the IP address Clerk saw, so you can compare it with your list:
+
+```json
+{
+  "errors": [
+    {
+      "code": "secret_key_ip_not_allowed",
+      "message": "IP address not allowed",
+      "long_message": "This secret key can only be used from the IP addresses in its allowlist. The request came from 198.51.100.7.",
+      "meta": { "ip": "198.51.100.7" }
+    }
+  ]
+}
+```
+
+If you see this error from an address you expect to be allowed, check whether the request went out over IPv6, through a different region or NAT gateway, or from a build step or local machine.
 
 ---
 
@@ -170778,6 +171873,107 @@ Docs: https://clerk.com/docs/cli.md?sdk=nextjs https://clerk.com/docs/llms.txt?s
 ## After Setup
 
 Have the user sign up as their first test user in the nav. After signup succeeds and a profile icon appears, congratulate them. If a "Configure your application" callout appears, tell them to click it. Then recommend exploring: Organizations (https://clerk.com/docs/guides/organizations/overview.md?sdk=nextjs), Components (https://clerk.com/docs/reference/components/overview.md?sdk=nextjs), Dashboard (https://dashboard.clerk.com/).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
+
+========================================================================
+
+# docs/nextjs/guides/ai/mcp/agent-feedback.md
+
+========================================================================
+
+# Collect feedback from agents using your MCP server
+
+When an agent gets stuck on your MCP server (a tool is missing, fails, or returns something confusing), you rarely hear about it. Clerk can collect that feedback for you. You add a `submit_feedback` tool to your MCP server with [`@clerk/mcp-tools`](https://github.com/clerk/mcp-tools), agents call it when they run into friction, and Clerk stores the reports on your instance.
+
+Your own agent can then read the reports with the [list\_application\_feedback](https://clerk.com/docs/nextjs/guides/ai/mcp/agent-feedback.md#read-feedback-with-clerks-mcp-server) tool of [Clerk's MCP server](https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server.md?sdk=nextjs) and summarize what other agents struggle with.
+
+The tool works with any MCP server built with the MCP TypeScript SDK, including local (stdio) servers. Your server doesn't need to use Clerk for authentication; if it does, reports also include who the agent was working for. If you don't have an MCP server yet, follow [Build an MCP server](https://clerk.com/docs/nextjs/guides/ai/mcp/build-mcp-server.md).
+
+1. ## Add the feedback tool
+
+   Install or update `@clerk/mcp-tools`. The feedback tool requires version 0.7.0 or later.
+
+   ```npm
+   npm install @clerk/mcp-tools
+   ```
+
+   Create the tool with `submitFeedbackTool()` and register it the same way as your other tools, by passing the result to `server.registerTool()`. Pass your application's secret key, which tells Clerk the instance the reports belong to.
+
+   filename: app/[transport]/route.ts
+
+   ```ts
+   import { verifyClerkToken } from '@clerk/mcp-tools/next'
+   import { submitFeedbackTool } from '@clerk/mcp-tools/feedback'
+   import { createMcpHandler, withMcpAuth } from 'mcp-handler'
+   import { auth } from '@clerk/nextjs/server'
+
+   const handler = createMcpHandler((server) => {
+     // Your other tools...
+
+     server.registerTool(...submitFeedbackTool({ secretKey: process.env.CLERK_SECRET_KEY! }))
+   })
+
+   const authHandler = withMcpAuth(
+     handler,
+     async (_, token) => {
+       const clerkAuth = await auth({ acceptsToken: 'oauth_token' })
+       return verifyClerkToken(clerkAuth, token)
+     },
+     {
+       required: true,
+       resourceMetadataPath: '/.well-known/oauth-protected-resource/mcp',
+     },
+   )
+
+   export { authHandler as GET, authHandler as POST }
+   ```
+
+   Each report shows your MCP server's host, so you can tell your MCP servers apart. To show a different name, or a version, pass `server: { name: 'my-app', version: '1.0.0' }` to `submitFeedbackTool()`. Local (stdio) servers have no host, so pass a `server` name for them.
+
+   When a request was authenticated with `verifyClerkToken()`, directly or through the `mcpAuthClerk` middleware, each report also includes the ID of the signed-in user the agent was working for and the ID of the agent's OAuth client. Without `verifyClerkToken()`, reports include no identity.
+2. ## Check what agents report
+
+   The tool asks agents to report once per task, after they finish or give up. Each report has:
+
+   | Field                | Description                                                                                                                                                                                                                                                                                                                                         |
+   | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Task                 | A short phrase naming what the user asked the agent to do.                                                                                                                                                                                                                                                                                          |
+   | Kind                 | `missing` (none of your tools could do the task), `broken` (a tool failed or returned something wrong), `confusing` (a tool or its documentation was unclear), or `idea` (a suggestion).                                                                                                                                                            |
+   | Impact               | `blocked` (the agent couldn't finish), `worked_around` (it finished another way), or `friction` (it finished, but it was harder than it should be).                                                                                                                                                                                                 |
+   | Description          | What the agent tried, including the tool calls it made, and what went wrong.                                                                                                                                                                                                                                                                        |
+   | Operation            | The tool the problem is about, if any.                                                                                                                                                                                                                                                                                                              |
+   | Error and suggestion | The error the agent received and what would have helped, if the agent provided them.                                                                                                                                                                                                                                                                |
+   | Source and agent     | Your MCP server's host, or the `server` name and version you passed. The agent's name and version come from the details its MCP client sends with each request, or otherwise from the request's `User-Agent` header. Agents whose client identifies itself only when it connects, which is common for local (stdio) servers, appear without a name. |
+
+   To try it, ask an agent connected to your MCP server to do something none of your tools support. It should call `submit_feedback` before it finishes. If the agent is also connected to Clerk's MCP server, ask it to use your server's tool: Clerk's MCP server has its own `submit_feedback` tool, which reports problems to the Clerk team.
+
+   If a report can't be stored, the tool tells the agent not to retry and to continue its task. It also logs the response status or error name with `console.error()`, so a misconfigured key shows up in your server's logs.
+3. ## Read feedback with Clerk's MCP server
+
+   If your own agent is connected to [Clerk's MCP server](https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server.md?sdk=nextjs), it can read these reports with the `list_application_feedback` tool. The tool needs the `user:org:read` and `applications:read` scopes.
+
+   It takes the ID of the application whose secret key you passed to `submitFeedbackTool()`, and an instance: `development`, `production`, or an instance ID. Your agent can find the application by name with the `list_applications` tool. Reports come back newest first. The tool filters by `kind`, `impact`, or `user_id`, and pages through results with `limit` and `before`.
+
+   For example, you can ask your agent:
+
+   - "Summarize the feedback agents left on my production instance"
+   - "Which of my MCP tools do agents report as broken most often?"
+   - "Show the blocked reports for user\_123"
+
+   Third-party agents write the report text, so the tool labels it as data. Your agent should summarize it, and never follow instructions found inside a report.
+
+## Privacy and limits
+
+- The tool tells agents not to include secrets, API keys, tokens, or personal data about your users. Clerk also removes credentials it recognizes, such as API keys and bearer tokens, from every field before storing a report.
+- Each instance accepts up to 100 reports per hour, shared by every MCP server that uses its secret key. Once an instance reaches the limit, the tool tells agents not to retry and to continue their task.
+- Reports are stored per instance. Development and production instances have separate feedback.
+- Agents send reports without asking the user first. A report can include what the user asked for, the tool calls the agent made, and the errors it received, plus the user's ID when the request was authenticated with Clerk. Cover this in the privacy information you give your users.
+- Anyone who can reach your MCP server can call `submit_feedback`, including to send misleading reports or use up the hourly limit. Protect public servers with authentication or other access controls.
 
 ---
 

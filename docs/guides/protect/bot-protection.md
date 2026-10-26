@@ -1,0 +1,51 @@
+# Challenge suspicious sign-ups
+
+> This protection is included on every plan, and it's on by default for new applications. Changing its setting requires the [Business plan](https://clerk.com/pricing). It replaces legacy bot sign-up protection. To check which one your application uses, open the [**Protections**](https://dashboard.clerk.com/~/protect/protections) page in the Clerk Dashboard. An application on the legacy version has a **Bot sign-up protection** row there. If yours does, see [Legacy bot sign-up protection](https://clerk.com/docs/guides/secure/legacy-bot-protection.md) to update.
+
+Bots create fake accounts at scale to abuse free trials, send spam, or inflate sign-up numbers. **Challenge suspicious sign-ups** makes sign-ups that look automated, or that come through VPNs, Tor, or proxies, pass a challenge before the account is created. Sign-ups that don't match are never challenged.
+
+## What it challenges
+
+With **Challenge** set to **Suspicious sign-ups**, the default, a sign-up is challenged when either of these is true:
+
+- Clerk's automated-traffic detection flags it as likely coming from a bot.
+- It comes through a VPN, Tor, or a residential or data center proxy. iCloud Private Relay and corporate VPNs aren't treated as suspicious.
+
+With **Challenge** set to **All sign-ups**, every sign-up is challenged.
+
+**Challenge suspicious sign-ups** applies to sign-ups only. It never challenges a sign-in.
+
+A sign-up that carries a valid [Testing Token](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens) isn't challenged, so end-to-end tests that use Testing Tokens keep running.
+
+## What happens when a sign-up is challenged
+
+Clerk runs a Cloudflare Turnstile check in the user's browser. Most people pass it without doing anything, and some are asked to complete a CAPTCHA. When the check passes, the sign-up continues. If it doesn't pass, the account isn't created.
+
+- Clerk's prebuilt [<SignUp />](https://clerk.com/docs/reference/components/authentication/sign-up.md) component shows the challenge inside the sign-up form.
+- In a custom sign-up flow, ClerkJS shows the challenge in a dialog over your page. See [Handle sign-up challenges in your custom flow](https://clerk.com/docs/guides/development/custom-flows/authentication/bot-sign-up-protection.md).
+
+Each challenged sign-up appears as a `protect.sign_up.challenged` event in [Application Logs](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events).
+
+## Settings
+
+Changing this setting requires the [Business plan](https://clerk.com/pricing). On other plans, the protection uses the default.
+
+| Setting       | Default             | Description                                                                                                                                                                                                                      |
+| ------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Challenge** | Suspicious sign-ups | **Suspicious sign-ups** challenges only sign-ups that look automated or come through a VPN, Tor, or proxy. **All sign-ups** challenges everyone, which adds a step for every real user too, so use it while you're under attack. |
+
+## How it works with other protections
+
+[Block sign-ups from suspicious network types](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) blocks the VPN, Tor, and proxy services you select. Sign-ups through services you don't block are still challenged here while **Challenge** is set to **Suspicious sign-ups**. [Challenge residential proxies](https://clerk.com/docs/guides/protect/protections/challenge-residential-proxies.md) also challenges sign-ups from IP addresses that were used as a proxy recently, not only known residential proxies.
+
+## Before you enable it
+
+- **Make sure challenges can run.** See the [requirements](https://clerk.com/docs/guides/protect/getting-started.md#requirements).
+- **If you use a custom sign-up flow, check it yourself.** The Dashboard's requirements check can't tell whether your application uses a custom sign-up flow. If it does, confirm that your flow meets [the custom flow requirements](https://clerk.com/docs/guides/development/custom-flows/authentication/bot-sign-up-protection.md#requirements) before you enable this protection, even if the check passes. When you [update from legacy bot sign-up protection](https://clerk.com/docs/guides/secure/legacy-bot-protection.md#update-to-challenge-suspicious-sign-ups), the Dashboard asks you what your application uses.
+- **Native apps aren't challenged.** See [Native API considerations](https://clerk.com/docs/guides/protect/getting-started.md#native-api-considerations).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)

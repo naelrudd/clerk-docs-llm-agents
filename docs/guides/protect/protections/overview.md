@@ -1,0 +1,83 @@
+# Protections
+
+Protections are defenses that Clerk builds and maintains, and that you can turn on for your application. Each one targets a specific kind of abuse, such as password guessing or sign-ups from cloud servers.
+
+## How protections work
+
+- **Each protection applies to specific steps.** Some apply to sign-ups, some to sign-ins, and some to both. A few also apply when a user adds an email address. The **Applies to** column in [Available protections](#available-protections) shows which.
+- **Each protection takes one kind of action.** Most block or challenge the attempt. Others lock the account, ask for a second factor, reject an email address, or limit how often something can be tried. The **Action** column shows which.
+- **Most are off until you turn them on.** These are on by default: [Challenge suspicious sign-ups](https://clerk.com/docs/guides/protect/bot-protection.md) and [Lock accounts after failed sign-ins](https://clerk.com/docs/guides/protect/user-lockout.md) for new applications, and [Device Trust](https://clerk.com/docs/guides/protect/device-trust.md) for applications created after November 14, 2025. Bulk [user enumeration protection](https://clerk.com/docs/guides/protect/user-enumeration-protection.md) is always on.
+- **Clerk also rate-limits sign-up and sign-in requests on every plan.** Each IP address can only start so many sign-ups and sign-ins, and submit so many passwords and codes, in a short time. These limits aren't a protection you manage. See [Frontend API requests](https://clerk.com/docs/guides/how-clerk-works/system-limits.md#frontend-api-requests).
+
+## Available protections
+
+### Included on every plan
+
+| Protection                                                                                                                | What it does                                                                                                      | Applies to                              | Action                                        |
+| ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------- |
+| [Challenge suspicious sign-ups](https://clerk.com/docs/guides/protect/bot-protection.md)                                  | Challenges sign-ups that look automated or come through VPNs, Tor, or proxies.                                    | Sign-ups                                | Challenge                                     |
+| [Require Device Intelligence checks](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md)    | Blocks a sign-up created by a browser that has no verified Device Intelligence result.                            | Sign-ups                                | Block                                         |
+| [Lock accounts after failed sign-ins](https://clerk.com/docs/guides/protect/user-lockout.md)                              | Locks an account after too many failed sign-in attempts.                                                          | Sign-ins                                | Lock account                                  |
+| [Device Trust](https://clerk.com/docs/guides/protect/device-trust.md)                                                     | Asks for a second factor when a user signs in with a password on a device Clerk doesn't recognize.                | Password sign-ins                       | Require second factor                         |
+| [User enumeration protection](https://clerk.com/docs/guides/protect/user-enumeration-protection.md)                       | Makes it harder to find out which email addresses and phone numbers have an account.                              | Sign-ups, sign-ins, and profile updates | Rate limit, or hide whether an account exists |
+| [Block email subaddresses](https://clerk.com/docs/guides/protect/protections/block-email-subaddresses.md)                 | Rejects an email address that adds a subaddress to one that already has an account, such as `user+1@example.com`. | Sign-ups and adding an email address    | Reject email address                          |
+| [Block disposable email addresses](https://clerk.com/docs/guides/protect/protections/block-disposable-email-addresses.md) | Rejects email addresses known to be disposable.                                                                   | Sign-ups and adding an email address    | Reject email address                          |
+
+### Included in the Business plan
+
+The following protections require the [Business plan](https://clerk.com/pricing):
+
+| Protection                                                                                                                          | What it does                                                          | Applies to | Action    |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------- | --------- |
+| [Block sign-ups from suspicious network types](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) | Blocks sign-ups from VPNs, Tor, proxies, and hosting networks.        | Sign-ups   | Block     |
+| [Challenge residential proxies](https://clerk.com/docs/guides/protect/protections/challenge-residential-proxies.md)                 | Challenges sign-ups that come through residential proxies.            | Sign-ups   | Challenge |
+| [Block sign-ups by country](https://clerk.com/docs/guides/protect/protections/block-sign-ups-by-country.md)                         | Blocks sign-ups by country, using a blocklist or an allowlist.        | Sign-ups   | Block     |
+| [Limit sign-ups per IP address](https://clerk.com/docs/guides/protect/protections/limit-sign-ups-per-ip-address.md)                 | Blocks sign-ups from an IP address when it exceeds your hourly limit. | Sign-ups   | Block     |
+| [Block risky email domains](https://clerk.com/docs/guides/protect/protections/block-risky-email-domains.md)                         | Blocks sign-ups from email domains that Clerk rates as risky.         | Sign-ups   | Block     |
+
+## Protections that block or challenge
+
+Protections whose action is **Block** or **Challenge** all work the way this section describes. For the other protections, each one's page explains when it applies and what the user sees.
+
+### When protections check an attempt
+
+- **Sign-ups**: most protections act as soon as a sign-up starts. [Block risky email domains](https://clerk.com/docs/guides/protect/protections/block-risky-email-domains.md) acts when the email address is entered.
+- **Sign-ins aren't checked.** These protections apply to sign-ups only, so they never stop existing users from signing in.
+- **Users you create yourself aren't checked.** These protections don't apply to users you create with the [Backend API](https://clerk.com/docs/reference/backend-api), in the Clerk Dashboard, or by importing them.
+- **Automated tests aren't checked, with one exception.** A sign-up that carries a valid [Testing Token](https://clerk.com/docs/guides/development/testing/overview.md#testing-tokens) isn't checked by these protections, so end-to-end tests keep running. [Require Device Intelligence checks](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md) still checks it.
+
+### What blocked users see
+
+When a protection blocks a sign-up, the attempt doesn't go through. What the user sees depends on where it's blocked and which versions of Clerk's SDKs your application runs:
+
+- **Prebuilt components with `@clerk/ui` 1.36.0 or later and ClerkJS 6.34.1 or later** show a screen explaining that the user can't continue, with a reference code. Core 3 SDKs load the latest versions automatically. The screen appears when the attempt is blocked on the first step, or when the user returns from a social or SSO provider.
+- **A block at a later step,** such as after the user enters a password or a verification code, shows a short error message instead of the full screen. So do older SDK versions.
+- **In a custom flow,** the request fails with an error whose code is `action_blocked`. See [Error handling](https://clerk.com/docs/guides/development/custom-flows/error-handling.md).
+
+When a protection challenges an attempt instead, the user completes a verification step and then carries on.
+
+### When more than one protection matches
+
+If more than one protection matches the same attempt, a block applies before a challenge.
+
+### Where decisions appear
+
+Every block and challenge appears as a [Protect event](https://clerk.com/docs/guides/dashboard/logs/application-logs.md#protect-events) in Application Logs, so you can see what a protection is doing once it's on.
+
+### If you proxy Clerk's Frontend API
+
+Several of these protections decide based on where an attempt comes from, so Protect needs each visitor's IP address. If you [proxy Clerk's Frontend API](https://clerk.com/docs/guides/dashboard/dns-domains/proxy-fapi.md) through your own server, your proxy must send the visitor's IP address in the `X-Forwarded-For` header, as described in [Configure your proxy server](https://clerk.com/docs/guides/dashboard/dns-domains/proxy-fapi.md#configure-your-proxy-server). Otherwise every attempt looks like it comes from your proxy, and those protections can block everyone or no one.
+
+## Plans
+
+Some protections are included on every plan, and others require the Business plan. Each protection's page lists what it requires. See [pricing](https://clerk.com/pricing).
+
+## Manage protections in the Dashboard
+
+In the Clerk Dashboard, under **Protect**, navigate to the [**Protections**](https://dashboard.clerk.com/~/protect/protections) page. It lists the protections on your application, each with its **Status**. To enable a protection, change its settings, or disable it, select the settings icon at the end of its row. Without the [Business plan](https://clerk.com/pricing), a protection that requires it shows a lock icon and no status, and its settings icon leads to the upgrade. To test protections before you enable them in production, see [Enable protections](https://clerk.com/docs/guides/protect/getting-started.md#enable-protections).
+
+---
+
+## Sitemap
+
+[Overview of all docs pages](https://clerk.com/docs/llms.txt)
