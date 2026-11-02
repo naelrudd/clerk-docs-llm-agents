@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2768
+Pages: 2771
 
 | Path | First heading |
 |---|---|
@@ -1073,6 +1073,8 @@ Pages: 2768
 | [docs/guides/protect/protections/block-sign-ups-by-country.md](https://clerk.com/docs/guides/protect/protections/block-sign-ups-by-country.md) | Block sign-ups by country |
 | [docs/guides/protect/protections/block-suspicious-network-types.md](https://clerk.com/docs/guides/protect/protections/block-suspicious-network-types.md) | Block sign-ups from suspicious network types |
 | [docs/guides/protect/protections/challenge-residential-proxies.md](https://clerk.com/docs/guides/protect/protections/challenge-residential-proxies.md) | Challenge residential proxies |
+| [docs/guides/protect/protections/limit-sign-ups-from-shared-infrastructure.md](https://clerk.com/docs/guides/protect/protections/limit-sign-ups-from-shared-infrastructure.md) | Limit sign-ups from shared infrastructure |
+| [docs/guides/protect/protections/limit-sign-ups-per-email-domain.md](https://clerk.com/docs/guides/protect/protections/limit-sign-ups-per-email-domain.md) | Limit sign-ups per email domain |
 | [docs/guides/protect/protections/limit-sign-ups-per-ip-address.md](https://clerk.com/docs/guides/protect/protections/limit-sign-ups-per-ip-address.md) | Limit sign-ups per IP address |
 | [docs/guides/protect/protections/overview.md](https://clerk.com/docs/guides/protect/protections/overview.md) | Protections |
 | [docs/guides/protect/protections/require-device-intelligence.md](https://clerk.com/docs/guides/protect/protections/require-device-intelligence.md) | Require Device Intelligence checks |
@@ -1696,6 +1698,7 @@ Pages: 2768
 | [docs/nuxt/reference/types/verification-resource.md](https://clerk.com/docs/nuxt/reference/types/verification-resource.md) | VerificationResource |
 | [docs/nuxt/reference/types/waitlist.md](https://clerk.com/docs/nuxt/reference/types/waitlist.md) | Waitlist |
 | [docs/nuxt/reference/types/web3-wallet.md](https://clerk.com/docs/nuxt/reference/types/web3-wallet.md) | Web3Wallet |
+| [docs/nuxt/reference/update-clerk-options.md](https://clerk.com/docs/nuxt/reference/update-clerk-options.md) | updateClerkOptions() |
 | [docs/pinning.md](https://clerk.com/docs/pinning.md) | Pin a Clerk SDK |
 | [docs/react/getting-started/quickstart.md](https://clerk.com/docs/react/getting-started/quickstart.md) | Add Clerk to React (Vite) |
 | [docs/react/guides/ai/prompts.md](https://clerk.com/docs/react/guides/ai/prompts.md) | AI prompts |
