@@ -1,6 +1,6 @@
 # Index — Clerk
 Source: https://clerk.com/docs/llms.txt
-Pages: 2771
+Pages: 2780
 
 | Path | First heading |
 |---|---|
@@ -13,6 +13,7 @@ Pages: 2771
 | [docs/android/guides/development/custom-flows/account-updates/user-impersonation.md](https://clerk.com/docs/android/guides/development/custom-flows/account-updates/user-impersonation.md) | Build a custom flow for handling user impersonation |
 | [docs/android/guides/development/custom-flows/authentication/biometric-sign-in.md](https://clerk.com/docs/android/guides/development/custom-flows/authentication/biometric-sign-in.md) | Build a custom authentication flow using biometric sign-in |
 | [docs/android/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/android/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/android/guides/development/minimum-app-version.md](https://clerk.com/docs/android/guides/development/minimum-app-version.md) | Require a minimum app version |
 | [docs/android/guides/secure/authorization-checks.md](https://clerk.com/docs/android/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/android/reference/native-mobile/auth.md](https://clerk.com/docs/android/reference/native-mobile/auth.md) | Authentication flows |
 | [docs/android/reference/native-mobile/billing.md](https://clerk.com/docs/android/reference/native-mobile/billing.md) | Billing |
@@ -534,6 +535,7 @@ Pages: 2771
 | [docs/expo/guides/development/custom-flows/authentication/google-one-tap.md](https://clerk.com/docs/expo/guides/development/custom-flows/authentication/google-one-tap.md) | Build a custom Google One Tap authentication flow |
 | [docs/expo/guides/development/custom-flows/authentication/waitlist.md](https://clerk.com/docs/expo/guides/development/custom-flows/authentication/waitlist.md) | Build a custom waitlist form |
 | [docs/expo/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/expo/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/expo/guides/development/minimum-app-version.md](https://clerk.com/docs/expo/guides/development/minimum-app-version.md) | Require a minimum app version |
 | [docs/expo/guides/development/webhooks/billing.md](https://clerk.com/docs/expo/guides/development/webhooks/billing.md) | Clerk Billing webhooks |
 | [docs/expo/guides/secure/authorization-checks.md](https://clerk.com/docs/expo/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/expo/guides/users/reading.md](https://clerk.com/docs/expo/guides/users/reading.md) | Read user data |
@@ -579,6 +581,7 @@ Pages: 2771
 | [docs/expo/reference/native-components/theming.md](https://clerk.com/docs/expo/reference/native-components/theming.md) | Theming Expo native components (Beta) |
 | [docs/expo/reference/native-components/user-button.md](https://clerk.com/docs/expo/reference/native-components/user-button.md) | <UserButton /> |
 | [docs/expo/reference/native-components/user-profile-view.md](https://clerk.com/docs/expo/reference/native-components/user-profile-view.md) | <UserProfileView /> component |
+| [docs/expo/reference/native-hooks/use-app-version-support.md](https://clerk.com/docs/expo/reference/native-hooks/use-app-version-support.md) | useAppVersionSupport() |
 | [docs/expo/reference/native-hooks/use-auth-view-state.md](https://clerk.com/docs/expo/reference/native-hooks/use-auth-view-state.md) | useAuthViewState() |
 | [docs/expo/reference/native-hooks/use-biometric-credentials.md](https://clerk.com/docs/expo/reference/native-hooks/use-biometric-credentials.md) | useBiometricCredentials() |
 | [docs/expo/reference/native-hooks/use-hosted-auth.md](https://clerk.com/docs/expo/reference/native-hooks/use-hosted-auth.md) | useHostedAuth() |
@@ -699,7 +702,9 @@ Pages: 2771
 | [docs/expo/reference/types/web3-wallet.md](https://clerk.com/docs/expo/reference/types/web3-wallet.md) | Web3Wallet |
 | [docs/expressjs/getting-started/quickstart.md](https://clerk.com/docs/expressjs/getting-started/quickstart.md) | Express Quickstart |
 | [docs/expressjs/guides/ai/mcp/agent-feedback.md](https://clerk.com/docs/expressjs/guides/ai/mcp/agent-feedback.md) | Collect feedback from agents using your MCP server |
+| [docs/expressjs/guides/ai/mcp/browser-sessions.md](https://clerk.com/docs/expressjs/guides/ai/mcp/browser-sessions.md) | Sign agents in to your app with a one-time link (Beta) |
 | [docs/expressjs/guides/ai/mcp/build-mcp-server.md](https://clerk.com/docs/expressjs/guides/ai/mcp/build-mcp-server.md) | Build an MCP server in your application with Clerk |
+| [docs/expressjs/guides/ai/mcp/step-up-scopes.md](https://clerk.com/docs/expressjs/guides/ai/mcp/step-up-scopes.md) | Request more scopes with step-up authorization |
 | [docs/expressjs/guides/billing/for-b2b.md](https://clerk.com/docs/expressjs/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/expressjs/guides/billing/for-b2c.md](https://clerk.com/docs/expressjs/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
 | [docs/expressjs/guides/configure/auth-strategies/social-connections/overview.md](https://clerk.com/docs/expressjs/guides/configure/auth-strategies/social-connections/overview.md) | Social connections (OAuth) |
@@ -1000,6 +1005,7 @@ Pages: 2771
 | [docs/guides/development/testing/playwright/test-helpers.md](https://clerk.com/docs/guides/development/testing/playwright/test-helpers.md) | Test helpers |
 | [docs/guides/development/testing/playwright/test-sign-up-flows.md](https://clerk.com/docs/guides/development/testing/playwright/test-sign-up-flows.md) | Test the sign-up form |
 | [docs/guides/development/testing/postman-or-insomnia.md](https://clerk.com/docs/guides/development/testing/postman-or-insomnia.md) | Testing with Postman or Insomnia |
+| [docs/guides/development/testing/test-against-production.md](https://clerk.com/docs/guides/development/testing/test-against-production.md) | Test against a production instance |
 | [docs/guides/development/testing/test-emails-and-phones.md](https://clerk.com/docs/guides/development/testing/test-emails-and-phones.md) | Test emails and phones |
 | [docs/guides/development/testing/test-organization-domains.md](https://clerk.com/docs/guides/development/testing/test-organization-domains.md) | Test Organization domains |
 | [docs/guides/development/troubleshooting/email-deliverability.md](https://clerk.com/docs/guides/development/troubleshooting/email-deliverability.md) | Email deliverability |
@@ -1124,6 +1130,7 @@ Pages: 2771
 | [docs/ios/guides/customizing-clerk/clerk-theme.md](https://clerk.com/docs/ios/guides/customizing-clerk/clerk-theme.md) | ClerkTheme |
 | [docs/ios/guides/development/custom-flows/authentication/biometric-sign-in.md](https://clerk.com/docs/ios/guides/development/custom-flows/authentication/biometric-sign-in.md) | Build a custom authentication flow using biometric sign-in |
 | [docs/ios/guides/development/custom-flows/error-handling.md](https://clerk.com/docs/ios/guides/development/custom-flows/error-handling.md) | Error handling |
+| [docs/ios/guides/development/minimum-app-version.md](https://clerk.com/docs/ios/guides/development/minimum-app-version.md) | Require a minimum app version |
 | [docs/ios/guides/secure/authorization-checks.md](https://clerk.com/docs/ios/guides/secure/authorization-checks.md) | Authorization checks |
 | [docs/ios/reference/native-mobile/auth.md](https://clerk.com/docs/ios/reference/native-mobile/auth.md) | Authentication flows |
 | [docs/ios/reference/native-mobile/billing.md](https://clerk.com/docs/ios/reference/native-mobile/billing.md) | Billing |
@@ -1299,7 +1306,9 @@ Pages: 2771
 | [docs/maintenance-mode.md](https://clerk.com/docs/maintenance-mode.md) | Maintenance Mode |
 | [docs/nextjs/getting-started/quickstart.md](https://clerk.com/docs/nextjs/getting-started/quickstart.md) | Add Clerk Authentication to Next.js |
 | [docs/nextjs/guides/ai/mcp/agent-feedback.md](https://clerk.com/docs/nextjs/guides/ai/mcp/agent-feedback.md) | Collect feedback from agents using your MCP server |
+| [docs/nextjs/guides/ai/mcp/browser-sessions.md](https://clerk.com/docs/nextjs/guides/ai/mcp/browser-sessions.md) | Sign agents in to your app with a one-time link (Beta) |
 | [docs/nextjs/guides/ai/mcp/build-mcp-server.md](https://clerk.com/docs/nextjs/guides/ai/mcp/build-mcp-server.md) | Build an MCP server in your application with Clerk |
+| [docs/nextjs/guides/ai/mcp/step-up-scopes.md](https://clerk.com/docs/nextjs/guides/ai/mcp/step-up-scopes.md) | Request more scopes with step-up authorization |
 | [docs/nextjs/guides/ai/prompts.md](https://clerk.com/docs/nextjs/guides/ai/prompts.md) | AI prompts |
 | [docs/nextjs/guides/billing/for-b2b.md](https://clerk.com/docs/nextjs/guides/billing/for-b2b.md) | Clerk Billing for B2B SaaS |
 | [docs/nextjs/guides/billing/for-b2c.md](https://clerk.com/docs/nextjs/guides/billing/for-b2c.md) | Clerk Billing for B2C SaaS |
